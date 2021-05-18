@@ -1,5 +1,5 @@
 {
-  "name": "pro-trator",
+  "name": "sedama",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonaslimav/protrator.git"
+    "url": "git+https://github.com/jonaslimav/sedama.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jonaslimav/protrator/issues"
+    "url": "https://github.com/jonaslimav/sedama/issues"
   },
-  "homepage": "https://github.com/jonaslimav/protrator#readme",
+  
   "dependencies": {
     "express": "^4.17.1",
     "pkg": "^4.4.9"
