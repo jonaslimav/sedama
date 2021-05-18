@@ -22,7 +22,7 @@ function InserirAnuencia() {
     
         let anuencia_id = false;
 
-
+        
         const anuencia = {
     
             
@@ -86,7 +86,7 @@ function listar() {
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellProprie.appendChild(document.createTextNode(childData.proprietario));
-            cellValor.appendChild(document.createTextNode(Number(childData.valorTotal).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
+            cellValor.appendChild(document.createTextNode(Number(childData.valorFin).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellAtv.appendChild(document.createTextNode(childData.atividade));
             cellUpload.innerHTML='<input type= "button" class="btn btn-primary"value="UPLOAD"onclick="link()"}/>';

@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/jonaslimav/sedama/issues"
   },
-  
   "dependencies": {
     "express": "^4.17.1",
     "pkg": "^4.4.9"
@@ -28,7 +27,6 @@
     ],
     "targets": [
       "node10"
-      ]
-    
+    ]
   }
 }
