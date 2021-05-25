@@ -21,11 +21,24 @@ function InserirAnuencia() {
    var databaseRef = firebase.database().ref('anuencia/');
     
         let anuencia_id = false;
+        var ordemNum;
+    var dt= new Date();
+       ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
+  ;
+       
+       if(String(ordemNum).slice(-4) == String(dt.getFullYear())){
+           ordemNum = (Number(String(ordemNum).slice(0,-5))+1)+'/'+dt.getFullYear();
+        
+       }else{
+           ordemNum = '001/'+ dt.getFullYear();
+       }
+
+
 
         
         const anuencia = {
     
-            
+            ordemN : ordemNum,
             nomeProdutor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
             cpf: cpf = document.getElementById("cpf").value,
             localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
@@ -69,19 +82,21 @@ function listar() {
             var childData = childSnapshot.val();
 
             var row = tblUsers.insertRow(rowIndex);
-            var cellNome = row.insertCell(0);
-            var cellCPF = row.insertCell(1);
-            var cellLocalidade = row.insertCell(2);
-            var cellProprie= row.insertCell(3);            
-            var cellValor = row.insertCell(4);
-            var cellData = row.insertCell(5);
-            var cellAtv= row.insertCell(6);
-            var cellImprimir = row.insertCell(7);
-            var cellUpload=row.insertCell(8);
+
+            var cellOrdem=row.insertCell(0);
+            var cellNome = row.insertCell(1);
+            var cellCPF = row.insertCell(2);
+            var cellLocalidade = row.insertCell(3);
+            var cellProprie= row.insertCell(4);            
+            var cellValor = row.insertCell(5);
+            var cellData = row.insertCell(6);
+            var cellAtv= row.insertCell(7);
+            var cellImprimir = row.insertCell(8);
+            var cellUpload=row.insertCell(9);
 
             
           
-            
+            cellOrdem.appendChild(document.createTextNode(childData.ordemN));
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -119,28 +134,32 @@ function link(){
 function imprimir(dt){
 
 var data=dt.parentNode.parentNode.children;
-var nomePr = data[0].innerHTML;
-var cpfPr = data[1].innerHTML;
-var localPr = data[2].innerHTML;
-var Propri = data[3].innerHTML;
-var valorFin = data[4].innerHTML;
-var dataPr =data[5].innerHTML;
-var atividade =data[6].innerHTML;
+var numeral = data[0].innerHTML;
+var nomePr = data[1].innerHTML;
+var cpfPr = data[2].innerHTML;
+var localPr = data[3].innerHTML;
+var Propri = data[4].innerHTML;
+var valorFin = data[5].innerHTML;
+var dataPr =data[6].innerHTML;
+var atividade =data[7].innerHTML;
 
 var condicao;
 
 if(Propri.length<5){
     condicao ='Proprietario'
 }else{
-    condicao = `Arrendatario à ${Propri} `;
+    condicao = `Arrendatario de ${Propri} `;
 }
 var x = document.getElementById("geral");
 
+
+
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=300 width=100%><h1 style="
+                <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
                 text-align: center;"> 
-               <strong> TERMO DE ANUENCIA AMBIENTAL</strong></h1>
-                <h2 style="
+               <strong> Termo De Anuência Ambiental <br>${numeral}</strong></h2>
+                <h3 style="
+                line-height: 1.75;
                 align-content: center;
                 margin-left: 100px;
                 margin-right: 100px;
@@ -149,18 +168,23 @@ x.innerHTML = `
                             
                 <br>
                 <br>
-                <br>
+                
                A <strong> PREFEITURA MUNICIPAL DE QUIXELO/CE</strong>, através da Secretaria de Desenvolvimento Agrário e Meio Ambiente, representada neste ato pelo Secretário Francisco Silva Lima, no uso de sua competência legal, obedecidas as disposições constantes na 
                 Lei Municipal nº 150, de 15 de julho de 2013, resolve conceder, a
                 <strong>  ${nomePr}</strong> &nbsp inscrito no CPF sob nº
                  <strong> ${cpfPr}</strong>, localizada em ${localPr} - Quixelô - 
                  Ceará, na condição de   ${condicao} , CEP 63.515-000, 
-                 <strong>ANUÊNCIA AMBIENTAL</strong> para a atividade de ${atividade}.\n\n
-                 <br> <br><br>Quixelô/CE,${dataPr}</strong><br>
-                 <div> </h2>
-                 <img src="../lima.png" alt="some text" height=610 width=100% >
+                 <strong>ANUÊNCIA AMBIENTAL</strong> para a atividade de ${atividade}.
+                 <br> <br>Quixelô/CE,${dataPr}</strong><br> </h3>
+                 <br><br><br><h3 style= "text-align:center; line-height:1.75;">
+                 <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
+                 Agrário e Meio Ambiente - SEDAMA</h3>
+                 <div class="footer" style="position:absolute;
+                 bottom:0;
+                 width:100%;">
+                 <img src="../logPref.png" alt="some text"  width=100% ></div>
 					
-                       `; 
+                       `;
                     
                     
   //  printDiv();
