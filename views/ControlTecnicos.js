@@ -57,7 +57,6 @@ function InserirTecnico() {
 function listar() {
 
 	
-	function listar() {
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
