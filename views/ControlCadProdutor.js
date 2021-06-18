@@ -58,6 +58,14 @@ function InserirProdutor() {
 }
 
 function listar() {
+	
+	
+	function listar() {
+    if(!localStorage.getItem("auth")){
+        alert("Necessario fazer login");
+      window.location.href = "loguin.html";
+
+    }
 
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('produtor/');
