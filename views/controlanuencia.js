@@ -180,7 +180,7 @@ x.innerHTML = `
                 Lei Municipal nº 150, de 15 de julho de 2013, resolve conceder, a
                 <strong>  ${nomePr}</strong> &nbsp inscrito no CPF sob nº
                  <strong> ${cpfPr}</strong>, localizada em ${localPr} - Quixelô - 
-                 Ceará, na condição de   ${condicao} , CEP 63.515-000, 
+                 Ceará, CEP 63.515-000, na condição de   ${condicao} ,  
                  <strong>ANUÊNCIA AMBIENTAL</strong> para a atividade de ${atividade}.
                  <br> <br>Quixelô/CE,${dataPr}</strong><br> </h3>
                  <br><br><br><h3 style= "text-align:center; line-height:1.75;">
