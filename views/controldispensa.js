@@ -162,11 +162,11 @@ x.innerHTML = `
                 <br>
                 <br>
                 
-                Declaro para os devindo fins, de acordo com a Resolução COEMA de nº 02, de 11de abril de 2019, que disciplina os critérios, 
+                Declaro para os devindo fins, de acordo com a Resolução COEMA de nº 02, de 11 de abril de 2019, que disciplina os critérios, 
                 parâmetros e custos operacionais de concessão de licença/autorização e de análise de estudos ambientais, 
                 referentes ao licenciamento ambiental das obras e atividades modificadoras do meio ambiente no território do Estado do Ceará, 
-                a Isenção de Licenciamento Ambiental, a o Empreendedor,&nbsp<strong>  ${nomePr}</strong>, inscrito no CPF sob o nº&nbsp<strong> ${cpfPr}</strong>, com a atividade de ${atividade}, 
-                com localização no (a) ${localPr} , Quixelô/CE. <br><br>
+                a Isenção de Licenciamento Ambiental, ao Empreendedor &nbsp<strong>  ${nomePr}</strong>, inscrito no CPF sob o nº&nbsp<strong> ${cpfPr}</strong>, com a atividade de ${atividade}, 
+                com localização no (a) ${localPr} - 63515-000, Quixelô/CE. <br><br>
                 
                 A ISENÇÃO DE LICENCIAMENTO NÃO IMPLICA NA AUTORIZAÇÃO DE GERAR POLUIÇÃO, DISPOR RESÍDUOS INADEQUADAMENTE BEM COMO COMPROMETER A
                 QUALIDADE DOS RECURSOS HÍDRICOS. <br><br>
