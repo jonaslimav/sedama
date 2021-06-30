@@ -176,7 +176,7 @@ x.innerHTML = `
                 
                 Outrossim, informamos que a presente declaração não dispensa nem substitui quaisquer alvarás ou certidões de qualquer natureza. <br><br>
                 
-                Este documento também perderá a validade caso os dados fornecidos pelo empreendedor não correspondam à realidade.<br><br>
+                Este documento também perderá a validade caso os dados fornecidos pelo empreendedor não correspondam à realidade.
 
 
                 
