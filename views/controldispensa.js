@@ -148,7 +148,7 @@ var x = document.getElementById("geral");
 
 
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
+                <img src="../PARTECIMA.png" height=220 width=100%><h5 style="
                 text-align: center;"> 
                <strong> DECLARAÇÃO DE ISENÇÃO DE LICENCIAMENTO AMBIENTAL <br>${numeral}</strong></h2>
                 <h3 style="
@@ -180,10 +180,10 @@ x.innerHTML = `
 
 
                 
-                 <br> <br>Quixelô/CE,${dataPr}</strong><br> </h3>
-                 <br><br><br><h3 style= "text-align:center; line-height:1.75;">
+                 <br>Quixelô/CE,${dataPr}</strong><br> </h5>
+                 <br><br><br><h5 style= "text-align:center; line-height:1.60;">
                  <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
-                 Agrário e Meio Ambiente - SEDAMA</h3>
+                 Agrário e Meio Ambiente - SEDAMA</h5>
                  <div class="footer" style="position:absolute;
                  bottom:0;
                  width:100%;">
