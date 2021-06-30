@@ -23,7 +23,7 @@ function InserirDispensa() {
         let dispensa_id = false;
         var ordemNum;
     var dt= new Date();
-       ordemNum = "001/2021";
+       ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
   ;
        
        if(String(ordemNum).slice(-4) == String(dt.getFullYear())){
