@@ -20,7 +20,7 @@ function InserirDispensa() {
     
    var databaseRef = firebase.database().ref('dispensa/');
     
-        let anuencia_id = false;
+        let dispensa_id = false;
         var ordemNum;
     var dt= new Date();
        ordemNum = "001/2021";
