@@ -148,11 +148,11 @@ var x = document.getElementById("geral");
 
 
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=220 width=100%><h5 style="
-                text-align: center;"> 
-               <strong> DECLARAÇÃO DE ISENÇÃO DE LICENCIAMENTO AMBIENTAL <br>${numeral}</strong></h2>
-                <h3 style="
-                line-height: 1.75;
+                <img src="../PARTECIMA.png" height=200 width=100%><h5 style="
+                text-align: center;"><br>
+               <strong> DECLARAÇÃO DE ISENÇÃO DE LICENCIAMENTO AMBIENTAL <br>${numeral}</strong></h5>
+                <h5 style="
+                line-height: 1.50;
                 align-content: center;
                 margin-left: 100px;
                 margin-right: 100px;
@@ -160,7 +160,7 @@ x.innerHTML = `
             ">
                             
                 <br>
-                <br>
+               
                 
                 Declaro para os devindo fins, de acordo com a Resolução COEMA de nº 02, de 11 de abril de 2019, que disciplina os critérios, 
                 parâmetros e custos operacionais de concessão de licença/autorização e de análise de estudos ambientais, 
@@ -181,8 +181,8 @@ x.innerHTML = `
 
                 
                  <br>Quixelô/CE,${dataPr}</strong><br> </h5>
-                 <br><br><br><h5 style= "text-align:center; line-height:1.60;">
-                 <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
+                 <br><br><br><h5 style= "text-align:center; line-height:1.40;">
+                 <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento
                  Agrário e Meio Ambiente - SEDAMA</h5>
                  <div class="footer" style="position:absolute;
                  bottom:0;
