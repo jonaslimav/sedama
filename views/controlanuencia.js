@@ -43,7 +43,7 @@ function InserirAnuencia() {
             cpf: cpf = document.getElementById("cpf").value,
             localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
             dataAtual:data,
-            atividade: atividade = document.getElementById("atv").value,
+            atividade: atividade = document.getElementById("atv").value.toUpperCase(),
             proprietario:proprietario = document.getElementById("prop").value.toUpperCase(),
             date:new Date()*-1,
             valorFin:valorFin =Number(document.getElementById("vlr").value),
