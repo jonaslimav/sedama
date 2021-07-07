@@ -162,7 +162,7 @@ var x = document.getElementById("geral");
 
 
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=250 width=100%><h4 style="
+                <img src="../PARTECIMA.png" height=300 width=100%><h4 style="
                 text-align: center;"> 
                <strong> Termo De Anuência Ambiental <br>${numeral}</strong></h4>
                 <h5 style="
