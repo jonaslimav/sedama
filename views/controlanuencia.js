@@ -162,10 +162,10 @@ var x = document.getElementById("geral");
 
 
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
+                <img src="../PARTECIMA.png" height=250 width=100%><h4 style="
                 text-align: center;"> 
-               <strong> Termo De Anuência Ambiental <br>${numeral}</strong></h2>
-                <h3 style="
+               <strong> Termo De Anuência Ambiental <br>${numeral}</strong></h4>
+                <h5 style="
                 line-height: 1.75;
                 align-content: center;
                 margin-left: 100px;
@@ -182,12 +182,12 @@ x.innerHTML = `
                  <strong> ${cpfPr}</strong>, localizada em ${localPr} - Quixelô - 
                  Ceará, CEP 63.515-000, na condição de   ${condicao} ,  
                  <strong>ANUÊNCIA AMBIENTAL</strong> para a atividade de ${atividade}.
-                 <br> <br>Quixelô/CE,${dataPr}</strong><br> </h3>
-                 <br><br><br><h3 style= "text-align:center; line-height:1.75;">
+                 <br> <br>Quixelô/CE,${dataPr}</strong><br> </h5>
+                 <br><br><br><h5 style= "text-align:center; line-height:1.75;">
                  <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
-                 Agrário e Meio Ambiente - SEDAMA</h3>
+                 Agrário e Meio Ambiente - SEDAMA</h5>
                  <div class="footer" style="position:absolute;
-                 bottom:0;
+                 bottom:20px;
                  width:100%;">
                  <img src="../logPref.png" alt="some text"  width=100% ></div>
 					
