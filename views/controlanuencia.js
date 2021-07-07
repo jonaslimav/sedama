@@ -182,8 +182,8 @@ x.innerHTML = `
                  <strong> ${cpfPr}</strong>, localizada em ${localPr} - Quixelô - 
                  Ceará, CEP 63.515-000, na condição de   ${condicao} ,  
                  <strong>ANUÊNCIA AMBIENTAL</strong> para a atividade de ${atividade}.
-                 <br> <br>Quixelô/CE,${dataPr}</strong><br> </h5>
-                 <br><br><br><h5 style= "text-align:center; line-height:1.75;">
+                 <br><br> <br>Quixelô/CE,${dataPr}</strong><br> </h5>
+                 <br><br><br><br><h5 style= "text-align:center; line-height:1.5;">
                  <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
                  Agrário e Meio Ambiente - SEDAMA</h5>
                  <div class="footer" style="position:absolute;
