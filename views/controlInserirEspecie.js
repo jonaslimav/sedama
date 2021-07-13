@@ -177,16 +177,8 @@ x.innerHTML = `
 				<br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
 
                     <h1>_____________________________________________________________________________________________________________________<br>
-					_______________________________________________________________________________________________________________________<br>
-					<h3> Via Arrecadação</h3><img src="../logPrefeitura.png" height=220 width=95% ><br><h1>
-                    <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
-                <strong>RG:</strong>&nbsp   ${rgPr} &nbsp &nbsp &nbsp &nbsp
-                <strong> DATA:</strong>  &nbsp ${dataPr}<br><br>
-                <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp &nbsp &nbsp &nbsp 
-                <strong> QUANT. HORAS:  </strong>  ${horaPr}<br><br>
-                <strong> VALOR TOTAL:  </strong>  ${valorPr}<br><br>	<img src="../logotrator.png" height=200 alt="some text" width=90% >
+		
 
-                    <h1>_______________________________________________________________________________________________________________________<br>
 					_______________________________________________________________________________________________________________________<br>
 					<h3> Via Tratorista</h3><img src="../logPrefeitura.png" height=220 width=95%><h1>
                     <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
