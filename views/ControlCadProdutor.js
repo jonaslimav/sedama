@@ -37,13 +37,18 @@ var i=0;
                   alert("PRODUTOR CADASTRADO");
                   var atv2= " ";
                  atv2 =prompt("Produtor ja cadastrado, deseja adicionar outra Atividade a ele?");
-                atv2 = atv2+" ";
+                
+                 if (atv2 == null || atv2 == "") {
+                    i++;
+                    window.location.reload();
+                  } else {
                  childData.atividade=childData.atividade+"/"+ atv2;
                  let updates = {}
                  updates["/produtor/" + childKey] = childData;
                  let produtor_ref = firebase.database().ref();
                  firebase.database().ref().update(updates);
-i++;
+                }
+                    i++;
                  window.location.reload();
             
                 } 
