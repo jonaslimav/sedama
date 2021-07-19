@@ -35,9 +35,10 @@ var i=0;
               if(cpf == childData.cpf ){
 
                   alert("PRODUTOR CADASTRADO");
-                 var atv2=prompt("Produtor ja cadastrado, deseja adicionar outra Atividade a ele?");
-            
-                 childData.atividade=childData.atividade+"/"+atv2;
+                  var atv2= " ";
+                 atv2 =prompt("Produtor ja cadastrado, deseja adicionar outra Atividade a ele?");
+                atv2 = atv2+" ";
+                 childData.atividade=childData.atividade+"/"+ atv2;
                  let updates = {}
                  updates["/produtor/" + childKey] = childData;
                  let produtor_ref = firebase.database().ref();
