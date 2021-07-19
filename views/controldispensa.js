@@ -211,3 +211,6 @@ function sair(){
     localStorage.clear();
     window.location.href="loguin.html";
 }
+function link(){
+    window.location.href="https://forms.gle/F1Vunx3W1rgjqUSa9";
+}

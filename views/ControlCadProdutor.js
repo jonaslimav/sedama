@@ -21,21 +21,46 @@ function InserirProdutor() {
    var databaseRef = firebase.database().ref('produtor/');
     
         let produtor_id = false;
-        var ordemNum;
-    
+        var ordemNum=Number(localStorage.getItem("id"));
+var i=0;
 
+      databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+          snapshot.forEach(function (childSnapshot) {
+      
+              var childData = childSnapshot.val();
+              var childKey = childSnapshot.key;
 
+              console.log(cpf+","+childData.cpf);
+              if(cpf == childData.cpf ){
 
-        
+                  alert("PRODUTOR CADASTRADO");
+                 var atv2=prompt("Produtor ja cadastrado, deseja adicionar outra Atividade a ele?");
+            
+                 childData.atividade=childData.atividade+"/"+atv2;
+                 let updates = {}
+                 updates["/produtor/" + childKey] = childData;
+                 let produtor_ref = firebase.database().ref();
+                 firebase.database().ref().update(updates);
+i++;
+                 window.location.reload();
+            
+                } 
+        });
+              
+if(i==0){
+
+     
         const produtor = {
     
-            
+            numero:ordemNum,
             nomeProdutor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
             cpf: cpf = document.getElementById("cpf").value,
             localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
             dataAtual:data,
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
+            telefone:document.getElementById("tel").value,
             
             
         };
@@ -45,14 +70,14 @@ function InserirProdutor() {
         }
         let updates = {}
         updates["/produtor/" + produtor_id] = produtor;
-        let anuencia_ref = firebase.database().ref();
+        let produtor_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
        
-    
+}
    
    
-  
+    });
   
     
 }
@@ -79,28 +104,30 @@ function listar() {
 
             var row = tblUsers.insertRow(rowIndex);
 
-            
-            var cellNome = row.insertCell(0);
-            var cellCPF = row.insertCell(1);
-            var cellLocalidade = row.insertCell(2);
-            var cellData = row.insertCell(3);
-            var cellAtv= row.insertCell(4);
-            var cellImprimir = row.insertCell(5);
+            var cellNmber = row.insertCell(0)
+            var cellNome = row.insertCell(1);
+            var cellCPF = row.insertCell(2);
+            var cellLocalidade = row.insertCell(3);
+            var cellData = row.insertCell(4);
+            var cellAtv= row.insertCell(5);
+            var cellTel=row.insertCell(6);
+            var cellImprimir = row.insertCell(7);
             
 
             
-          
+            cellNmber.appendChild(document.createTextNode(childData.numero));
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellAtv.appendChild(document.createTextNode(childData.atividade));
+           cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
 
 
             rowIndex = rowIndex + 1;
         });
-
+        localStorage.setItem("id",rowIndex);
         document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} </h6>`;
     });
     
@@ -128,6 +155,23 @@ var localPr = data[2].innerHTML;
 var dataPr =data[3].innerHTML;
 var atividade =data[4].innerHTML;
 
+var dados;
+var databaseRef = firebase.database().ref('visitas/');
+databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+    snapshot.forEach(function (childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+
+       if(childData.cpf==cpfPr){
+           dados.add(childData);
+       }
+
+        
+        
+    });
+   
+});
 
 
 var x = document.getElementById("geral");
@@ -149,8 +193,15 @@ x.innerHTML = `
                 <br>
                 <br>
                 
-                <strong>NOME:  </strong>${nomePr}<br> 
-                 <strong> CPF nº</strong>${cpfPr}, localizada em ${localPr} - Quixelô - 
+                <strong> PRODUTOR :</strong>${nomePr}<br>
+                <strong> TECNICO :</strong>${nomeTec}<br>
+                <strong> DATA :</strong>${dataPr}<br>
+                <strong> LOCALIDADE:</strong>${childData.localidade!=undefined?childData.localidade:""}
+                    <br>
+
+                <strong>RESUMO DA VISITA: </strong><br><br>
+                
+                    ${childData.atividade}
 </h3>
                  <br><br><br><h3 style= "text-align:center; line-height:1.75;">
                  <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>

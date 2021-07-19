@@ -14,24 +14,35 @@ window.onload = listar;
 
 
 function InserirVisita() {
-    var data= dataAtualFormatada();
+    var data= document.getElementById("Datavisita").value;
    
 
     
    var databaseRef = firebase.database().ref('visita/');
     
         let visita_id = false;
-        
+        var ordemNum;
+        var dt= new Date();
+           ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
+      ;
+           
+           if(String(ordemNum).slice(-4) == String(dt.getFullYear())){
+               ordemNum = (Number(String(ordemNum).slice(0,-5))+1)+'/'+dt.getFullYear();
+            
+           }else{
+               ordemNum = '001/'+ dt.getFullYear();
+           }
 
 
 
         
         const visita= {
     
-            ordemN : ordemNum = localStorage.getItem("ordem"),
+            ordemN : ordemNum,
+            localidade: document.getElementById("Localidade").value,
             produtor: nomeProdutor = document.getElementById("Produtores").value.toUpperCase(),
             tecnico: tecnico = document.getElementById ("Tecnicos").value.toUpperCase(),
-            dataAtual:data,
+            dataAtual:formatarData(data),
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
             
@@ -121,7 +132,16 @@ var numeral = data[0].innerHTML;
 var nomePr = data[1].innerHTML;
 var nomeTec = data[2].innerHTML;
 var dataPr =data[3].innerHTML;
+let visita= "";
+var databaseRef = firebase.database().ref('visita/');
+databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+    snapshot.forEach(function (childSnapshot) {
 
+        var childData = childSnapshot.val();
+        if(String(numeral) == childData.ordemN ){
+            
+        
 
 
 var x = document.getElementById("geral");
@@ -130,20 +150,24 @@ x.innerHTML = `
                 <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
                 text-align: center;"> 
                <strong> Relatorio de Visitas <br>00${numeral}</strong>
-                            
+                            </h2><h2 style="
+                            text-align: justify;"> 
+                           
+                                        
                 <br>
                 <br>
                 <strong> PRODUTOR :</strong>${nomePr}<br>
                 <strong> TECNICO :</strong>${nomeTec}<br>
                 <strong> DATA :</strong>${dataPr}<br>
+                <strong> LOCALIDADE:</strong>${childData.localidade!=undefined?childData.localidade:""}
+                    <br>
 
-                <VISITA: <strong><br><br>
+                <strong>RESUMO DA VISITA: </strong><br><br>
                 
-                    AQUI VAI SER O RESUMO DA VISITA REALIZADA
+                    ${childData.atividade}
 </h2>
               <h3 style= "text-align:center; line-height:1.75;">
-                 <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
-                 Agrário e Meio Ambiente - SEDAMA</h3>
+                 
                  <div class="footer" style="position:absolute;
                  bottom:0;
                  width:100%;">
@@ -151,7 +175,9 @@ x.innerHTML = `
 					
                        `;
                     
-                    
+                    } 
+                });
+            }); 
   //  printDiv();
 
 }
@@ -204,4 +230,18 @@ function listarTecnicos(){
            
         });});
 
+
+
+}
+
+function formatarData(dt){
+
+    var ano = String(dt).slice(0,4);
+    var mes =String(dt).slice(5,7);
+    var dia =String(dt).slice(-2);
+
+    return dia+"/"+mes+"/"+ano;
+}
+function link(){
+    window.location.href="https://forms.gle/KyTRCPwXgsT29Hu57";
 }
