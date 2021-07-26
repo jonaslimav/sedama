@@ -151,7 +151,7 @@ x.innerHTML = `
                 text-align: center;"> 
                <strong> Relatorio de Visitas <br>00${numeral}</strong>
                             </h2><h2 style="
-                            text-align: justify;"> 
+                            text-align: justify; margin-left:25px; margin-right:25px;"> 
                            
                                         
                 <br>
