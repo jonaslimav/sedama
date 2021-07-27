@@ -150,8 +150,8 @@ x.innerHTML = `
                 <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
                 text-align: center;"> 
                <strong> Relatorio de Visitas <br>00${numeral}</strong>
-                            </h2><h2 style="
-                            text-align: justify; margin-left:25px; margin-right:25px;"> 
+                            </h2><h4 style="
+                            text-align: justify; margin-left:35px; margin-right:35px;"> 
                            
                                         
                 <br>
@@ -165,8 +165,8 @@ x.innerHTML = `
                 <strong>RESUMO DA VISITA: </strong><br><br>
                 
                     ${childData.atividade}
-</h2>
-              <h3 style= "text-align:center; line-height:1.75;">
+</h4>
+              <h5 style= "text-align:center; line-height:1.75;">
                  
                  <div class="footer" style="position:absolute;
                  bottom:0;
