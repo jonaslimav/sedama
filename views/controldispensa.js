@@ -212,5 +212,5 @@ function sair(){
     window.location.href="loguin.html";
 }
 function link(){
-    window.location.href="https://forms.gle/F1Vunx3W1rgjqUSa9";
+    window.location.href="https://forms.gle/q7Cn7UhjBof56H6eA";
 }
