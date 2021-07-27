@@ -243,5 +243,5 @@ function formatarData(dt){
     return dia+"/"+mes+"/"+ano;
 }
 function link(){
-    window.location.href="https://forms.gle/KyTRCPwXgsT29Hu57";
+    window.location.href="https://forms.gle/ewq4qRsA2jAt38Ey7";
 }
