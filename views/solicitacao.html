@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pro Trator</title>
+    <title>transportes</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/stylleee.css">
 
@@ -15,34 +15,29 @@
 <body style="background-color: #F2f2f2;">
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
-    <script src="controlInserirEspecie.js"></script>
+    <script src="controlsolicitacao.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">SEDAMA QUIXELO</a>
+        <a class="navbar-brand" href="#">TRANSPORTES QUIXELO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="PROTRATOR.html">PROTRATOR <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="solicitacao.html">SOLIC. CARRO <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Anuencia.html">   ANUENCIA   </a> 
+                <a class="nav-link" href="atendidos.html">  ATENDIDOS   </a> 
             </li>
 		  <li class="nav-item">
-                <a class="nav-link" href="dispensa.html">   DISPENSA AMB.   </a> 
+                <a class="nav-link" href="gasolina.html">   SOLI. GASOLINA   </a> 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="ater.html">   ATER   </a> 
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="recibos.html">   REC.TRATOR   </a> 
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" onclick="sair()">   SAIR  </a>   
             </li>
@@ -58,38 +53,39 @@
             <form class="form-row">
                 <div class="row">
                     <div class="col">
-                        <input class="form-control" placeholder="Nome Produtor" type="text "id="produtor" required><br>
+                        <input type="date" placeholder="DATA" class="custom-select" id="data" required><br>
                     </div>
                     <div class="col">
-                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
+                        <input class="form-control" placeholder="HORA DE SAIDA" type="text" id="hora" ><br>
                     </div>
                     
                     <div class="col">
-                        <select class="custom-select" id="horas">
-                            <option selected>Horas</option>
-                            <option value="0.5"> 30 minutos </option>
-                            <option value="1"> 1 Hora </option>
-                            <option value="1.5"> 1Hora 30min </option>
-                            <option value="2"> 2 Horas </option>
-                            <option value="2.5"> 2 Horas 30min </option>
-                            <option value="3"> 3 Horas </option>
-                            <option value="3.5"> 3 Horas 30min </option>
-                            <option value="4"> 4 Horas </option>
-                            <option value="4.5"> 4 Horas 30min </option>
-                            <option value="5"> 5 Horas </option>
-                            
+                        <select class="custom-select" id="secretaria">
+                            <option selected>SECRETARIA</option>
+                            <option value="SEC. AGRICULTURA"> SEC. AGRICULTURA </option>
+                            <option value=" SEC. SAUDE"> SEC. SAUDE</option>
+                            <option value="SEC. EDUCAÇÃO"> SEC. EDUCAÇÃO </option>
+                            <option value="SEC. OBRAS E INFRAESTRUTURA"> SEC. OBRAS E INFRAESTRUTURA </option>
+                            <option value="SEC. ASSISTENCIA SOCIAL"> SEC. ASSISTENCIA SOCIAL </option>
+                            <option value="SEC. CULTURA"> SEC. CULTURA </option>
+                            <option value="GABINETE"> GABINETE </option>
+                            <option value="SAAE"> SAAE </option>
+                            <option value="SEC. FINANÇAS"> SEC. FINANÇAS</option>
+                            <option value="SEC. GOVERNO"> SEC. GOVERNO </option>
+                            <option value="CONTROLADORIA"> CONTROLADORIA </option>
+
 
                         </select><br>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input class="form-control" placeholder="Localidade" type="text" id="localidade" required><br>
+                        <input class="form-control" placeholder="LOCAL DE SAIDA - DESTINO" type="text" id="percurso" required><br>
                      
                     </div>
                     
                     <div class="col">
-                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" required><br>
+                        <input class="form-control" placeholder="MOTIVO" type="text" id="motivo" required><br>
 
                     </div>
                     <div class="col">
@@ -104,17 +100,16 @@
         <div id="inf"></div>
 
         <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
-            <tr>
-                <td scope="col">PRODUTOR</td>
-                <td scope="col">CPF</td>
-                <td scope="col">LOCALIDADE</td>
-                <td scope="col">RG</td>
-                <td scope="col">HORAS</td>
-                <td scope="col">VALOR TOTAL</td>
-                <td scope="col">DATA</td>
-                <td scope="col"> TELEFONE</td>
-                <td scope="col">IMPRIMIR</td>
-               
+            <tr><strong>
+                <td scope="col"><strong>SECRETARIA</strong>  </td>
+                <td scope="col"><strong>DATA</strong> </td>
+                <td scope="col"><strong>HORARIO</strong></td>
+                <td scope="col"><strong>PERCURSO</strong></td>
+                <td scope="col"><strong>MOTIVO</strong></td>
+                <td scope="col"><strong>CARRO/MOTORISTA</strong></td>
+                <td scope="col"> <strong>TELEFONE</strong></td>
+                <td scope="col"><strong>ATENDER</strong></td>
+            </strong>
                 
             </tr>
         </table>

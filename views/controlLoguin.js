@@ -1,13 +1,12 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyCxK3ECEWyFICyNOtnGOVWnJQut0dUZW0Q",
-    authDomain: "protrator-1ffec.firebaseapp.com",
-    databaseURL: "https://protrator-1ffec-default-rtdb.firebaseio.com",
-    projectId: "protrator-1ffec",
-    storageBucket: "protrator-1ffec.appspot.com",
-    messagingSenderId: "1030402223805",
-    appId: "1:1030402223805:web:2cd4470ff07ff3dc0791d4"
+    apiKey: "AIzaSyD-i43m5nv53zJfucUX5lKVVLQ03ZRrd9U",
+    authDomain: "transportesquixelo.firebaseapp.com",
+    databaseURL: "https://transportesquixelo-default-rtdb.firebaseio.com",
+    projectId: "transportesquixelo",
+    storageBucket: "transportesquixelo.appspot.com",
+    messagingSenderId: "397542307745",
+    appId: "1:397542307745:web:de4e51af76cc3d8cb93de0"
   };
-
 
 firebase.initializeApp(firebaseConfig);
 
