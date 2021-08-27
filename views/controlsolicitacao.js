@@ -69,6 +69,7 @@ function listar() {
     var databaseRef = firebase.database().ref('solicitacao/');
     var rowIndex = 1;
     
+    
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
@@ -94,7 +95,10 @@ if(childData.atendido==0){
             cellMotivo.appendChild(document.createTextNode(childData.motivo));
             cellMotorista.appendChild(document.createTextNode(childData.motorista));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            cellAtender.innerHTML=`<input type="button" class="btn btn-danger" value="ATENDER." onclick="atender(${childData.date})"}/>`;
+            cellAtender.innerHTML=`${localStorage.getItem("usuario")?`<input type="button" class="btn btn-danger" value="ATENDER." onclick="atender(${childData.date})"}/>`:""}`;
+
+
+            
 
            
 
@@ -166,5 +170,5 @@ function atender(dt){
 function sair(){
 
     localStorage.clear();
-    window.location.href="PROTRATOR.html";
+    window.location.href="loguin.html";
 }

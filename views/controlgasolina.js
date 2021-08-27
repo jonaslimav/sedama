@@ -94,7 +94,7 @@ if(childData.atendido==0){
             cellMotivo.appendChild(document.createTextNode(childData.motivo));
             cellVeiculo.appendChild(document.createTextNode(childData.veiculolitros));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            cellAtender.innerHTML=`<input type="button" class="btn btn-danger" value="ATENDER." onclick="atender(${childData.date})"}/>`;
+            cellAtender.innerHTML=`${localStorage.getItem("usuario")?`<input type="button" class="btn btn-danger" value="ATENDER." onclick="atender(${childData.date})"}/>`:""}`;
 
            
 
@@ -166,5 +166,5 @@ function atender(dt){
 function sair(){
 
     localStorage.clear();
-    window.location.href="PROTRATOR.html";
+    window.location.href="loguin.html";
 }

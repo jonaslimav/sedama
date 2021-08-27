@@ -31,9 +31,16 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(document.getElementById("email").value, document.getElementById("senha").value)
         .then(function (user) {
             alert("Logado com sucesso");
+            console.log(user);
+            var email = document.getElementById("email").value;
+           
             auth = user;
+            if(email =="sistematransportesqxl@gmail.com"){
+                localStorage.setItem("usuario",true);
+            }
+          
             localStorage.setItem("auth",true);
-            window.location.href = "PROTRATOR.html";
+            window.location.href = "solicitacao.html";
         }).catch(function (error) {
             alert("Falha ao logar");
 
