@@ -21,7 +21,24 @@ function InserirVisita() {
    var databaseRef = firebase.database().ref('visita/');
     
         let visita_id = false;
-        var ordemNum;
+        let num;
+
+
+        databaseRef.orderByChild("date").limitToFirst(1).once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+    
+    
+                 num =childData.ordemN;
+                
+            });
+           
+          
+    
+        
+       
+        var ordemNum = num;
         var dt= new Date();
            ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
       ;
@@ -59,7 +76,7 @@ function InserirVisita() {
         window.location.reload();
        
     
-   
+    });
    
   
   

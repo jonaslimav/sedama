@@ -21,7 +21,26 @@ function InserirDispensa() {
    var databaseRef = firebase.database().ref('dispensa/');
     
         let dispensa_id = false;
-        var ordemNum;
+
+        let num;
+
+
+        databaseRef.orderByChild("date").limitToFirst(1).once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+    
+    
+                 num =childData.ordemN;
+                
+            });
+           
+          
+    
+        
+       
+        var ordemNum = num;
+
     var dt= new Date();
        ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
   ;
@@ -60,7 +79,7 @@ function InserirDispensa() {
         window.location.reload();
        
     
-   
+    });
    
   
   

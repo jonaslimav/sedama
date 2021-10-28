@@ -21,18 +21,30 @@ function InserirAnuencia() {
    var databaseRef = firebase.database().ref('anuencia/');
     
         let anuencia_id = false;
-        var ordemNum;
-    var dt= new Date();
-       ordemNum = document.getElementById("tbl_users_list").getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML;
-  ;
+        let num;
+
+
+        databaseRef.orderByChild("date").limitToFirst(1).once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+    
+    
+                 num =childData.ordemN;
+                
+            });
+           
+          
+    
+        
        
+        var ordemNum = num;
+    var dt= new Date();
+  
        if(String(ordemNum).slice(-4) == String(dt.getFullYear())){
            ordemNum = (Number(String(ordemNum).slice(0,-5))+1)+'/'+dt.getFullYear();
         
-       }else{
-           ordemNum = '001/'+ dt.getFullYear();
        }
-
 
 
         
@@ -65,7 +77,7 @@ function InserirAnuencia() {
    
   
   
-    
+    });
 }
 
 function listar() {
@@ -212,4 +224,27 @@ function sair(){
 
     localStorage.clear();
     window.location.href="loguin.html";
+}
+
+function ultimoNum(){
+
+    var databaseRef = firebase.database().ref('anuencia/');
+
+    databaseRef.orderByChild("date").limitToFirst(1).once('value', function (snapshot) {
+        var num;
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+
+             num =childData.ordemN;
+            
+        });
+        console.log(num)
+        return ""+ num;
+
+    });
+   
+
+
 }
