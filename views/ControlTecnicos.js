@@ -112,7 +112,38 @@ function dataAtualFormatada() {
         anoF = data.getFullYear();
     return diaF + "/" + mesF + "/" + anoF;
 }
+function receberVisitasTecnico(tecnico){
+    var tblUsers = document.getElementById('tbl_users_list');
+    var databaseRef = firebase.database().ref('visita/');
+   let  listVisitas;
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            
+           if(childData.tecnico ==tecnico){
+            
+            listVisitas +=`${childData.dataAtual}<br>${childData.produtor}<br>${childData.atividade}<br><br>`;
 
+
+
+
+           }
+
+            
+          
+           
+
+        });
+        var x = document.getElementById("list");
+       x.innerHTML = listVisitas;
+    });
+    console.log(listVisitas);
+    return listVisitas;
+
+}
 
 
 function imprimir(dt){
@@ -124,6 +155,7 @@ var localPr = data[2].innerHTML;
 var dataPr =data[3].innerHTML;
 var atividade =data[4].innerHTML;
 
+var list = receberVisitasTecnico(`${cpfPr} - ${nomePr}`);
 
 var x = document.getElementById("geral");
 
@@ -145,7 +177,8 @@ x.innerHTML = `
                 <br>
                 
                 <strong>NOME:  </strong>${nomePr}<br> 
-                <strong> CPF nº: </strong>${cpfPr} 
+                <strong> CPF nº: </strong>${cpfPr}<br><br>
+               <div id="list"></div>
 </h3>
                 <br><br><br><h3 style= "text-align:center; line-height:1.75;">
                 <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>
