@@ -150,39 +150,54 @@ function dataAtualFormatada() {
         anoF = data.getFullYear();
     return diaF + "/" + mesF + "/" + anoF;
 }
+function receberVisitasTecnico(produtor){
+    var tblUsers = document.getElementById('tbl_users_list');
+    var databaseRef = firebase.database().ref('visita/');
+   let  listVisitas = "";
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+           
+           if(childData.produtor == produtor){
+            console.log(`${produtor} = ${childData.produtor}`);
+            listVisitas +=`${childData.dataAtual}<br>${childData.tecnico}<br>${childData.atividade}<br><br>`;
+
+
+
+
+           }
+
+            
+          
+           
+
+        });
+        var x = document.getElementById("list");
+       x.innerHTML = listVisitas;
+    });
+    
+
+}
+
 
 function imprimir(dt){
 
 var data=dt.parentNode.parentNode.children;
 
-var nomePr = data[0].innerHTML;
-var cpfPr = data[1].innerHTML;
-var localPr = data[2].innerHTML;
-var dataPr =data[3].innerHTML;
-var atividade =data[4].innerHTML;
+var nomePr = data[1].innerHTML;
+var cpfPr = data[2].innerHTML;
+var localPr = data[3].innerHTML;
 
-var dados;
-var databaseRef = firebase.database().ref('visitas/');
-databaseRef.orderByChild("date").once('value', function (snapshot) {
-        
-    snapshot.forEach(function (childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
 
-       if(childData.cpf==cpfPr){
-           dados.add(childData);
-       }
 
-        
-        
-    });
-   
-});
 
 
 var x = document.getElementById("geral");
 
-
+receberVisitasTecnico(`${cpfPr} - ${nomePr}`);
 
 x.innerHTML = `
                 <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
@@ -200,14 +215,12 @@ x.innerHTML = `
                 <br>
                 
                 <strong> PRODUTOR :</strong>${nomePr}<br>
-                <strong> TECNICO :</strong>${nomeTec}<br>
-                <strong> DATA :</strong>${dataPr}<br>
-                <strong> LOCALIDADE:</strong>${childData.localidade!=undefined?childData.localidade:""}
+                <strong> LOCALIDADE:</strong>${localPr!=undefined? localPr:""}
                     <br>
 
-                <strong>RESUMO DA VISITA: </strong><br><br>
+                <strong>RESUMO DAS VISITAS: </strong><br><br>
                 
-                    ${childData.atividade}
+                   <div id="list"></div>
 </h3>
                  <br><br><br><h3 style= "text-align:center; line-height:1.75;">
                  <strong>Francisco Silva Lima <br> Secretario de Desenvolvimento<br>

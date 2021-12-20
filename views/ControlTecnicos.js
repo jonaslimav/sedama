@@ -115,7 +115,7 @@ function dataAtualFormatada() {
 function receberVisitasTecnico(tecnico){
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('visita/');
-   let  listVisitas;
+   let  listVisitas = "";
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         
@@ -178,6 +178,7 @@ x.innerHTML = `
                 
                 <strong>NOME:  </strong>${nomePr}<br> 
                 <strong> CPF nº: </strong>${cpfPr}<br><br>
+                <strong> RESUMO DAS VISITAS</strong><br><br>
                <div id="list"></div>
 </h3>
                 <br><br><br><h3 style= "text-align:center; line-height:1.75;">
