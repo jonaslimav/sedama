@@ -248,3 +248,29 @@ function ultimoNum(){
 
 
 }
+function retornarProdutor(cpf){
+    var databaseRef = firebase.database().ref('anuencia/');
+    
+    
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if(cpf==childData.cpf){
+                const produtor={
+                    nome:childData.nomeProdutor,
+                    localidade:childData.localidade
+
+                }
+                return produtor;
+
+            }
+          
+        });
+
+    });
+    
+    
+}

@@ -1,11 +1,11 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyCxK3ECEWyFICyNOtnGOVWnJQut0dUZW0Q",
-    authDomain: "protrator-1ffec.firebaseapp.com",
-    databaseURL: "https://protrator-1ffec-default-rtdb.firebaseio.com",
-    projectId: "protrator-1ffec",
-    storageBucket: "protrator-1ffec.appspot.com",
-    messagingSenderId: "1030402223805",
-    appId: "1:1030402223805:web:2cd4470ff07ff3dc0791d4"
+    apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
+    authDomain: "sedama-4dd5c.firebaseapp.com",
+    databaseURL: "https://sedama-4dd5c-default-rtdb.firebaseio.com",
+    projectId: "sedama-4dd5c",
+    storageBucket: "sedama-4dd5c.appspot.com",
+    messagingSenderId: "492670080550",
+    appId: "1:492670080550:web:42ad24f36c7f5cd578b8e7"
   };
 
 firebase.initializeApp(firebaseConfig);
@@ -21,7 +21,7 @@ function InserirProtocolo() {
    var cpf = document.getElementById("cpf").value
 //console.log(consultarCPF(cpf));
     var i=0;
-   var databaseRef = firebase.database().ref('protocolo/');
+   var databaseRef = firebase.database().ref('trator2022/');
     var horasT;
    databaseRef.orderByChild("date").once('value', function (snapshot) {
        snapshot.forEach(function (childSnapshot) {
@@ -60,10 +60,10 @@ function InserirProtocolo() {
         };
     
         if (!protocolo_id) {
-            protocolo_id = firebase.database().ref().child('protocolo').push().key;
+            protocolo_id = firebase.database().ref().child('trator2022').push().key;
         }
         let updates = {}
-        updates["/protocolo/" + protocolo_id] = protocolo;
+        updates["/trator2022/" + protocolo_id] = protocolo;
         let protocolo_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
@@ -86,7 +86,7 @@ function listar() {
     }
 
     var tblUsers = document.getElementById('tbl_users_list');
-    var databaseRef = firebase.database().ref('protocolo/');
+    var databaseRef = firebase.database().ref('trator2022/');
     var rowIndex = 1;
     var horasTr=0;
     var dias=0;
@@ -221,4 +221,66 @@ function sair(){
 
     localStorage.clear();
     window.location.href="PROTRATOR.html";
+}
+function completaDados(){
+   
+    var rowIndex = 0;
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('trator2021/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('anuencia/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
+    
+
+
+
+    
+
 }
