@@ -18,7 +18,7 @@ function InserirAnuencia() {
    var cpf = document.getElementById("cpf").value
 
     
-   var databaseRef = firebase.database().ref('anuencia/');
+   var databaseRef = firebase.database().ref('anuencia2022/');
     
         let anuencia_id = false;
         let num;
@@ -64,10 +64,10 @@ function InserirAnuencia() {
         };
     
         if (!anuencia_id) {
-            anuencia_id = firebase.database().ref().child('anuencia').push().key;
+            anuencia_id = firebase.database().ref().child('anuencia2022').push().key;
         }
         let updates = {}
-        updates["/anuencia/" + anuencia_id] = anuencia;
+        updates["/anuencia2022/" + anuencia_id] = anuencia;
         let anuencia_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
@@ -90,7 +90,7 @@ function listar() {
     }
 
     var tblUsers = document.getElementById('tbl_users_list');
-    var databaseRef = firebase.database().ref('anuencia/');
+    var databaseRef = firebase.database().ref('anuencia2022/');
     var rowIndex = 1;
     var valor=0;
     
@@ -228,7 +228,7 @@ function sair(){
 
 function ultimoNum(){
 
-    var databaseRef = firebase.database().ref('anuencia/');
+    var databaseRef = firebase.database().ref('anuencia2022/');
 
     databaseRef.orderByChild("date").limitToFirst(1).once('value', function (snapshot) {
         var num;
@@ -248,29 +248,4 @@ function ultimoNum(){
 
 
 }
-function retornarProdutor(cpf){
-    var databaseRef = firebase.database().ref('anuencia/');
-    
-    
-    databaseRef.orderByChild("date").once('value', function (snapshot) {
-        
-        snapshot.forEach(function (childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
 
-            if(cpf==childData.cpf){
-                const produtor={
-                    nome:childData.nomeProdutor,
-                    localidade:childData.localidade
-
-                }
-                return produtor;
-
-            }
-          
-        });
-
-    });
-    
-    
-}

@@ -18,7 +18,7 @@ function InserirDispensa() {
    var cpf = document.getElementById("cpf").value
 
     
-   var databaseRef = firebase.database().ref('dispensa/');
+   var databaseRef = firebase.database().ref('dispensa2022/');
     
         let dispensa_id = false;
 
@@ -70,10 +70,10 @@ function InserirDispensa() {
         };
     
         if (!dispensa_id) {
-            dispensa_id = firebase.database().ref().child('dispensa').push().key;
+            dispensa_id = firebase.database().ref().child('dispensa2022').push().key;
         }
         let updates = {}
-        updates["/dispensa/" + dispensa_id] = dispensa;
+        updates["/dispensa2022/" + dispensa_id] = dispensa;
         let dispensa_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
@@ -96,7 +96,7 @@ function listar() {
     }
 
     var tblUsers = document.getElementById('tbl_users_list');
-    var databaseRef = firebase.database().ref('dispensa/');
+    var databaseRef = firebase.database().ref('dispensa2022/');
     var rowIndex = 1;
     var valor=0;
     
