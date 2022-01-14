@@ -227,7 +227,102 @@ function completaDados(){
     var rowIndex = 0;
     if(rowIndex==0){
 
+        var databaseRef = firebase.database().ref('demanda22/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("telefone").value = childData.telefone;
+                     document.getElementById("dap").value = childData.dap;
+                     
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
         var databaseRef = firebase.database().ref('trator2021/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('trator2022/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('anuencia2022/');
        
        
         var cpf = document.getElementById("cpf").value
