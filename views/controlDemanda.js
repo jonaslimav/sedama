@@ -243,7 +243,7 @@ function completaDados(){
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
                      document.getElementById("rg").value= childData.rg;
-                     document.getElementById("tel").value = childData.telefone;
+                     document.getElementById("telefone").value = childData.telefone;
                    rowIndex ++;
               
                 }
@@ -274,7 +274,7 @@ function completaDados(){
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
                      document.getElementById("rg").value= childData.rg;
-                     document.getElementById("tel").value = childData.telefone;
+                     document.getElementById("telefone").value = childData.telefone;
                    rowIndex ++;
               
                 }
@@ -305,7 +305,7 @@ function completaDados(){
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
                      document.getElementById("rg").value= childData.rg;
-                     document.getElementById("tel").value = childData.telefone;
+                     document.getElementById("telefone").value = childData.telefone;
                    rowIndex ++;
               
                 }
@@ -339,6 +339,30 @@ function completaDados(){
     
         });
     }
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("telefone").value = childData.telefone;
+
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
+    
     
 
 

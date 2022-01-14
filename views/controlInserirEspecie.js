@@ -107,6 +107,7 @@ function listar() {
             var cellData = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
+            var cellDelete = row.insertCell(9);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -124,6 +125,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
 
            if(dataAnt!=childData.dataAtual){
                dias++;
@@ -374,8 +376,38 @@ function completaDados(){
     }
     
 
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("tel").value = childData.telefone;
 
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
 
     
 
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir esta solicitacao?");
+    if (x) {
+        firebase.database().ref('trator2022').child(key).remove();
+        window.location.reload();
+    }
 }

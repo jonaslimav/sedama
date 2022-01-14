@@ -111,7 +111,7 @@ function listar() {
             var cellData = row.insertCell(6);
             var cellAtv= row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-            var cellUpload=row.insertCell(9);
+            var cellDelete=row.insertCell(9);
 
             
           
@@ -123,7 +123,7 @@ function listar() {
             cellValor.appendChild(document.createTextNode(Number(childData.valorFin).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellAtv.appendChild(document.createTextNode(childData.atividade));
-            cellUpload.innerHTML='<input type= "button" class="btn btn-primary"value="UPLOAD"onclick="link()"}/>';
+            cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
 
 
@@ -269,8 +269,7 @@ function completaDados(){
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
                      document.getElementById("rg").value= childData.rg;
-                     document.getElementById("telefone").value = childData.telefone;
-                     document.getElementById("dap").value = childData.dap;
+                     document.getElementById("tel").value = childData.telefone;
                      
                    rowIndex ++;
               
@@ -400,8 +399,38 @@ function completaDados(){
     }
     
 
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("tel").value = childData.telefone;
 
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
 
     
 
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir esta demanda?");
+    if (x) {
+        firebase.database().ref('anuencia2022').child(key).remove();
+        window.location.reload();
+    }
 }
