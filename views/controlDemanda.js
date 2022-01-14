@@ -16,7 +16,7 @@ window.onload = listar;
 
 var valor= 71.74;
 
-function InserirProtocolo() {
+function InserirProtocolo(demanda_id) {
 
 
 
@@ -25,7 +25,7 @@ function InserirProtocolo() {
    
    
 
-        let demanda_id = false;
+        
 
 
         const demanda = {
@@ -39,11 +39,14 @@ function InserirProtocolo() {
             item: item = document.getElementById("item").value,
             date:new Date()*-1,
             dap:dap =document.getElementById("dap").value,
+            telefone:telefone,
+            status:"",
+            dataEntrega:""
             
             
         };
     
-        if (!demanda_id) {
+        if (demanda_id==0) {
             demanda_id = firebase.database().ref().child('demanda22').push().key;
         }
         let updates = {}
@@ -67,10 +70,8 @@ function listar() {
 
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('demanda22/');
-    var rowIndex = 1;
-    var horasTr=0;
-    var dias=0;
-    var dataAnt;
+    var rowIndex=1;
+   
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
@@ -84,10 +85,15 @@ function listar() {
             var cellRG = row.insertCell(3);            
             var cellItem= row.insertCell(4);
             var cellQuant = row.insertCell(5);
-            var cellTel=row.insertCell(6);
-            var cellImprimir = row.insertCell(7);
+            var cellDap = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellImprimir = row.insertCell(8);
+            var cellEdit = row.insertCell(9);
+            var cellDelete = row.insertCell(10);
             
-          
+            if(childData.telefone==undefined ){
+                childData.telefone="-";
+            }
             
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
@@ -95,13 +101,16 @@ function listar() {
             cellRG.appendChild(document.createTextNode(childData.rg));
             cellItem.appendChild(document.createTextNode(childData.item));
             cellQuant.appendChild(document.createTextNode(childData.quant));
-            cellTel.appendChild(document.createTextNode(childData.dap));
+            cellDap.appendChild(document.createTextNode(childData.dap));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-
+        cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
+            cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+rowIndex++;
           
         });
 
-    });
+    });``
     
 }
 
@@ -241,4 +250,16 @@ function completaDados(){
 
     
 
+}
+function editar(key){
+    console.log(key);
+
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir esta demanda?");
+    if (x) {
+        firebase.database().ref('demanda22').child(key).remove();
+        window.location.reload();
+    }
 }
