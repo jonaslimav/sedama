@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
     authDomain: "sedama-4dd5c.firebaseapp.com",

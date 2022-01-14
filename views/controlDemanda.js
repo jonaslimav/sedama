@@ -88,8 +88,8 @@ function listar() {
             var cellDap = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-            var cellEdit = row.insertCell(9);
-            var cellDelete = row.insertCell(10);
+          //  var cellEdit = row.insertCell(9);
+            var cellDelete = row.insertCell(9);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -104,7 +104,7 @@ function listar() {
             cellDap.appendChild(document.createTextNode(childData.dap));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-        cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
+        //cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
             cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
 rowIndex++;
           
