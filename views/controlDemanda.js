@@ -39,7 +39,7 @@ function InserirProtocolo(demanda_id) {
             item: item = document.getElementById("item").value,
             date:new Date()*-1,
             dap:dap =document.getElementById("dap").value,
-            telefone:telefone,
+            telefone:telefone=document.getElementById("telefone").value,
             status:"",
             dataEntrega:""
             
