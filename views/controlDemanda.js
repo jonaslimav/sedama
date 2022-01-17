@@ -382,3 +382,70 @@ function deletar(key){
         window.location.reload();
     }
 }
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("itemfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = ` <tr>
+    <td scope="col">PRODUTOR</td>
+    <td scope="col">CPF</td>
+    <td scope="col">LOCALIDADE</td>
+    <td scope="col">RG</td>
+    <td scope="col">ITEM</td>
+    <td scope="col">QUANTIDADE</td>
+    <td scope="col">DAP</td>
+    <td scope="col">TELEFONE</td>
+    <td scope="col">IMPRIMIR</td>
+    <td scope="col">EXCLUIR</td>
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('demanda22/');
+    var rowIndex=1;
+   
+    databaseRef.orderByChild("data").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            console.log(item +" "+ childData.item);
+            if(item == childData.item){
+            var row = tblUsers.insertRow(rowIndex);
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellRG = row.insertCell(3);            
+            var cellItem= row.insertCell(4);
+            var cellQuant = row.insertCell(5);
+            var cellDap = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellImprimir = row.insertCell(8);
+          //  var cellEdit = row.insertCell(9);
+            var cellDelete = row.insertCell(9);
+            
+            if(childData.telefone==undefined ){
+                childData.telefone="-";
+            }
+            
+            cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+            cellRG.appendChild(document.createTextNode(childData.rg));
+            cellItem.appendChild(document.createTextNode(childData.item));
+            cellQuant.appendChild(document.createTextNode(childData.quant));
+            cellDap.appendChild(document.createTextNode(childData.dap));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+        //cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
+            cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+rowIndex++;}
+          
+        });
+
+    });``
+    
+}
+
+
+
