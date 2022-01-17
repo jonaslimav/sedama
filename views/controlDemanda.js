@@ -403,6 +403,7 @@ function listarfiltro() {
 </tr> `;
     var databaseRef = firebase.database().ref('demanda22/');
     var rowIndex=1;
+    var quant =0;
    
     databaseRef.orderByChild("data").once('value', function (snapshot) {
         
@@ -411,6 +412,7 @@ function listarfiltro() {
             var childData = childSnapshot.val();
             console.log(item +" "+ childData.item);
             if(item == childData.item){
+                quant = quant + childData.quant;
             var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
@@ -442,8 +444,9 @@ function listarfiltro() {
 rowIndex++;}
           
         });
-
-    });``
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp Quant.&nbsp:${quant}</h6>`;
+    });       
+   
     
 }
 
