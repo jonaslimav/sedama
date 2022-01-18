@@ -412,7 +412,7 @@ function listarfiltro() {
             var childData = childSnapshot.val();
             console.log(item +" "+ childData.item);
             if(item == childData.item){
-                quant = quant + childData.quant;
+                quant = quant + Number(childData.quant);
             var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
@@ -469,7 +469,7 @@ function editDap(key){
               
                   
         
-                       childData.quant= atv2;
+                       childData.quant= Number(atv2);
                        let updates = {}
                        updates["/demanda22/" + childKey] = childData;
                        let produtor_ref = firebase.database().ref();
