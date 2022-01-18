@@ -252,3 +252,62 @@ function sair(){
     localStorage.clear();
     window.location.href="loguin.html";
 }
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("atvfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = ` <tr>
+                <td scope ="col">Nº</td>
+                <td scope="col">PRODUTOR</td>
+                <td scope="col">CPF</td>
+                <td scope="col">LOCALIDADE</td>
+                <td scope="col">DATA CAD.</td>
+                <td scope="col">ATIVIDADE</td>
+                <td scope= "col">TELEFONE</td>
+                <td scope="col">RELATORIO</td>
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('produtor/');
+    var rowIndex=1;
+    var quant =0;
+   
+    databaseRef.orderByChild("data").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if(String(childData.atividade).includes(item)){
+                quant = quant + childData.quant;
+                var row = tblUsers.insertRow(rowIndex);
+
+                var cellNmber = row.insertCell(0)
+                var cellNome = row.insertCell(1);
+                var cellCPF = row.insertCell(2);
+                var cellLocalidade = row.insertCell(3);
+                var cellData = row.insertCell(4);
+                var cellAtv= row.insertCell(5);
+                var cellTel=row.insertCell(6);
+                var cellImprimir = row.insertCell(7);
+                
+    
+                
+                cellNmber.appendChild(document.createTextNode(childData.numero));
+                cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+                cellCPF.appendChild(document.createTextNode(childData.cpf));
+                cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+                cellData.appendChild(document.createTextNode(childData.dataAtual));
+                cellAtv.appendChild(document.createTextNode(childData.atividade));
+               cellTel.appendChild(document.createTextNode(childData.telefone));
+                cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
+    
+    rowIndex++;}
+          
+        });
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} </h6>`;
+    });       
+   
+    
+}

@@ -88,8 +88,8 @@ function listar() {
             var cellDap = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-          //  var cellEdit = row.insertCell(9);
-            var cellDelete = row.insertCell(9);
+           var cellEdit = row.insertCell(9);
+            var cellDelete = row.insertCell(10);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -104,7 +104,7 @@ function listar() {
             cellDap.appendChild(document.createTextNode(childData.dap));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-        //cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
+        cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editDap('${childKey}')"}/>`;
             cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
 rowIndex++;
           
@@ -423,8 +423,8 @@ function listarfiltro() {
             var cellDap = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-          //  var cellEdit = row.insertCell(9);
-            var cellDelete = row.insertCell(9);
+            var cellEdit = row.insertCell(9);
+            var cellDelete = row.insertCell(10);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -439,7 +439,7 @@ function listarfiltro() {
             cellDap.appendChild(document.createTextNode(childData.dap));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-        //cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editar('${childKey}')"}/>`;
+            cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editDap('${childKey}')"}/>`;
             cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
 rowIndex++;}
           
@@ -452,3 +452,39 @@ rowIndex++;}
 
 
 
+function editDap(key){
+    var databaseRef = firebase.database().ref('demanda22/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+              var atv2 =prompt("Insira a DAP, se nao possuir, coloque NAO TEM?");
+              
+                  
+        
+                       childData.dap= atv2;
+                       let updates = {}
+                       updates["/demanda22/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+         //   window.location.reload();
+      });
+  
+}
