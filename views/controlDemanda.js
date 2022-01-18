@@ -469,7 +469,7 @@ function editDap(key){
               
                   
         
-                       childData.dap= atv2;
+                       childData.quant= atv2;
                        let updates = {}
                        updates["/demanda22/" + childKey] = childData;
                        let produtor_ref = firebase.database().ref();
