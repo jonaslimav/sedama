@@ -51,14 +51,14 @@ function InserirVisita() {
            }
 
 
-
+console.log(document.getElementById("Produtores").value.toUpperCase());
         
         const visita= {
     
             ordemN : ordemNum,
             localidade: document.getElementById("Localidade").value,
-            produtor: nomeProdutor = document.getElementById("Produtores").value.toUpperCase(),
-            tecnico: tecnico = document.getElementById ("Tecnicos").value.toUpperCase(),
+            produtor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
+            tecnico: tecnico = document.getElementById ("tecnico").value.toUpperCase(),
             dataAtual:formatarData(data),
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
