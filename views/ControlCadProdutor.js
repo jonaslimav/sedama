@@ -273,7 +273,7 @@ function listarfiltro() {
     var rowIndex=1;
     var quant =0;
    
-    databaseRef.orderByChild("data").once('value', function (snapshot) {
+    databaseRef.orderByChild("localidade").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;

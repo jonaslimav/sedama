@@ -234,6 +234,7 @@ function listarProdutores(){
 
 }
 
+
 function listarTecnicos(){
     var databaseRef = firebase.database().ref('tecnico/');
     var s = document.getElementById("Tecnicos");
