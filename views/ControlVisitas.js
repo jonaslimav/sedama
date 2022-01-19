@@ -51,7 +51,6 @@ function InserirVisita() {
            }
 
 
-console.log(document.getElementById("Produtores").value.toUpperCase());
         
         const visita= {
     
