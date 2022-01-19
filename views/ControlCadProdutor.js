@@ -118,7 +118,7 @@ function listar() {
             var cellAtv= row.insertCell(5);
             var cellTel=row.insertCell(6);
             var cellImprimir = row.insertCell(7);
-            
+            var cellEdit = row.insertCell(8);
 
             
             cellNmber.appendChild(document.createTextNode(childData.numero));
@@ -129,6 +129,7 @@ function listar() {
             cellAtv.appendChild(document.createTextNode(childData.atividade));
            cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
+            cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
 
 
             rowIndex = rowIndex + 1;
@@ -279,7 +280,7 @@ function listarfiltro() {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
 
-            if(String(childData.atividade).includes(item)){
+            if(String(childData.atividade).includes(String(item).toUpperCase())){
                 quant = quant + childData.quant;
                 var row = tblUsers.insertRow(rowIndex);
 
@@ -291,7 +292,7 @@ function listarfiltro() {
                 var cellAtv= row.insertCell(5);
                 var cellTel=row.insertCell(6);
                 var cellImprimir = row.insertCell(7);
-                
+                var cellEdit = row.insertCell(8);
     
                 
                 cellNmber.appendChild(document.createTextNode(childData.numero));
@@ -302,7 +303,8 @@ function listarfiltro() {
                 cellAtv.appendChild(document.createTextNode(childData.atividade));
                cellTel.appendChild(document.createTextNode(childData.telefone));
                 cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
-    
+                cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
+
     rowIndex++;}
           
         });
@@ -310,4 +312,40 @@ function listarfiltro() {
     });       
    
     
+}
+function editPr(key){
+    var databaseRef = firebase.database().ref('produtor/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+              var atv2 =prompt("Insira o TELEFONE, se nao possuir, coloque NAO TEM?");
+              
+                  
+        
+                       childData.telefone= atv2;
+                       let updates = {}
+                       updates["/produtor/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+           window.location.reload();
+      });
+  
 }
