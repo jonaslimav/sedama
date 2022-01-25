@@ -78,8 +78,14 @@ function InserirProtocolo() {
 }
 
 function listar() {
-	
-	
+        console.log(localStorage.getItem("user"));
+	if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
+
+        var x = document.getElementById("form");
+        x.innerHTML="<br>";
+
+
+    }
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
@@ -411,4 +417,77 @@ function deletar(key){
         firebase.database().ref('trator2022').child(key).remove();
         window.location.reload();
     }
+}
+
+
+
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("atvfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = `<tr>
+    <td scope="col">PRODUTOR</td>
+    <td scope="col">CPF</td>
+    <td scope="col">LOCALIDADE</td>
+    <td scope="col">RG</td>
+    <td scope="col">HORAS</td>
+    <td scope="col">VALOR TOTAL</td>
+    <td scope="col">DATA</td>
+    <td scope="col"> TELEFONE</td>
+    <td scope="col">IMPRIMIR</td>
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('trator2022/');
+    var rowIndex=1;
+    var horasTr=0;
+    var dias=0;
+    var dataAnt;
+   
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if(String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nomeProdutor).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())){
+                var row = tblUsers.insertRow(rowIndex);
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellRG = row.insertCell(3);            
+            var cellHoras = row.insertCell(4);
+            var cellValor = row.insertCell(5);
+            var cellData = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellImprimir = row.insertCell(8);
+            var cellDelete = row.insertCell(9);
+            
+          
+            
+            cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+            cellRG.appendChild(document.createTextNode(childData.rg));
+            cellHoras.appendChild(document.createTextNode(horasFormat(childData.horas)));
+            cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
+            cellData.appendChild(document.createTextNode(childData.dataAtual));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+          //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+
+           if(dataAnt!=childData.dataAtual){
+               dias++;
+               dataAnt=childData.dataAtual;
+           }
+
+            rowIndex = rowIndex + 1;
+            horasTr = horasTr+Number(childData.horas);
+            }
+            });
+    
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+    });
+    
 }

@@ -59,7 +59,7 @@
 
 
     <div id= "geral" style="margin-top: 20px;">
-        
+        <div id="form">
         <form  class="container col-12" action="javascript:InserirProtocolo();">
             <form class="form-row">
                 <div class="row">
@@ -108,6 +108,9 @@
                 
                 <input type="submit" class="btn btn-primary">
         </form >
+    </div>
+        <div class="col">
+            <input class="form-control" placeholder="Atividade Buscar" type="text" id="atvfiltro" onchange="listarfiltro()" ><br>></div>
         <div id="inf"></div>
 
         <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
