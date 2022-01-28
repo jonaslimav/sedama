@@ -61,7 +61,13 @@ function InserirProtocolo() {
 
 function listar() {
 	
-	
+	if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
+
+        var x = document.getElementById("form");
+        x.innerHTML="<br>";
+
+
+    }
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
