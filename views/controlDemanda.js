@@ -102,7 +102,14 @@ function listar() {
             if(childData.telefone==undefined ){
                 childData.telefone="-";
             }
-            
+        
+            if(childData.status ==undefined ){
+            childData.status="";
+        }
+            if(childData.dataEntrega
+            ==undefined ){
+            childData.dataEntrega="";
+        }
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
