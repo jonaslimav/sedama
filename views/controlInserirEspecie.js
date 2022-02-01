@@ -20,22 +20,22 @@ function InserirProtocolo() {
 
 
    var cpf = document.getElementById("cpf").value
-//console.log(consultarCPF(cpf));
+var horasT = 0;
     var i=0;
    var databaseRef = firebase.database().ref('trator2022/');
-    var horasT;
+    
    databaseRef.orderByChild("date").once('value', function (snapshot) {
        snapshot.forEach(function (childSnapshot) {
            var childData = childSnapshot.val();
                
-           if(childData.cpf===cpf){
-               horasT= horas+Number(childData.horas);
+           if(childData.cpf==cpf){
+               horasT= horasT+Number(childData.horas);
             i++;
           
            }
        });
        horasT = horasT + Number(document.getElementById("horas").value);
-
+       console.log(horasT);
        if(horasT>5){
 
         alert(`CPF existente na base de dados e Horas ultrapassam o Limite: ${horasFormat(horasT)}!!! `);
@@ -56,7 +56,7 @@ function InserirProtocolo() {
             valorTotal:valorTotal = horas*valor,
             date:new Date()*-1,
             telefone:telefone =document.getElementById("tel").value,
-            
+            status:""
             
         };
     
@@ -82,8 +82,9 @@ function listar() {
 	if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
 
         var x = document.getElementById("form");
+        var y = document.getElementById("menu2")
         x.innerHTML="<br>";
-
+        y.innerHTML ="<br>";
 
     }
     if(!localStorage.getItem("auth")){
@@ -103,7 +104,10 @@ function listar() {
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
-
+            if(childData.status ==undefined){
+                childData.status = "";
+            }
+if(childData.status!="execultado"){
             var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
@@ -114,7 +118,8 @@ function listar() {
             var cellData = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-            var cellDelete = row.insertCell(9);
+            var cellExec = row.insertCell(9);
+            
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -122,7 +127,9 @@ function listar() {
             if(childData.rg==undefined ){
                 childData.rg="-";
             }
-            
+            if(childData.status ==undefined){
+                childData.status = "";
+            }
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -132,18 +139,19 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-          //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+          localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
 
            if(dataAnt!=childData.dataAtual){
                dias++;
                dataAnt=childData.dataAtual;
            }
+       
 
             rowIndex = rowIndex + 1;
-            horasTr = horasTr+Number(childData.horas);
+            horasTr = horasTr+Number(childData.horas);}
         });
 
-        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
     });
     
 }
@@ -490,4 +498,36 @@ function listarfiltro() {
         document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
     });
     
+}
+function execultar(key){
+    var databaseRef = firebase.database().ref('trator2022/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+        
+                       childData.status= "execultado";
+                       let updates = {}
+                       updates["/trator2022/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+   window.location.reload();
+      });
+  
 }
