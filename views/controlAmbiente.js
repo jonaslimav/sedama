@@ -102,7 +102,7 @@ function listar() {
             cellProjeto.appendChild(document.createTextNode(childData.projeto));
             cellArea.appendChild(document.createTextNode(childData.area));
             cellEmail.appendChild(document.createTextNode(childData.email));
-            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellTel.appendChild(document.createTextNode(childData.contato));
             cellAtividade.appendChild(document.createTextNode(childData.atividade));
             cellResp.appendChild(document.createTextNode(childData.responsavel))
 
