@@ -187,7 +187,7 @@ x.innerHTML = `
 				<h3> Via Produtor</h3> <img src="../logPrefeitura.png" height=220 width=95%><h1> 
 				<h1>
                 <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
-                <strong>RG Nº:</strong>&nbsp   ${rgPr} &nbsp &nbsp &nbsp &nbsp
+                <strong>RG Nº:</strong>&nbsp    &nbsp &nbsp &nbsp &nbsp
                 <strong> DATA:</strong>  &nbsp ${dataPr} &nbsp&nbsp&nbsp&nbsp&nbsp <strong> QUANT. HORAS:  </strong>  ${horaPr} &nbsp&nbsp <br> <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  ${valorPr}<br><br>
 				<strong> TRATORISTA:______________________________________ <br><br>  DATA SERVIÇO:______/______/__________</strong><br>
@@ -199,7 +199,7 @@ x.innerHTML = `
 					_______________________________________________________________________________________________________________________<br>
 					<h3> Via Tratorista</h3><img src="../logPrefeitura.png" height=220 width=95%><h1>
                     <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
-                    <strong>RG:</strong>&nbsp   ${rgPr} &nbsp &nbsp &nbsp &nbsp
+                    <strong>RG:</strong>&nbsp   &nbsp &nbsp &nbsp &nbsp
                     <strong> DATA:</strong>  &nbsp ${dataPr}<br><br>
                     <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp &nbsp &nbsp &nbsp 
                     <strong> QUANT. HORAS:  </strong>  ${horaPr}<br><br>
@@ -438,7 +438,7 @@ function listarfiltro() {
     <td scope="col">PRODUTOR</td>
     <td scope="col">CPF</td>
     <td scope="col">LOCALIDADE</td>
-    <td scope="col">RG</td>
+    <td scope="col">OBS</td>
     <td scope="col">HORAS</td>
     <td scope="col">VALOR TOTAL</td>
     <td scope="col">DATA</td>
