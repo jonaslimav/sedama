@@ -133,7 +133,7 @@ if(childData.status!="execultado"){
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
-            cellRG.appendChild(document.createTextNode(childData.rg));
+            localStorage.getItem("user")=="jlvieira248@gmail.com"? cellRG.appendChild(document.createTextNode(childData.rg)):"";
             cellHoras.appendChild(document.createTextNode(horasFormat(childData.horas)));
             cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
