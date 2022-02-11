@@ -119,6 +119,7 @@ if(childData.status!="execultado"){
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
             var cellExec = row.insertCell(9);
+                var cellDel = row.insertCell(10);
             
             
             if(childData.telefone==undefined ){
@@ -140,6 +141,7 @@ if(childData.status!="execultado"){
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
           localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
+          localStorage.getItem("user")=="jlvieira248@gmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
 
            if(dataAnt!=childData.dataAtual){
                dias++;
@@ -444,6 +446,7 @@ function listarfiltro() {
     <td scope="col">DATA</td>
     <td scope="col"> TELEFONE</td>
     <td scope="col">IMPRIMIR</td>
+    
    
     
 </tr> `;
@@ -459,7 +462,7 @@ function listarfiltro() {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
 
-            if(String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nomeProdutor).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())){
+            if((String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nomeProdutor).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())&&childData.status!="execultado")){
                 var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
@@ -470,7 +473,9 @@ function listarfiltro() {
             var cellData = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-            var cellDelete = row.insertCell(9);
+            
+            var cellExec = row.insertCell(9);
+                var cellDel = row.insertCell(10);
             
           
             
@@ -483,7 +488,9 @@ function listarfiltro() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-          //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+            localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
+
+            localStorage.getItem("user")=="jlvieira248@gmail.com"?cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`:"";
 
            if(dataAnt!=childData.dataAtual){
                dias++;
