@@ -155,3 +155,73 @@ function deletar(key){
         window.location.reload();
     }
 }
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("atvfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = `<tr>
+    <td scope="col">Nº</td>
+                <td scope="col">PRODUTOR</td>
+                <td scope="col">CPF</td>
+                <td scope="col">LOCALIDADE</td>
+                <td scope="col">PROPRIETARIO</td>
+                <td scope="col">VALOR FIN.</td>
+                <td scope="col">DATA</td>
+                <td scope="col">ATIVIDADE</td>
+                <td scope="col">IMPRIMIR</td>
+                <td scope="col">UPLOAD</td>
+    
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('anuencia/');
+    var rowIndex=1;
+    var valor=0;
+    var dias=0;
+    var dataAnt;
+   
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if((String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nomeProdutor).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())||String(childData.atividade).includes(String(item).toUpperCase()))){
+               
+               
+                var row = tblUsers.insertRow(rowIndex);
+                var cellOrdem=row.insertCell(0);
+                var cellNome = row.insertCell(1);
+                var cellCPF = row.insertCell(2);
+                var cellLocalidade = row.insertCell(3);
+                var cellProprie= row.insertCell(4);            
+                var cellValor = row.insertCell(5);
+                var cellData = row.insertCell(6);
+                var cellAtv= row.insertCell(7);
+                var cellImprimir = row.insertCell(8);
+                var cellDelete=row.insertCell(9);
+    
+                
+              
+                cellOrdem.appendChild(document.createTextNode(childData.ordemN));
+                cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+                cellCPF.appendChild(document.createTextNode(childData.cpf));
+                cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+                cellProprie.appendChild(document.createTextNode(childData.proprietario));
+                cellValor.appendChild(document.createTextNode(Number(childData.valorFin).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
+                cellData.appendChild(document.createTextNode(childData.dataAtual));
+                cellAtv.appendChild(document.createTextNode(childData.atividade));
+                cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+                cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+    
+    
+                rowIndex = rowIndex + 1;
+             valor= valor+Number(childData.valorFin);}
+            });
+    
+            document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+              });
+            
+    
+}
