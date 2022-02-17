@@ -350,7 +350,7 @@ function imprimir(dt){
                     <strong> NOME :</strong>${childData.nome}<br>
                     <strong> CPF :</strong>${childData.cpf}<br>
                     <strong> DATA NASCIMENTO:</strong>${childData.dtnasc}<br>
-                    <strong> LOCALIDADE:</strong>${childData.localidade}
+                    <strong> LOCALIDADE:</strong>${childData.endereco}
                         <br>
                         <strong> PROFISSAO :</strong>${childData.profissao}<br>
                     <strong> RG :</strong>${childData.rg}<br>
