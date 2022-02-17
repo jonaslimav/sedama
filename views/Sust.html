@@ -15,7 +15,7 @@
 <body style="background-color: #F2f2f2;">
     <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
-    <script src="controlAmbiente.js"></script>
+    <script src="controlSust.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     
@@ -43,10 +43,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="Ambiente.html">   AMBIENTE  </a> 
             </li>
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
             </li>
             <li class="nav-item">
@@ -64,17 +64,17 @@
             <form class="form-row">
                 <div class="row">
                     <div class="col">
-                        <input class="form-control" placeholder="RAZÃO SOCIAL" type="text" id="razao" required><br>
-                        <input class="form-control" placeholder="CPF/CNPJ" type="text" maxlength="14" id="cpf" onblur="completaDados()" required><br>
+                        <input class="form-control" placeholder="NOME" type="text" id="nome" required><br>
+                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
 
                     </div>
                     <div class="col">
-                        <input class="form-control" placeholder="NOME FANTASIA" type="text" id="nmfant" ><br>
+                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
                         <input class="form-control" placeholder="EMAIL" type="text"  id="email" ><br>
                     </div>
                     
                     <div class="col">
-                        <input class="form-control" placeholder="RESPONSAVEL" type="text "id="responsavel" required><br>
+                        <input class="form-control" placeholder="PROFISSAO" type="text "id="profissao" required><br>
 
                         <input class="form-control" placeholder="ENDEREÇO" type="text" id="localidade" required><br>
 
@@ -88,18 +88,18 @@
                    </div>
                     
                     <div class="col">
-                        <input class="form-control" placeholder="ATIVIDADE" type="text"  id="atv" ><br>
+                        <input class="form-control" placeholder="NIS" type="text"  id="nis" required ><br>
 
                     </div>
              
                     <div class="col">
-                        <input class="form-control" placeholder="AÇÃO/PROJETO/PROGRAMA" type="text" id="projeto" required><br>
+                        <input class="form-control" placeholder="N° PESSOAS NA CASA" type="number" id="npessoas" required><br>
 
 
                     </div>
                     
                     <div class="col">
-                        <input class="form-control" placeholder="Area em m² " type="text" id="quant" required><br>
+                        <input  class="form-control" placeholder="DATA NASCIMENTO " type="date" id="dtnasc" required><br>
 
 
                     </div>
@@ -117,22 +117,21 @@
                 
                 <input type="submit" class="btn btn-primary">
         </form >
-    </div>
+   
         <div id="inf"></div>
-        <div id="filtro"> <div class="col">
-            <br></div>
+     
         <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
             <tr>
-                <td scope="col">RAZAO SOCIAL</td>
-                <td scope="col">CPF/CNPJ</td>
+                <td scope="col">NOME</td>
+                <td scope="col">CPF</td>
                 <td scope="col">ENDERECO</td>
-                <td scope="col">DT. CAD.</td>
-                <td scope="col">PROJETO</td>
-                <td scope="col">AREA</td>
+                <td scope="col">DT. NASC.</td>
+                <td scope="col">RG</td>
+                <td scope="col">NIS</td>
                 <td scope="col">EMAIL</td>
                 <td scope="col">TELEFONE</td>
-                <td scope="col">ATIVIDADE</td>
-                <td scope="col">RESPONSAVEL</td>
+                <td scope="col">N PESSOAS</td>
+                <td scope="col">PROFISSAO</td>
                 
               
                
@@ -140,12 +139,12 @@
             </tr>
         </table>
     </div>
-	
+</div>
     <div id="divImp">
 	
 	<div id="impressao"></div>
 	
-	
+    
     
 </body>
 
