@@ -423,6 +423,8 @@ function listarfiltro() {
     var rowIndex=1;
     var quant =0;
     var quantE =0;
+    var prodS =0;
+    var prodA=0;
    
     databaseRef.orderByChild("data").once('value', function (snapshot) {
         
@@ -476,10 +478,12 @@ function listarfiltro() {
           //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
 rowIndex++;
 childData.status=="entregue"?quantE+=childData.quant:"";
+childData.status=="entregue"?prodA++:"";
+prodS++;
 }
           
         });
-        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp Quant.&nbsp:${quant}&nbsp &nbsp &nbsp Quant. Entregue&nbsp:${quantE}</h6>`;
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp Quant.&nbsp:${quant}&nbsp &nbsp &nbsp Quant. Entregue&nbsp:${quantE}&nbsp &nbsp &nbsp Demandas Atendidas.&nbsp:${prodA}&nbsp &nbsp &nbsp Demandas Restantes&nbsp:${prodS-prodA}</h6>`;
     });       
    
     
