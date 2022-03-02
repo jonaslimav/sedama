@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 window.onload = listar;
 
-var valor= 71.74;
+var valor= 84.83;
 
 function InserirProtocolo() {
     var data= dataAtualFormatada();
@@ -99,6 +99,7 @@ function listar() {
     var horasTr=0;
     var dias=0;
     var dataAnt;
+    var val=0;
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
@@ -131,6 +132,8 @@ if(childData.status!="execultado"){
             if(childData.status ==undefined){
                 childData.status = "";
             }
+
+           
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -148,12 +151,12 @@ if(childData.status!="execultado"){
                dataAnt=childData.dataAtual;
            }
        
-
+           val = val +childData.valorTotal;
             rowIndex = rowIndex + 1;
             horasTr = horasTr+Number(childData.horas);}
         });
 
-        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(val).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
     });
     
 }
