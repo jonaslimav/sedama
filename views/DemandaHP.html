@@ -71,9 +71,9 @@
                     </div>
                     
                     <div class="col">
-                        <datalist class="custom-select" id="item">
-                            <option selected>ITEM</option>
-                
+                        <input type="text" placeholder= "ITEM" class="custom-select" list="itens" id="item">
+                        <datalist  id="itens">
+                            
                             <option value="MILHO/KG"> Milho - KG </option>
                             <option value="SORGO/KG"> Sorgo - KG </option>
                             <option value="CAJU/UNI"> Caju - Uni </option>
@@ -133,9 +133,10 @@
         </form >
     </div>
         <div id="inf"></div>
-        <div id="filtro"> <div class="col">
-            <datalist class="custom-select" id="itemfiltro" onchange="listarfiltro()">
-                <option selected>ITEM FILTRAR</option>
+        <div id="filtro"> <div class="col"> 
+            <input type="text" placeholder= "ITEM FILTRO" class="custom-select" list="itensfiltro" id="itemfiltro" onchange="listarfiltro()">
+            <datalist id="itensfiltro" >
+               
                 <option value="MILHO/KG"> Milho - KG </option>
                 <option value="SORGO/KG"> Sorgo - KG </option>
                 <option value="CAJU/UNI"> Caju - Uni </option>
