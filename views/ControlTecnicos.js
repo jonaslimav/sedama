@@ -56,7 +56,11 @@ function InserirTecnico() {
 
 function listar() {
 
-	
+	var dataIni = document.getElementById('datainicial').value;
+            var dataFim =document.getElementById('datafinal').value;
+            console.log(dataIni);
+            localStorage.setItem("dataIni",dataIni);
+            localStorage.setItem("dataFim", dataFim);
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
@@ -112,18 +116,58 @@ function dataAtualFormatada() {
         anoF = data.getFullYear();
     return diaF + "/" + mesF + "/" + anoF;
 }
+
+
+function dataEstaEntre(data,dataIni,dataFim){
+    var anoD = String(data).slice(-4);
+    var mesD =String(data).slice(3,5);
+    var diaD =String(data).slice(0,2);
+    var anoI = String(dataIni).slice(-4);
+    var mesI =String(dataIni).slice(3,5);
+    var diaI =String(dataIni).slice(0,2);
+    var anoF = String(dataFim).slice(-4);
+    var mesF =String(dataFim).slice(3,5);
+    var diaF =String(dataFim).slice(0,2);
+
+  data= Number(anoD+""+mesD+""+diaD);
+  dataIni = Number(anoI+""+mesI+""+diaI);
+  dataFim = Number(anoF+""+mesF+""+diaF);
+  console.log(data + "-"+ dataIni+"-"+dataFim);
+    if(data>=dataIni && data<=dataFim){
+        return true;
+
+
+    }
+    else{
+        return false;
+    }
+
+}
+function salvarFiltro(){
+    var dataIni = document.getElementById('datainicial').value;
+            var dataFim =document.getElementById('datafinal').value;
+            console.log(dataIni);
+            localStorage.setItem("dataIni",dataIni);
+            localStorage.setItem("dataFim", dataFim);
+            alert("SALVO FILTRO");
+
+}
+
 function receberVisitasTecnico(tecnico){
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('visita/');
    let  listVisitas = "";
+
+   
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
-            
-           if(childData.tecnico ==tecnico){
+            var dataIni = localStorage.getItem("dataIni");
+            var dataFim =localStorage.getItem("dataFim");
+           if(childData.tecnico ==tecnico && dataEstaEntre(childData.dataAtual,formatarData(dataIni),formatarData(dataFim))){
             
             listVisitas +=`${childData.dataAtual}<br>${childData.produtor}<br>${childData.atividade}<br><br>`;
 
@@ -210,4 +254,13 @@ function sair(){
 
     localStorage.clear();
     window.location.href="loguin.html";
+}
+
+function formatarData(dt){
+
+    var ano = String(dt).slice(0,4);
+    var mes =String(dt).slice(5,7);
+    var dia =String(dt).slice(-2);
+
+    return dia+"/"+mes+"/"+ano;
 }
