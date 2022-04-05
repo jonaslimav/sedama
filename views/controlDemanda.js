@@ -61,7 +61,7 @@ function InserirProtocolo() {
 
 function listar() {
 	
-	if((localStorage.getItem("user")!="jlvieira248@gmail.com")&&(localStorage.getItem("user")!="mateustecsevero@gmail.com") ){
+	if((localStorage.getItem("user")!="jlvieira248@gmail.com")&&(localStorage.getItem("user")!="agrojorgeluiz@gmail.com") ){
 
         var x = document.getElementById("form");
         x.innerHTML="<br>";
