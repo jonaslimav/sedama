@@ -102,7 +102,7 @@ function listar() {
     var rowIndex = 1;
     var valor=0;
     
-    databaseRef.orderByChild("date").once('value', function (snapshot) {
+    databaseRef.orderByChild("nomeProdutor").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
@@ -110,18 +110,19 @@ function listar() {
 
             var row = tblUsers.insertRow(rowIndex);
 
-            var cellNmber = row.insertCell(0)
-            var cellNome = row.insertCell(1);
-            var cellCPF = row.insertCell(2);
-            var cellLocalidade = row.insertCell(3);
-            var cellData = row.insertCell(4);
-            var cellAtv= row.insertCell(5);
-            var cellTel=row.insertCell(6);
-            var cellImprimir = row.insertCell(7);
-            var cellEdit = row.insertCell(8);
+           // var cellNmber = row.insertCell(0)
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellData = row.insertCell(3);
+            var cellAtv= row.insertCell(4);
+            var cellTel=row.insertCell(5);
+            var cellImprimir = row.insertCell(6);
+            var cellEdit = row.insertCell(7);
+            var cellExc=row.insertCell(8);
 
             
-            cellNmber.appendChild(document.createTextNode(childData.numero));
+            //cellNmber.appendChild(document.createTextNode(childData.numero));
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -130,6 +131,7 @@ function listar() {
            cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
             cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
+            localStorage.getItem("user")=="jlvieira248@gmail.com"? cellExc.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
 
 
             rowIndex = rowIndex + 1;
@@ -274,7 +276,7 @@ function listarfiltro() {
     var rowIndex=1;
     var quant =0;
    
-    databaseRef.orderByChild("localidade").once('value', function (snapshot) {
+    databaseRef.orderByChild("nomeProdutor").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
@@ -284,18 +286,18 @@ function listarfiltro() {
                 quant = quant + childData.quant;
                 var row = tblUsers.insertRow(rowIndex);
 
-                var cellNmber = row.insertCell(0)
-                var cellNome = row.insertCell(1);
-                var cellCPF = row.insertCell(2);
-                var cellLocalidade = row.insertCell(3);
-                var cellData = row.insertCell(4);
-                var cellAtv= row.insertCell(5);
-                var cellTel=row.insertCell(6);
-                var cellImprimir = row.insertCell(7);
-                var cellEdit = row.insertCell(8);
+                var cellNome = row.insertCell(0);
+                var cellCPF = row.insertCell(1);
+                var cellLocalidade = row.insertCell(2);
+                var cellData = row.insertCell(3);
+                var cellAtv= row.insertCell(4);
+                var cellTel=row.insertCell(5);
+                var cellImprimir = row.insertCell(6);
+                var cellEdit = row.insertCell(7);
+                var cellExc=row.insertCell(8);
     
                 
-                cellNmber.appendChild(document.createTextNode(childData.numero));
+                //cellNmber.appendChild(document.createTextNode(childData.numero));
                 cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
                 cellCPF.appendChild(document.createTextNode(childData.cpf));
                 cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -304,7 +306,8 @@ function listarfiltro() {
                cellTel.appendChild(document.createTextNode(childData.telefone));
                 cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
                 cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
-
+                localStorage.getItem("user")=="jlvieira248@gmail.com"? cellExc.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+    
     rowIndex++;}
           
         });
@@ -527,4 +530,12 @@ function completaDados(){
 
     
 
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir ?");
+    if (x) {
+        firebase.database().ref('produtor').child(key).remove();
+        window.location.reload();
+    }
 }
