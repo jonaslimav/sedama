@@ -56,7 +56,8 @@ var horasT = 0;
             valorTotal:valorTotal = horas*valor,
             date:new Date()*-1,
             telefone:telefone =document.getElementById("tel").value,
-            status:""
+            status:"",
+            user:localStorage.getItem("user")
             
         };
     
@@ -121,7 +122,7 @@ if(childData.status!="execultado"){
             var cellImprimir = row.insertCell(8);
             var cellExec = row.insertCell(9);
                 var cellDel = row.insertCell(10);
-            
+            var cellUser =row.insertCell(11);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -145,6 +146,7 @@ if(childData.status!="execultado"){
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
           localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
           localStorage.getItem("user")=="jlvieira248@gmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+          cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            if(dataAnt!=childData.dataAtual){
                dias++;

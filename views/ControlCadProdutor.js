@@ -67,7 +67,8 @@ if(i==0){
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
             telefone:document.getElementById("tel").value,
-            
+            user:localStorage.getItem("user")
+
             
         };
     

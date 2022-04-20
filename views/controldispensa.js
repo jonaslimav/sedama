@@ -65,7 +65,7 @@ function InserirDispensa() {
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
             valorFin:valorFin =Number(document.getElementById("vlr").value),
-            
+            user:localStorage.getItem("user")
             
         };
     
@@ -116,8 +116,8 @@ function listar() {
             var cellData = row.insertCell(5);
             var cellAtv= row.insertCell(6);
             var cellImprimir = row.insertCell(7);
-            var cellUpload=row.insertCell(8);
-
+            var cellUser=row.insertCell(8);
+            
             
           
             cellOrdem.appendChild(document.createTextNode(childData.ordemN));
@@ -128,6 +128,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellAtv.appendChild(document.createTextNode(childData.atividade));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
 
             rowIndex = rowIndex + 1;

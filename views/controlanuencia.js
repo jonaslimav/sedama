@@ -59,7 +59,8 @@ function InserirAnuencia() {
             proprietario:proprietario = document.getElementById("prop").value.toUpperCase(),
             date:new Date()*-1,
             valorFin:valorFin =Number(document.getElementById("vlr").value),
-            
+            user:localStorage.getItem("user")
+
             
         };
     
@@ -112,6 +113,7 @@ function listar() {
             var cellAtv= row.insertCell(7);
             var cellImprimir = row.insertCell(8);
             var cellDelete=row.insertCell(9);
+            var cellUser = row.insertCell(10);
 
             
           
@@ -125,7 +127,7 @@ function listar() {
             cellAtv.appendChild(document.createTextNode(childData.atividade));
             cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
             rowIndex = rowIndex + 1;
          valor= valor+Number(childData.valorFin);

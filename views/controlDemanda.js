@@ -41,7 +41,9 @@ function InserirProtocolo() {
             dap:dap =document.getElementById("dap").value,
             telefone:telefone=document.getElementById("telefone").value,
             status:"",
-            dataEntrega:""
+            dataEntrega:"",
+            user:localStorage.getItem("user")
+
             
             
         };
@@ -97,6 +99,7 @@ function listar() {
             
            var cellEdit = row.insertCell(9);
            var cellImprimir = row.insertCell(10);
+           var cellUser=row.insertCell(11);
            // var cellDelete = row.insertCell(10);
             
             if(childData.telefone==undefined ){
@@ -122,7 +125,9 @@ function listar() {
          childData.status =="entregue"? cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>':"";
        childData.status == ""? cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="ENTREGAR." onclick="entregar('${childKey}')"}/>`:"ENTREGUE";
           //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
-rowIndex++;
+          cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
+
+          rowIndex++;
           
         });
 
@@ -448,9 +453,10 @@ function listarfiltro() {
             var cellDap = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellData = row.insertCell(8)
-            
+       
            var cellEdit = row.insertCell(9);
            var cellImprimir = row.insertCell(10);
+           var cellUser=row.insertCell(11);
            // var cellDelete = row.insertCell(10);
             
             if(childData.telefone==undefined ){
@@ -476,7 +482,9 @@ function listarfiltro() {
          childData.status =="entregue"? cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>':"";
        childData.status == ""? cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="ENTREGAR." onclick="entregar('${childKey}')"}/>`:"ENTREGUE";
           //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
-rowIndex++;
+          cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
+
+          rowIndex++;
 childData.status=="entregue"?quantE+=childData.quant:"";
 childData.status=="entregue"?prodA++:"";
 prodS++;
@@ -550,6 +558,8 @@ function entregar(key){
         
                        childData.quant= Number(atv2);
                        childData.status = "entregue";
+                       childData.user= localStorage.getItem("user");
+
                        childData.dataEntrega
                         = dataAtualFormatada();
                        let updates = {}

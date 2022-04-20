@@ -42,7 +42,8 @@ var  dtnasc = document.getElementById("dtnasc").value;
             npessoas:atv=document.getElementById("npessoas").value,
             email:email =document.getElementById("email").value,
             obs:obs =document.getElementById("obs").value,
-         
+            user:localStorage.getItem("user")
+
         
             
             

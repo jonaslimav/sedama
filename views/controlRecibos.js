@@ -33,6 +33,8 @@ function InserirProtocolo() {
             localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
             rg: rg = document.getElementById("rg").value,
             date:new Date()*-1,
+            user:localStorage.getItem("user")
+
             
             
         };
@@ -80,7 +82,8 @@ function listar() {
             var cellLocalidade = row.insertCell(2);
             var cellRG = row.insertCell(3);            
             var cellImprimir = row.insertCell(4);
-            
+            var cellUser =row.insertCell(5);
+
             
             
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
@@ -88,6 +91,7 @@ function listar() {
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellRG.appendChild(document.createTextNode(childData.rg));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            
 

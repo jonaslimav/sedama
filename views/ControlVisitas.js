@@ -61,7 +61,8 @@ function InserirVisita() {
             dataAtual:formatarData(data),
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
-            
+            user:localStorage.getItem("user")
+
             
         };
     
@@ -108,7 +109,8 @@ function listar() {
             var cellTecnico = row.insertCell(2);
             var cellData = row.insertCell(3);
             var cellImprimir = row.insertCell(4);
-         
+            var cellUser =row.insertCell(5);
+
 
             
           
@@ -117,6 +119,7 @@ function listar() {
             cellTecnico.appendChild(document.createTextNode(childData.tecnico));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
 
             rowIndex = rowIndex + 1;

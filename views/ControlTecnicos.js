@@ -33,7 +33,8 @@ function InserirTecnico() {
             dataAtual:data,
             especialidade: especialidade = document.getElementById("atv").value,
             date:new Date()*-1,
-            
+            user:localStorage.getItem("user")
+
             
         };
     
@@ -85,7 +86,7 @@ function listar() {
             var cellData = row.insertCell(3);
             var cellAtv= row.insertCell(4);
             var cellImprimir = row.insertCell(5);
-
+            var cellUser = row.insertCell(6);
             
           
             cellNome.appendChild(document.createTextNode(childData.nomeTecnico));
@@ -94,6 +95,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellAtv.appendChild(document.createTextNode(childData.especialidade));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
 
             rowIndex = rowIndex + 1;
