@@ -51,18 +51,18 @@ function InserirVisita() {
            }
 
 
-
         
         const visita= {
     
             ordemN : ordemNum,
             localidade: document.getElementById("Localidade").value,
-            produtor: nomeProdutor = document.getElementById("Produtores").value.toUpperCase(),
-            tecnico: tecnico = document.getElementById ("Tecnicos").value.toUpperCase(),
+            produtor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
+            tecnico: tecnico = document.getElementById ("tecnico").value.toUpperCase(),
             dataAtual:formatarData(data),
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
-            
+            user:localStorage.getItem("user")
+
             
         };
     
@@ -109,7 +109,8 @@ function listar() {
             var cellTecnico = row.insertCell(2);
             var cellData = row.insertCell(3);
             var cellImprimir = row.insertCell(4);
-         
+            var cellUser =row.insertCell(5);
+
 
             
           
@@ -118,6 +119,7 @@ function listar() {
             cellTecnico.appendChild(document.createTextNode(childData.tecnico));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
 
             rowIndex = rowIndex + 1;
@@ -233,6 +235,7 @@ function listarProdutores(){
 
 
 }
+
 
 function listarTecnicos(){
     var databaseRef = firebase.database().ref('tecnico/');

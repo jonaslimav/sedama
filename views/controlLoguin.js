@@ -1,13 +1,13 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyCxK3ECEWyFICyNOtnGOVWnJQut0dUZW0Q",
-    authDomain: "protrator-1ffec.firebaseapp.com",
-    databaseURL: "https://protrator-1ffec-default-rtdb.firebaseio.com",
-    projectId: "protrator-1ffec",
-    storageBucket: "protrator-1ffec.appspot.com",
-    messagingSenderId: "1030402223805",
-    appId: "1:1030402223805:web:2cd4470ff07ff3dc0791d4"
-  };
 
+var firebaseConfig = {
+    apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
+    authDomain: "sedama-4dd5c.firebaseapp.com",
+    databaseURL: "https://sedama-4dd5c-default-rtdb.firebaseio.com",
+    projectId: "sedama-4dd5c",
+    storageBucket: "sedama-4dd5c.appspot.com",
+    messagingSenderId: "492670080550",
+    appId: "1:492670080550:web:42ad24f36c7f5cd578b8e7"
+  };
 
 firebase.initializeApp(firebaseConfig);
 
@@ -34,6 +34,7 @@ function login() {
             alert("Logado com sucesso");
             auth = user;
             localStorage.setItem("auth",true);
+            localStorage.setItem("user",document.getElementById("email").value);
             window.location.href = "PROTRATOR.html";
         }).catch(function (error) {
             alert("Falha ao logar");

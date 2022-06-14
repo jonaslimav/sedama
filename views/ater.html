@@ -13,8 +13,9 @@
 </head>
 
 <body style="background-color: #F2f2f2;">
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
     <script src="ControlVisitas.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -27,12 +28,7 @@
             <li class="nav-item ">
               <a class="nav-link" href="PROTRATOR.html">PROTRATOR <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Anuencia.html">   ANUENCIA   </a> 
-            </li>
-		  <li class="nav-item">
-                <a class="nav-link" href="dispensa.html">   DISPENSA AMB.   </a> 
-            </li>
+            
             <li class="nav-item active">
                 <a class="nav-link" href="ater.html">   ATER </a> 
             </li><li class="nav-item">
@@ -41,6 +37,11 @@
           <li class="nav-item">
             <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
         </li>
+      </li> 
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
+    </li>
             <li class="nav-item">
                 <a class="nav-link" onclick="sair()">   SAIR  </a>   
             </li>
@@ -67,23 +68,24 @@
       </nav>
 
     <div id= "geral" >
+      <br>
         
         <form  class="container col-12" action="javascript:InserirVisita();">
             <form class="form-row">
                 <div class="row">
                     <div class="col">
-                      <select placeholder= "PRODUTOR" class="custom-select" id="Produtores">
-                          <option selected>PRODUTOR</option>
-                            
+                      <input type="text" placeholder= "PRODUTOR" class="custom-select" list="Produtores" id="produtor">
+                      <datalist  id="Produtores">
+                                                 
 
-                      </select><br>
+                      </datalist><br>
                     </div>
                     <div class="col">
-                      <select placeholder= "TECNICO" class="custom-select" id="Tecnicos">
-                        <option selected>TECNICO</option>
-                            
+                      <input type="text" placeholder= "TECNICOS" class="custom-select" list="Tecnicos" id="tecnico">
 
-                      </select><br>
+                      <datalist  id="Tecnicos">
+                      
+                      </datalist><br>
                     </div>
                     
                     <div>

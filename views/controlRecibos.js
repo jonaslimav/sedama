@@ -33,6 +33,8 @@ function InserirProtocolo() {
             localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
             rg: rg = document.getElementById("rg").value,
             date:new Date()*-1,
+            user:localStorage.getItem("user")
+
             
             
         };
@@ -80,7 +82,8 @@ function listar() {
             var cellLocalidade = row.insertCell(2);
             var cellRG = row.insertCell(3);            
             var cellImprimir = row.insertCell(4);
-            
+            var cellUser =row.insertCell(5);
+
             
             
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
@@ -88,6 +91,7 @@ function listar() {
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellRG.appendChild(document.createTextNode(childData.rg));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            
 
@@ -115,7 +119,29 @@ var rgPr = data[3].innerHTML;
 
 var x = document.getElementById("geral");
 
-x.innerHTML = `
+x.innerHTML = ` 
+<h1>______________________________________________________________________________________________________________________
+<img src="../logPrefeitura.png" height=220 width=95%><h1> 
+<h3 style="
+line-height: 1.75;
+align-content: center;
+text-align: justify;">
+
+<br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
+<strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
+<strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2022 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+<strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
+<br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2022 </strong><br><br>
+<strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
+
+<br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+
+    </h3>
+
+
+
+    <h1>_____________________________________________________________________________________________________________________<br>
+    
             ________________________________________________________________________________________________________________________________
 			 <img src="../logPrefeitura.png" height=220 width=95%><h1> 
 				<h3 style="
@@ -125,9 +151,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/03/2021 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2021 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/03/2021 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2021 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				<br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
@@ -147,9 +173,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2020 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2020 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 160,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2020 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2020 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -171,9 +197,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2019 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2019 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 160,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2019 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2019 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -195,9 +221,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2018 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2018 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 160,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2018 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2018 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -222,9 +248,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2017 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2017 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 140,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2017 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2017 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -246,9 +272,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2016 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2016 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 140,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2016 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2016 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -270,9 +296,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2015 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2015 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 120,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2015 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2015 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -294,9 +320,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2014 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2014 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 112,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2014 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2014 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -318,9 +344,9 @@ x.innerHTML = `
 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ____/02/2013 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,29)}/${getRandomInt(1,5)}/2013 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 100,00<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/02/2013 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2013 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
 
 				
@@ -361,3 +387,8 @@ function sair(){
     localStorage.clear();
     window.location.href="PROTRATOR.html";
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }

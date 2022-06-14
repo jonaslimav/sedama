@@ -67,7 +67,8 @@ if(i==0){
             atividade: atividade = document.getElementById("atv").value,
             date:new Date()*-1,
             telefone:document.getElementById("tel").value,
-            
+            user:localStorage.getItem("user")
+
             
         };
     
@@ -102,7 +103,7 @@ function listar() {
     var rowIndex = 1;
     var valor=0;
     
-    databaseRef.orderByChild("date").once('value', function (snapshot) {
+    databaseRef.orderByChild("nomeProdutor").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
@@ -110,18 +111,19 @@ function listar() {
 
             var row = tblUsers.insertRow(rowIndex);
 
-            var cellNmber = row.insertCell(0)
-            var cellNome = row.insertCell(1);
-            var cellCPF = row.insertCell(2);
-            var cellLocalidade = row.insertCell(3);
-            var cellData = row.insertCell(4);
-            var cellAtv= row.insertCell(5);
-            var cellTel=row.insertCell(6);
-            var cellImprimir = row.insertCell(7);
-            
+           // var cellNmber = row.insertCell(0)
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellData = row.insertCell(3);
+            var cellAtv= row.insertCell(4);
+            var cellTel=row.insertCell(5);
+            var cellImprimir = row.insertCell(6);
+            var cellEdit = row.insertCell(7);
+            var cellExc=row.insertCell(8);
 
             
-            cellNmber.appendChild(document.createTextNode(childData.numero));
+            //cellNmber.appendChild(document.createTextNode(childData.numero));
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
@@ -129,6 +131,8 @@ function listar() {
             cellAtv.appendChild(document.createTextNode(childData.atividade));
            cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
+            cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
+            localStorage.getItem("user")=="jlvieira248@gmail.com"? cellExc.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
 
 
             rowIndex = rowIndex + 1;
@@ -251,4 +255,288 @@ function sair(){
 
     localStorage.clear();
     window.location.href="loguin.html";
+}
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("atvfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = ` <tr>
+                <td scope ="col">Nº</td>
+                <td scope="col">PRODUTOR</td>
+                <td scope="col">CPF</td>
+                <td scope="col">LOCALIDADE</td>
+                <td scope="col">DATA CAD.</td>
+                <td scope="col">ATIVIDADE</td>
+                <td scope= "col">TELEFONE</td>
+                <td scope="col">RELATORIO</td>
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('produtor/');
+    var rowIndex=1;
+    var quant =0;
+   
+    databaseRef.orderByChild("nomeProdutor").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if(String(childData.atividade).includes(String(item).toUpperCase())){
+                quant = quant + childData.quant;
+                var row = tblUsers.insertRow(rowIndex);
+
+                var cellNome = row.insertCell(0);
+                var cellCPF = row.insertCell(1);
+                var cellLocalidade = row.insertCell(2);
+                var cellData = row.insertCell(3);
+                var cellAtv= row.insertCell(4);
+                var cellTel=row.insertCell(5);
+                var cellImprimir = row.insertCell(6);
+                var cellEdit = row.insertCell(7);
+                var cellExc=row.insertCell(8);
+    
+                
+                //cellNmber.appendChild(document.createTextNode(childData.numero));
+                cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+                cellCPF.appendChild(document.createTextNode(childData.cpf));
+                cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+                cellData.appendChild(document.createTextNode(childData.dataAtual));
+                cellAtv.appendChild(document.createTextNode(childData.atividade));
+               cellTel.appendChild(document.createTextNode(childData.telefone));
+                cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="RELATORIO" onclick="imprimir(this)"}/>';
+                cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="EDIT." onclick="editPr('${childKey}')"}/>`;
+                localStorage.getItem("user")=="jlvieira248@gmail.com"? cellExc.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+    
+    rowIndex++;}
+          
+        });
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} </h6>`;
+    });       
+   
+    
+}
+function editPr(key){
+    var databaseRef = firebase.database().ref('produtor/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+              var atv2 =prompt("Insira o TELEFONE, se nao possuir, coloque NAO TEM?");
+              
+                  
+        
+                       childData.telefone= atv2;
+                       let updates = {}
+                       updates["/produtor/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+           window.location.reload();
+      });
+  
+}
+function completaDados(){
+   
+    var rowIndex = 0;
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('demanda22/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("telefone").value = childData.telefone;
+                     document.getElementById("dap").value = childData.dap;
+                     
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('trator2021/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('trator2022/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('anuencia2022/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("tel").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('anuencia/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
+    
+
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("tel").value = childData.telefone;
+
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
+
+    
+
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir ?");
+    if (x) {
+        firebase.database().ref('produtor').child(key).remove();
+        window.location.reload();
+    }
 }

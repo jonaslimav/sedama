@@ -13,8 +13,8 @@
 </head>
 
 <body style="background-color: #F2f2f2;">
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
     <script src="ControlCadProdutor.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -27,12 +27,8 @@
             <li class="nav-item ">
               <a class="nav-link" href="PROTRATOR.html">PROTRATOR <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Anuencia.html">   ANUENCIA   </a> 
-            </li>
-		  <li class="nav-item">
-                <a class="nav-link" href="dispensa.html">   DISPENSA AMB.   </a> 
-            </li>
+            
+		  
             <li class="nav-item active">
                 <a class="nav-link" href="ater.html">   ATER   </a> 
             </li>
@@ -66,17 +62,18 @@
       </nav>
 
     <div id= "geral" style="margin-top: 20px;">
-        
+      <br>
         <form  class="container col-12" action="javascript:InserirProdutor();">
             <form class="form-row">
                 <div class="row">
+                  <div class="col">
+                    <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
+
+                </div>
                     <div class="col">
                         <input class="form-control" placeholder="Nome Produtor" type="text "id="produtor" required><br>
                     </div>
-                    <div class="col">
-                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" required><br>
-
-                    </div>
+                    
                     <div class="col">
                         <input class="form-control" placeholder="Localidade" type="text" id="localidade" required><br>
                      
@@ -101,7 +98,8 @@
                 
                 <input type="submit" class="btn btn-primary">
         </form >
-        <div id="inf"></div>
+        <div id="inf"></div> <div id="filtro"> <div class="col">
+          <input class="form-control" placeholder="Atividade Buscar" type="text" id="atvfiltro" onchange="listarfiltro()" ><br>></div>
 
         <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
             <tr>
@@ -113,7 +111,7 @@
                 <td scope="col">ATIVIDADE</td>
                 <td scope= "col">TELEFONE</td>
                 <td scope="col">RELATORIO</td>
-                
+                <td scope="col">EDIT tel</td>
                
                 
             </tr>

@@ -20,12 +20,12 @@ function InserirProtocolo() {
 
 
 
-   
+   let demanda_id = false;
    var databaseRef = firebase.database().ref('demanda22/');
    
    
 
-        let demanda_id = false;
+        
 
 
         const demanda = {
@@ -39,6 +39,11 @@ function InserirProtocolo() {
             item: item = document.getElementById("item").value,
             date:new Date()*-1,
             dap:dap =document.getElementById("dap").value,
+            telefone:telefone=document.getElementById("telefone").value,
+            status:"",
+            dataEntrega:"",
+            user:localStorage.getItem("user")
+
             
             
         };
@@ -58,7 +63,13 @@ function InserirProtocolo() {
 
 function listar() {
 	
-	
+	// if((localStorage.getItem("user")!="jlvieira248@gmail.com")&&(localStorage.getItem("user")!="agrojorgeluiz@gmail.com") ){
+
+    //     var x = document.getElementById("form");
+    //     x.innerHTML="<br>";
+
+
+    // }
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
@@ -67,10 +78,8 @@ function listar() {
 
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('demanda22/');
-    var rowIndex = 1;
-    var horasTr=0;
-    var dias=0;
-    var dataAnt;
+    var rowIndex=1;
+   
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
@@ -84,24 +93,45 @@ function listar() {
             var cellRG = row.insertCell(3);            
             var cellItem= row.insertCell(4);
             var cellQuant = row.insertCell(5);
-            var cellTel=row.insertCell(6);
-            var cellImprimir = row.insertCell(7);
+            var cellDap = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellData = row.insertCell(8)
             
-          
+           var cellEdit = row.insertCell(9);
+           var cellImprimir = row.insertCell(10);
+           var cellUser=row.insertCell(11);
+           // var cellDelete = row.insertCell(10);
             
+            if(childData.telefone==undefined ){
+                childData.telefone="-";
+            }
+        
+            if(childData.status ==undefined ){
+            childData.status="";
+        }
+            if(childData.dataEntrega
+            ==undefined ){
+            childData.dataEntrega="";
+        }
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellRG.appendChild(document.createTextNode(childData.rg));
             cellItem.appendChild(document.createTextNode(childData.item));
             cellQuant.appendChild(document.createTextNode(childData.quant));
-            cellTel.appendChild(document.createTextNode(childData.dap));
-            cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellDap.appendChild(document.createTextNode(childData.dap));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellData.appendChild(document.createTextNode(childData.dataEntrega))
+         childData.status =="entregue"? cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>':"";
+       childData.status == ""? cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="ENTREGAR." onclick="entregar('${childKey}')"}/>`:"ENTREGUE";
+          //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+          cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
+          rowIndex++;
           
         });
 
-    });
+    });``
     
 }
 
@@ -119,7 +149,7 @@ var rgPr = data[3].innerHTML;
 var itemPr = data[4].innerHTML;
 var quantPr = data[5].innerHTML;
 var dap =data[6].innerHTML;
-
+var dt=data[8].innerHTML;
 var x = document.getElementById("geral");
 
 x.innerHTML = `
@@ -131,7 +161,7 @@ x.innerHTML = `
                 <strong>RG Nº:</strong>&nbsp   ${rgPr} &nbsp &nbsp &nbsp &nbsp
                 <strong> Item:</strong>  &nbsp ${itemPr} &nbsp&nbsp&nbsp&nbsp&nbsp <strong> QUANT:  </strong>  ${quantPr} &nbsp&nbsp <br> <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> <br><br>
-				<strong> SERVIDOR:______________________________________ <br><br>  DATA ENTREGA:______/______/__________</strong><br>
+				<strong> SERVIDOR:______________________________________ <br><br>  DATA ENTREGA:${dt}</strong><br>
 				<br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
 
                     <h1>_____________________________________________________________________________________________________________________<br>
@@ -145,7 +175,7 @@ x.innerHTML = `
                     <strong> ITEM:</strong>  &nbsp ${itemPr}<br><br>
                     <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp &nbsp &nbsp &nbsp 
                     <strong> QUANT.:  </strong>  ${quantPr}<br><br>
-					 <strong>DATA ENTREGA:______/______/__________</strong><br><br>
+					 <strong>DATA ENTREGA:${dt}</strong><br><br>
 					<strong> ASS. PRODUTOR: _____________________________________</strong><br><br>
 					<img src="../logotrator.png" alt="some text" height=200 width=90% >
                         </h1>`; 
@@ -185,6 +215,39 @@ function completaDados(){
     var rowIndex = 0;
     if(rowIndex==0){
 
+        var databaseRef = firebase.database().ref('demanda22/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("telefone").value = childData.telefone;
+                     document.getElementById("dap").value = childData.dap;
+                     
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
         var databaseRef = firebase.database().ref('trator2021/');
        
        
@@ -201,7 +264,69 @@ function completaDados(){
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
                      document.getElementById("rg").value= childData.rg;
-                     document.getElementById("tel").value = childData.telefone;
+                     document.getElementById("telefone").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('trator2022/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("telefone").value = childData.telefone;
+                   rowIndex ++;
+              
+                }
+             
+                
+               
+              
+              
+            });
+    
+        });
+    } 
+    if(rowIndex==0){
+
+        var databaseRef = firebase.database().ref('anuencia2022/');
+       
+       
+        var cpf = document.getElementById("cpf").value
+    
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+            
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+               
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("rg").value= childData.rg;
+                     document.getElementById("telefone").value = childData.telefone;
                    rowIndex ++;
               
                 }
@@ -235,10 +360,232 @@ function completaDados(){
     
         });
     }
+    if(rowIndex==0){
+       
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
+    
+                    document.getElementById("produtor").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("telefone").value = childData.telefone;
+
+                   rowIndex ++;
+              
+                }
+
+            });
+    
+        });
+    }
+    
     
 
 
 
     
 
+}
+function editar(key){
+    console.log(key);
+
+}
+function deletar(key){
+    
+    var x = window.confirm("Deseja realmente Excluir esta demanda?");
+    if (x) {
+        firebase.database().ref('demanda22').child(key).remove();
+        window.location.reload();
+    }
+}
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("itemfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = ` <tr>
+    <td scope="col">PRODUTOR</td>
+    <td scope="col">CPF</td>
+    <td scope="col">LOCALIDADE</td>
+    <td scope="col">RG</td>
+    <td scope="col">ITEM</td>
+    <td scope="col">QUANTIDADE</td>
+    <td scope="col">DAP</td>
+    <td scope="col">TELEFONE</td>
+    <td scope="col">DT. ENT.</td>
+    <td scope="col">ENTR.</td>
+    <td scope="col">IMPRIMIR</td>
+    
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('demanda22/');
+    var rowIndex=1;
+    var quant =0;
+    var quantE =0;
+    var prodS =0;
+    var prodA=0;
+   
+    databaseRef.orderByChild("data").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            console.log(item +" "+ childData.item);
+            if(item == childData.item){
+                quant = quant + Number(childData.quant);
+            var row = tblUsers.insertRow(rowIndex);
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            var row = tblUsers.insertRow(rowIndex);
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellRG = row.insertCell(3);            
+            var cellItem= row.insertCell(4);
+            var cellQuant = row.insertCell(5);
+            var cellDap = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellData = row.insertCell(8)
+       
+           var cellEdit = row.insertCell(9);
+           var cellImprimir = row.insertCell(10);
+           var cellUser=row.insertCell(11);
+           // var cellDelete = row.insertCell(10);
+            
+            if(childData.telefone==undefined ){
+                childData.telefone="-";
+            }if(childData.status
+                ==undefined ){
+                childData.status="";
+            }
+            if(childData.dataEntrega
+                ==undefined ){
+                childData.dataEntrega="";
+            }
+            
+            cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+            cellRG.appendChild(document.createTextNode(childData.rg));
+            cellItem.appendChild(document.createTextNode(childData.item));
+            cellQuant.appendChild(document.createTextNode(childData.quant));
+            cellDap.appendChild(document.createTextNode(childData.dap));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellData.appendChild(document.createTextNode(childData.dataEntrega));
+         childData.status =="entregue"? cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>':"";
+       childData.status == ""? cellEdit.innerHTML= `<input type="button" class="btn btn-danger" value="ENTREGAR." onclick="entregar('${childKey}')"}/>`:"ENTREGUE";
+          //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
+          cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
+
+          rowIndex++;
+childData.status=="entregue"?quantE+=childData.quant:"";
+childData.status=="entregue"?prodA++:"";
+prodS++;
+}
+          
+        });
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp Quant.&nbsp:${quant}&nbsp &nbsp &nbsp Quant. Entregue&nbsp:${quantE}&nbsp &nbsp &nbsp Demandas Atendidas.&nbsp:${prodA}&nbsp &nbsp &nbsp Demandas Restantes&nbsp:${prodS-prodA}</h6>`;
+    });       
+   
+    
+}
+
+
+
+function editDap(key){
+    var databaseRef = firebase.database().ref('demanda22/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+              var atv2 =prompt("Insira a DAP, se nao possuir, coloque NAO TEM?");
+              
+                  
+        
+                       childData.quant= Number(atv2);
+                       let updates = {}
+                       updates["/demanda22/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+         //   window.location.reload();
+      });
+  
+}
+
+function entregar(key){
+
+    if(confirm("Deseja Realizar essa Entrega?")){
+
+    var databaseRef = firebase.database().ref('demanda22/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+              var atv2 =prompt("Insira a quantidade entregue");
+              
+                  
+        
+                       childData.quant= Number(atv2);
+                       childData.status = "entregue";
+                       childData.user= localStorage.getItem("user");
+
+                       childData.dataEntrega
+                        = dataAtualFormatada();
+                       let updates = {}
+                       updates["/demanda22/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+          window.location.reload();
+      });
+}
+}
+function dataAtualFormatada() {
+    var data = new Date(),
+        dia = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0' + mes : mes,
+        anoF = data.getFullYear();
+    return diaF + "/" + mesF + "/" + anoF;
 }

@@ -13,8 +13,9 @@
 </head>
 
 <body style="background-color: #F2f2f2;">
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
     <script src="controlRecibos.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -29,12 +30,7 @@
             <li class="nav-item">
               <a class="nav-link" href="PROTRATOR.html">PROTRATOR <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Anuencia.html">   ANUENCIA   </a> 
-            </li>
-		  <li class="nav-item">
-                <a class="nav-link" href="dispensa.html">   DISPENSA AMB.   </a> 
-            </li>
+          
             <li class="nav-item">
                 <a class="nav-link" href="ater.html">   ATER   </a> 
             </li>
@@ -43,6 +39,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
+            </li> 
+              <li class="nav-item ">
+                <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
             </li>
             <li class="nav-item">
                 <a class="nav-link" onclick="sair()">   SAIR  </a>   
@@ -59,11 +58,13 @@
             <form class="form-row">
                 <div class="row">
                     <div class="col">
-                        <input class="form-control" placeholder="Nome Produtor" type="text "id="produtor" required><br>
+                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" required><br>
+
                     </div>
                     <div class="col">
-                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
+                        <input class="form-control" placeholder="Nome Produtor" type="text "id="produtor" required><br>
                     </div>
+                   
                     
                    
                             
@@ -77,8 +78,7 @@
                     </div>
                     
                     <div class="col">
-                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" required><br>
-
+                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
                     </div>
                   
                 </div>
