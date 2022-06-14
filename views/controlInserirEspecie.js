@@ -80,6 +80,7 @@ var horasT = 0;
 
 function listar() {
         console.log(localStorage.getItem("user"));
+<<<<<<< HEAD
 	// if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
 
     //     var x = document.getElementById("form");
@@ -88,6 +89,16 @@ function listar() {
     //     y.innerHTML ="<br>";
 
     // }
+=======
+	if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
+
+        var x = document.getElementById("form");
+        var y = document.getElementById("menu2")
+        x.innerHTML="<br>";
+        y.innerHTML ="<br>";
+
+    }
+>>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
@@ -144,8 +155,13 @@ if(childData.status!="execultado"){
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+<<<<<<< HEAD
             (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
           localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+=======
+          localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
+          localStorage.getItem("user")=="jlvieira248@gmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+>>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
           cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            if(dataAnt!=childData.dataAtual){
@@ -434,8 +450,90 @@ function deletar(key){
     }
 }
 
+<<<<<<< HEAD
+=======
 
 
+function listarfiltro() {
+	
+	
+    var item = document.getElementById("atvfiltro").value;
+    var tblUsers = document.getElementById('tbl_users_list');
+    tblUsers.innerHTML = `<tr>
+    <td scope="col">PRODUTOR</td>
+    <td scope="col">CPF</td>
+    <td scope="col">LOCALIDADE</td>
+    <td scope="col">OBS</td>
+    <td scope="col">HORAS</td>
+    <td scope="col">VALOR TOTAL</td>
+    <td scope="col">DATA</td>
+    <td scope="col"> TELEFONE</td>
+    <td scope="col">IMPRIMIR</td>
+    
+   
+    
+</tr> `;
+    var databaseRef = firebase.database().ref('trator2022/');
+    var rowIndex=1;
+    var horasTr=0;
+    var dias=0;
+    var dataAnt;
+   
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            if((String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nomeProdutor).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())&&childData.status!="execultado")){
+                var row = tblUsers.insertRow(rowIndex);
+            var cellNome = row.insertCell(0);
+            var cellCPF = row.insertCell(1);
+            var cellLocalidade = row.insertCell(2);
+            var cellRG = row.insertCell(3);            
+            var cellHoras = row.insertCell(4);
+            var cellValor = row.insertCell(5);
+            var cellData = row.insertCell(6);
+            var cellTel=row.insertCell(7);
+            var cellImprimir = row.insertCell(8);
+            
+            var cellExec = row.insertCell(9);
+                var cellDel = row.insertCell(10);
+            
+          
+            
+            cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
+            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellLocalidade.appendChild(document.createTextNode(childData.localidade));
+            cellRG.appendChild(document.createTextNode(childData.rg));
+            cellHoras.appendChild(document.createTextNode(horasFormat(childData.horas)));
+            cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
+            cellData.appendChild(document.createTextNode(childData.dataAtual));
+            cellTel.appendChild(document.createTextNode(childData.telefone));
+            cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            localStorage.getItem("user")=="jlvieira248@gmail.com"&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
+
+            localStorage.getItem("user")=="jlvieira248@gmail.com"?cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`:"";
+
+           if(dataAnt!=childData.dataAtual){
+               dias++;
+               dataAnt=childData.dataAtual;
+           }
+>>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
+
+            rowIndex = rowIndex + 1;
+            horasTr = horasTr+Number(childData.horas);
+            }
+            });
+    
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(horasTr*valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+    });
+    
+}
+function execultar(key){
+    var databaseRef = firebase.database().ref('trator2022/');
+
+<<<<<<< HEAD
 function listarfiltro() {
 	
 	
@@ -523,6 +621,17 @@ function execultar(key){
 
             if(key == childKey){
 
+=======
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+>>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
         
                        childData.status= "execultado";
                        let updates = {}
