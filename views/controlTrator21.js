@@ -17,7 +17,6 @@ var valor= 71.74;
 
 
 function listar() {
-<<<<<<< HEAD
     //     console.log(localStorage.getItem("user"));
 	// if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
 
@@ -27,17 +26,6 @@ function listar() {
     //     y.innerHTML ="<br>";
 
     // }
-=======
-        console.log(localStorage.getItem("user"));
-	if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
-
-        var x = document.getElementById("form");
-        var y = document.getElementById("menu2")
-        x.innerHTML="<br>";
-        y.innerHTML ="<br>";
-
-    }
->>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";

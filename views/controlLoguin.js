@@ -35,11 +35,7 @@ function login() {
             auth = user;
             localStorage.setItem("auth",true);
             localStorage.setItem("user",document.getElementById("email").value);
-<<<<<<< HEAD
             window.location.href = "PROTRATOR.html";
-=======
-            window.location.href = "Anuencia.html";
->>>>>>> 2366a746da433f575eea4c551e2079337d7ea6d3
         }).catch(function (error) {
             alert("Falha ao logar");
 
