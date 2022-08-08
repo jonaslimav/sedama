@@ -19,34 +19,51 @@ function InserirProtocolo() {
 
    var cpf = document.getElementById("cpf").value
     var i=0;
-    var horasT;
+    var databaseRef = firebase.database().ref('protocolo/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var childData = childSnapshot.val();
+                
+            if(childData.cpf==cpf && i==0){
+          alert("CPF ja consta em RECIBOS!!")
+           i=1;
+            } 
+
+
+
+            });
+            if(i==0){
+
+                let protocolo_id = false;
+
+
+                const protocolo = {
+            
+                    
+                    nomeProdutor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
+                    cpf: cpf = document.getElementById("cpf").value,
+                    localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
+                    rg: rg = document.getElementById("rg").value,
+                    date:new Date()*-1,
+                    user:localStorage.getItem("user")
+        
+                    
+                    
+                };
+            
+                if (!protocolo_id) {
+                    protocolo_id = firebase.database().ref().child('protocolo').push().key;
+                }
+                let updates = {}
+                updates["/protocolo/" + protocolo_id] = protocolo;
+                let protocolo_ref = firebase.database().ref();
+                firebase.database().ref().update(updates);
+                window.location.reload();
+               
+    }});
   
 
-        let protocolo_id = false;
-
-
-        const protocolo = {
-    
-            
-            nomeProdutor: nomeProdutor = document.getElementById("produtor").value.toUpperCase(),
-            cpf: cpf = document.getElementById("cpf").value,
-            localidade: localidade = document.getElementById ("localidade").value.toUpperCase(),
-            rg: rg = document.getElementById("rg").value,
-            date:new Date()*-1,
-            user:localStorage.getItem("user")
-
-            
-            
-        };
-    
-        if (!protocolo_id) {
-            protocolo_id = firebase.database().ref().child('protocolo').push().key;
-        }
-        let updates = {}
-        updates["/protocolo/" + protocolo_id] = protocolo;
-        let protocolo_ref = firebase.database().ref();
-        firebase.database().ref().update(updates);
-        window.location.reload();
        
    
    
@@ -54,7 +71,22 @@ function InserirProtocolo() {
   
     
 }
+function deletar(cpf){
 
+    var databaseRef = firebase.database().ref('protocolo/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var childData = childSnapshot.val();
+              var key =childSnapshot.key;  
+            if(childData.cpf==cpf ){
+                firebase.database().ref('protocolo').child(key).remove();
+                
+            } 
+        });
+    })
+
+}
 function listar() {
 	
 	

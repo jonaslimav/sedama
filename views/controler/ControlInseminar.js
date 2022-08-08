@@ -401,7 +401,7 @@ function deletar(key){
     
     var x = window.confirm("Deseja realmente Excluir esta solicitacao?");
     if (x) {
-        firebase.database().ref('proacudes2022').child(key).remove();
+        firebase.database().ref('inseminar2022').child(key).remove();
         window.location.reload();
     }
 }
