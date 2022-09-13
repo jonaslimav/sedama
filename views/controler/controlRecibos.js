@@ -119,7 +119,7 @@ function listar() {
             
             
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
-            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellCPF.innerHTML=`<input type="button" class="btn btn" value="${childData.cpf}" onclick="deletar('${childData.cpf}')"}/>`;
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellRG.appendChild(document.createTextNode(childData.rg));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
