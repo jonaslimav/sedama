@@ -84,7 +84,9 @@ function deletar(cpf){
                 
             } 
         });
+        window.location.reload();
     })
+ 
 
 }
 function listar() {

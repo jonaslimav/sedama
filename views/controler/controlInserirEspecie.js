@@ -109,7 +109,7 @@ function listar() {
             if(childData.status ==undefined){
                 childData.status = "";
             }
-if(childData.status!="execultado"){
+
             var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
@@ -120,9 +120,8 @@ if(childData.status!="execultado"){
             var cellData = row.insertCell(6);
             var cellTel=row.insertCell(7);
             var cellImprimir = row.insertCell(8);
-            var cellExec = row.insertCell(9);
-                var cellDel = row.insertCell(10);
-            var cellUser =row.insertCell(11);
+          
+            var cellUser =row.insertCell(9);
             
             if(childData.telefone==undefined ){
                 childData.telefone="-";
@@ -144,8 +143,6 @@ if(childData.status!="execultado"){
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-            (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
-          localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
           cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            if(dataAnt!=childData.dataAtual){
@@ -155,7 +152,7 @@ if(childData.status!="execultado"){
        
            val = val +childData.valorTotal;
             rowIndex = rowIndex + 1;
-            horasTr = horasTr+Number(childData.horas);}
+            horasTr = horasTr+Number(childData.horas);
         });
 
         document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(val).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
