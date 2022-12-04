@@ -5,5 +5,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/views/loguin.html"
+  to = "/loguin.html"
   status = 200
