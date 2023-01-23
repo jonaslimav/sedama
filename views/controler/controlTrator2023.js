@@ -210,7 +210,7 @@ x.innerHTML = `
 					_______________________________________________________________________________________________________________________<br>
 					<h3> Via Tratorista</h3><img src="../logPrefeitura.png" height=220 width=95%><h1>
                     <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
-                    <strong>RG:</strong>&nbsp   &nbsp &nbsp &nbsp &nbsp
+                    <strong>RG:</strong>&nbsp ${rgPr}   &nbsp &nbsp &nbsp &nbsp
                     <strong> DATA:</strong>  &nbsp ${dataPr}<br><br>
                     <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp &nbsp &nbsp &nbsp 
                     <strong> QUANT. HORAS:  </strong>  ${horaPr}<br><br>
