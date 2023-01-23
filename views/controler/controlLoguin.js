@@ -35,7 +35,7 @@ function login() {
             auth = user;
             localStorage.setItem("auth",true);
             localStorage.setItem("user",document.getElementById("email").value);
-            window.location.href = "PROTRATOR.html";
+            window.location.href = "PROTRATOR2023.html";
         }).catch(function (error) {
             alert("Falha ao logar");
 

@@ -80,14 +80,21 @@ var horasT = 0;
 
 function listar() {
         console.log(localStorage.getItem("user"));
-	// if(localStorage.getItem("user")!="jlvieira248@gmail.com"){
+ if(localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
 
-    //     var x = document.getElementById("form");
-    //     var y = document.getElementById("menu2")
-    //     x.innerHTML="<br>";
-    //     y.innerHTML ="<br>";
+         var x = document.getElementById("navbarNavDropdown");
+         var y = document.getElementById("menu2")
+         x.innerHTML=` <ul class="navbar-nav">
+         <li class="nav-item active">
+           <a class="nav-link" href="PROTRATOR2023.html">PROTRATOR <span class="sr-only">(current)</span></a>
+         </li>       
+         <li class="nav-item">
+             <a class="nav-link" onclick="sair()">   SAIR  </a>   
+         </li>
+       </ul>`;
+        y.innerHTML ="<br>";
 
-    // }
+    }
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";

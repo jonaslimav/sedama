@@ -84,7 +84,7 @@ function listar() {
 	
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
-      window.location.href = "loguin.html";
+      window.location.href = "views/loguin.html";
 
     }
     
