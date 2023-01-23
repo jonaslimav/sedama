@@ -149,7 +149,7 @@ function listar() {
             cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
+            cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this,'${childData.cpf}')"}/>`;
           cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
            if(dataAnt!=childData.dataAtual){
@@ -179,7 +179,7 @@ function dataAtualFormatada() {
     return diaF + "/" + mesF + "/" + anoF;
 }
 
-function imprimir(dt){
+function imprimir(dt,cpf){
 
 var data=dt.parentNode.parentNode.children;
 var nomePr = data[0].innerHTML;
@@ -197,7 +197,7 @@ x.innerHTML = `
             ________________________________________________________________________________________________________________________________
 				<h3> Via Produtor</h3> <img src="../logPrefeitura.png" height=220 width=95%><h1> 
 				<h1>
-                <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
+                <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpf}<br><br>
                 <strong>RG Nº:</strong>&nbsp  ${rgPr}  &nbsp &nbsp &nbsp &nbsp
                 <strong> DATA:</strong>  &nbsp ${dataPr} &nbsp&nbsp&nbsp&nbsp&nbsp <strong> QUANT. HORAS:  </strong>  ${horaPr} &nbsp&nbsp <br> <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  ${valorPr}<br><br>
@@ -209,7 +209,7 @@ x.innerHTML = `
 
 					_______________________________________________________________________________________________________________________<br>
 					<h3> Via Tratorista</h3><img src="../logPrefeitura.png" height=220 width=95%><h1>
-                    <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpfPr}<br><br>
+                    <br> <strong> PRODUTOR:</strong>&nbsp ${nomePr} &nbsp &nbsp &nbsp &nbsp<strong>CPF:</strong> &nbsp  ${cpf}<br><br>
                     <strong>RG:</strong>&nbsp ${rgPr}   &nbsp &nbsp &nbsp &nbsp
                     <strong> DATA:</strong>  &nbsp ${dataPr}<br><br>
                     <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp &nbsp &nbsp &nbsp 
