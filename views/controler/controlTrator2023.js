@@ -21,6 +21,7 @@ function InserirProtocolo() {
 
    var cpf = document.getElementById("cpf").value
 var horasT = 0;
+var horasTotais = 0;
     var i=0;
    var databaseRef = firebase.database().ref('trator2023/');
     
@@ -33,13 +34,21 @@ var horasT = 0;
             i++;
           
            }
+           horasTotais=horasTotais+ Number(childData.horas);
        });
        horasT = horasT + Number(document.getElementById("horas").value);
+       horasTotais = horasTotais+Number(document.getElementById("horas").value);
        console.log(horasT);
-       if(horasT>5){
+       
+       
+       if(horasTotais>500 && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+        alert(` Horas ultrapassam o Limite do periodo (500 hrs): ${horasFormat(horasTotais)}!!! `);
+
+       }else if(horasT>5){
 
         alert(`CPF existente na base de dados e Horas ultrapassam o Limite: ${horasFormat(horasT)}!!! `);
-       }else{
+        
+       }else {
 
         let protocolo_id = false;
 
@@ -162,7 +171,7 @@ function listar() {
             horasTr = horasTr+Number(childData.horas);
         });
 
-        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(val).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
+        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECUTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp DIAS:&nbsp${dias}&nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(val).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h6>`;
     });
     
 }
@@ -334,9 +343,13 @@ function completaDados(){
     
                     document.getElementById("produtor").value =childData.nomeProdutor;
                     document.getElementById ("localidade").value =childData.localidade;
-                     document.getElementById("rg").value= childData.rg;
                      document.getElementById("tel").value = childData.telefone;
                    rowIndex ++;
+
+                   if(Number(childData.rg) > 0 ){
+                    document.getElementById("rg").value= childData.rg;
+
+                }
               
                 }
              
