@@ -166,7 +166,7 @@ databaseRef.orderByChild("date").once('value', function (snapshot) {
 var x = document.getElementById("geral");
 
 x.innerHTML = `
-                <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
+                <img src="../views/PARTECIMA.png" height=300 width=100%><h2 style="
                 text-align: center;"> 
                <strong> Relatorio de Visitas <br>00${numeral}</strong>
                             </h2><h4 style="
