@@ -41,8 +41,8 @@ var horasTotais = 0;
        console.log(horasT);
        
        
-       if(horasTotais>985 && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
-        alert(` Horas ultrapassam o Limite do periodo (500 hrs): ${horasFormat(horasTotais)}!!! `);
+       if(horasTotais>1000 && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+        alert(` Horas ultrapassam o Limite do periodo (1000hrs): ${horasFormat(horasTotais)}!!! `);
 
        }else if(horasT>5){
 
