@@ -27,7 +27,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">SEDAMA QUIXELO</a>
+        <a class="navbar-brand" href="#"><img src="../semeando.png" height="100px" width="130px"> <br><h6 style="color: green;"><strong> Sedama Quixelo</strong></h6></a>
      
         <div class="navbar-brand"  id="navbarNavDropdown">
           <ul class="navbar-nav">
@@ -84,9 +84,10 @@
 
 
     <div id= "geral" style="margin-top: 20px;">
-        <div id="form">
-        <form  class="container col-12" action="javascript:InserirProtocolo();">
-            <form class="form-row">
+        
+        <div id="form" style=" background-color: rgb(160, 188, 229);  ">
+            <form  class="container col-12" action="javascript:InserirProtocolo();">
+            <form class="form-row"><br>
                 <div class="row">
                     <div class="col">
                         <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
@@ -132,24 +133,24 @@
 
                 
                 <input type="submit" class="btn btn-primary">
-        </form >
+        </form ><br>
     </div>
-        <div class="col">
-            <input class="form-control" placeholder="Atividade Buscar" type="text" id="atvfiltro" onchange="listarfiltro()" ><br>></div>
-        <div id="inf"></div>
+        <div class="col" style="background-color:  rgb(160, 188, 229);">
+            <input class="form-control" placeholder="Buscar" type="text" id="atvfiltro" onchange="listarfiltro()" ><br>></div>
+        <div id="inf"style="background-color:  rgb(160, 188, 229);"></div>
 
         <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
             <tr>
-                <td scope="col">PRODUTOR</td>
-                <td scope="col">CPF</td>
-                <td scope="col">LOCALIDADE</td>
-                <td scope="col">OBS</td>
-                <td scope="col">HORAS</td>
-                <td scope="col">VALOR TOTAL</td>
-                <td scope="col">DATA</td>
-                <td scope="col"> TELEFONE</td>
-                <td scope="col"> STATUS EXEC.</td>
-                <td scope="col">IMPRIMIR</td>
+                <td scope="col"><strong>PRODUTOR</strong></td>
+                <td scope="col"><stong>CPF</strong></td>
+                <td scope="col"><strong>LOCALIDADE</strong></td>
+                <td scope="col"><strong>RG</strong></td>
+                <td scope="col"><strong>HORAS</strong></td>
+                <td scope="col"><strong>VALOR TOTAL</strong></td>
+                <td scope="col"><strong>DATA</strong></td>
+                <td scope="col"> <strong>TELEFONE</strong></td>
+                <td scope="col"> <strong>STATUS EXEC.</strong></td>
+                <td scope="col"><strong>IMPRIMIR</strong></td>
                 
 
                 

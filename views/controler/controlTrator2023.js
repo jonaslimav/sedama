@@ -160,7 +160,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this,'${childData.cpf}')"}/>`;
-          cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`;
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
           
             cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
@@ -514,7 +514,7 @@ function listarfiltro() {
             cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`;
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
 
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
             (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
