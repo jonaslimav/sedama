@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pro Trator</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylleee.css">
+
+</head>
+
+<body style="background-color: #F2f2f2;">
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
+    <script src="controler/controlPNHR.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="../semeando.png" height="100px" width="130px"> <br><h6 style="color: green;"><strong> Sedama Quixelo</strong></h6></a>
+       
+        <div class="navbar-brand" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" href="PROTRATOR.html">PROTRATOR <span class="sr-only">(current)</span></a>
+            </li>
+           
+           
+            <li class="nav-item ">
+                <a class="nav-link" href="ater.html">   ATER   </a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="recibos.html">   REC.TRATOR   </a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
+            </li>
+            
+            <li class="nav-item ">
+                <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
+            </li>   <li class="nav-item active">
+                <a class="nav-link active" href="PNHR.html">   PNHR  </a> 
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="Inseminar.html">   INSEMINAÇÃO </a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="sair()">   SAIR  </a>   
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="menu2">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+            
+            <div class="navbar-brand" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link active" href="PNHR.html">Cadastro<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link " href="">Filtro<span class="sr-only">(current)</span></a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+       </div>
+        <div id="alterar"></div>
+
+      <div id= "geral" style="margin-top: 20px;">
+        <div id="form">
+        <form  class="container col-12" action="javascript:InserirProtocolo();">
+            <form class="form-row">
+                <strong>INFORMAÇÕES PRODUTOR</strong>
+
+                <div class="row" style="background-color: coral; padding-top: 20px;">
+                    <div class="col">
+                        <input class="form-control" placeholder="NOME" type="text" id="nome" required><br>
+                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
+                        <div class="col">
+                            <div class="col">
+                                <select class="custom-select" id="escolaridade">
+                                    <option selected>ESCOLARIDADE</option>
+                                    <option value="1"> Ensino Fundamental incompleto </option>
+                                    <option value="2">Ensino Fundamental completo </option>
+                                    <option value="3"> Ensino Medio incompleto </option>
+                                    <option value="4"> Ensino Medio completo </option>
+                                    <option value="5"> Ensino Superior incompleto </option>
+                                    <option value="6"> Ensino Superior completo </option>
+    
+                                
+                                </select><br>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
+                        <input class="form-control" placeholder="PROFISSAO" type="text "id="profissao" required><br>
+
+                    
+                        <div class="col">
+                            <select class="custom-select" id="cor">
+                                <option selected>COR</option>
+                                <option value="1"> Branco </option>
+                                <option value="2">Preto </option>
+                                <option value="3"> Pardo </option>
+                                <option value="4"> Indigena </option>
+                                <option value="5"> Amarelo </option>
+                            
+                            </select><br>
+                           
+                        </div>
+                    
+                       
+                    </div>
+                    
+                    <div class="col">
+                        <input class="form-control" placeholder="ENDEREÇO" type="text" id="localidade" required><br>
+                       
+                        <input class="form-control" placeholder="FILIAÇÃO" type="text" id="filiacao" ><br>
+                        <div class="col">
+                            <select class="custom-select" id="estCivil">
+                                <option selected>ESTADO CIVIL</option>
+                                <option value="1"> SOLTEIRO </option>
+                                <option value="2">CASADO </option>
+                                <option value="3"> AMASIADO </option>
+                                <option value="4"> DIVORCIADO </option>
+                                <option value="5"> OUTRO </option>
+                            
+                            </select><br>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input  class="form-control" placeholder="DATA NASCIMENTO " type="date" id="dtnasc" required><br>
+
+                        <input class="form-control" placeholder="CONTATO" type="text"  id="telefone" ><br>
+                        <input class="form-control" placeholder="RENDA" type="number"  id="renda" required ><br>
+
+
+
+                    </div>
+
+                </div><br><br>
+
+
+
+
+
+
+
+
+                <form class="form-row">
+                    <strong>INFORMAÇÕES CONJUGE</strong>
+                    <div class="row" style="background-color: rgb(208, 240, 28); padding-top: 20px;">
+                        <div class="col">
+                            <input class="form-control" placeholder="NOME" type="text" id="nomeConj" ><br>
+                            <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpfConj" onblur="completaDados()" ><br>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" placeholder="RG" type="text" id="rgConj" ><br>
+                            <input class="form-control" placeholder="PROFISSAO" type="text "id="profissaoConj" ><br>
+    
+                        
+                        
+                           
+                        </div>
+                        
+                        <div class="col">
+                           
+                            <input class="form-control" placeholder="FILIAÇÃO" type="text" id="filiacaoConj" ><br>
+                            <div class="col">
+                                <select class="custom-select" id="escolaridadeConj">
+                                    <option selected>ESCOLARIDADE</option>
+                                    <option value="1"> Ensino Fundamental incompleto </option>
+                                    <option value="2">Ensino Fundamental completo </option>
+                                    <option value="3"> Ensino Medio incompleto </option>
+                                    <option value="4"> Ensino Medio completo </option>
+                                    <option value="5"> Ensino Superior incompleto </option>
+                                    <option value="6"> Ensino Superior completo </option>
+    
+                                
+                                </select><br>
+                            </div>
+                          </div>
+                       
+                        <div class="col">
+                            <input  class="form-control" placeholder="DATA NASCIMENTO " type="date" id="dtnascConj" ><br>
+    
+                            <input class="form-control" placeholder="RENDA" type="number"  id="rendaConj"  ><br>
+    
+    
+    
+                        </div>
+    
+                    </div><br><br>
+    
+                   
+
+
+
+
+                <strong>INFORMAÇÕES RESIDENCIA</strong>
+                <div class="row" style="background-color: rgb(28, 240, 212); padding-top: 20px;">
+                    <div class= "col">
+                    <input class="form-control" placeholder="QUANT. BANHEIROS" type="number" id="banheiros" ><br>
+
+                   
+
+                        <select class="custom-select" id="material">
+                            <option selected>MATERIAL ULTILIZADO NA CONSTRUÇÃO</option>
+                            <option value="1"> Alvenaria </option>
+                            <option value="2"> Taipa </option>
+                            <option value="3"> Madeira </option>
+                          
+                        </select><br><br>
+                    
+
+                        <div class="col">
+                            <select class="custom-select" id="qualificacao">
+                                <option selected>QUALIFICACAO</option>
+                                <option value="1"> Ribeirinho </option>
+                                <option value="2"> Indigena </option>
+                                <option value="3"> Pescador </option>
+                                <option value="4"> Atingido Barragem </option>
+                              
+                            </select><br>
+                        </div><br>
+                   </div>
+                    
+                    <div class="col">
+                        <input class="form-control" placeholder="VALOR ALUGUEL(se houver)" type="number"  id="aluguel"  ><br>
+                        <input class="form-control" placeholder="VALOR PRESTAÇÃO (se houver)" type="number"  id="prestacao"  ><br>
+                        <input class="form-control" placeholder="POSSUI TERRENO PROPRIO?" type="text"  id="terreno"  ><br>
+                     
+                    </div>
+             
+                   
+                    
+                    <div class="col">
+                        <input class="form-control" placeholder="N° PESSOAS NA RESIDENCIA" type="number" id="npessoas" required><br>
+
+                        <input class="form-control" placeholder="TEMPO MORADIA /ANOS" type="number" id="tempo" ><br>
+                        <div class="col">
+                            <select class="custom-select" id="moradia">
+                                <option selected>SITUAÇÃO DE MORADIA</option>
+                                <option value="1"> Propria </option>
+                                <option value="2"> Alugada </option>
+                                <option value="3"> Cedida </option>
+                                <option value="4"> Compartilhada </option>
+                              
+                            </select><br>
+                        </div>
+
+                    </div>
+                
+                </div><br><br>
+                <strong>INFORMAÇÕES ADICIONAIS</strong>
+
+                <div class="row" style="background-color: rgb(201, 176, 241); padding-top: 20px;">
+                    <div class="col">
+                            <textarea class="form-control" placeholder="OBSERVACOES" type="text"  id="obs" ></textarea>
+<br>                            <textarea class="form-control" placeholder="POSSUI ALGUEM NA RESIDENCIA COM NECESSIDADES ESPECIAIS? QUEM?" type="text"  id="especiais" ></textarea>
+<br><br>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" placeholder="PARTICIPA DE ALGUMA ORGANIZAÇÃO SOCIAL?" type="text"  id="orgSocial" ><br>
+
+                        </div>
+                    </div>
+                </div>
+                <br> <br> <br>
+                
+                <input type="submit" class="btn btn-primary">
+        </form >
+   <br>
+   <br> <br> <br> <br> <br> <br> <br> <br>
+    </div>
+</div>
+
+    
+    
+</body>
+
+</html>

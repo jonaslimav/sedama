@@ -40,9 +40,9 @@ var horasTotais = 0;
        horasTotais = horasTotais+Number(document.getElementById("horas").value);
        console.log(horasT);
        
-       
-       if(horasTotais>1100 && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
-        alert(` Horas ultrapassam o Limite do periodo (1100hrs): ${horasFormat(horasTotais)}!!! `);
+       var horasLimite= 1200;
+       if(horasTotais>horasLimite && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+        alert(` Horas ultrapassam o Limite do periodo (${horasLimite}hrs): ${horasFormat(horasTotais)}!!! `);
 
        }else if(horasT>5){
 
