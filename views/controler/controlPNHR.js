@@ -199,207 +199,207 @@ nomeConj = "";
 
 
 
-// function sair(){
+function sair(){
 
-//     localStorage.clear();
-//     window.location.href="PROTRATOR.html";
-// }
-// function completaDados(){
+    localStorage.clear();
+    window.location.href="PROTRATOR.html";
+}
+function completaDados(){
    
-//     var rowIndex = 0;
-//     if(rowIndex==0){
+    var rowIndex = 0;
+    if(rowIndex==0){
 
-//         var databaseRef = firebase.database().ref('demanda22/');
+        var databaseRef = firebase.database().ref('demanda22/');
        
        
-//         var cpf = document.getElementById("cpf").value
+        var cpf = document.getElementById("cpf").value
     
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
             
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
                
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                      document.getElementById("telefone").value = childData.telefone;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("telefone").value = childData.telefone;
                      
-//                    rowIndex ++;
+                   rowIndex ++;
               
-//                 }
+                }
              
                 
                
               
               
-//             });
+            });
     
-//         });
-//     } 
-//     if(rowIndex==0){
+        });
+    } 
+    if(rowIndex==0){
 
-//         var databaseRef = firebase.database().ref('trator2021/');
+        var databaseRef = firebase.database().ref('trator2021/');
        
        
-//         var cpf = document.getElementById("cpf").value
+        var cpf = document.getElementById("cpf").value
     
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
             
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
                
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                      document.getElementById("telefone").value = childData.telefone;
-//                    rowIndex ++;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("telefone").value = childData.telefone;
+                   rowIndex ++;
               
-//                 }
+                }
              
                 
                
               
               
-//             });
+            });
     
-//         });
-//     } 
-//     if(rowIndex==0){
+        });
+    } 
+    if(rowIndex==0){
 
-//         var databaseRef = firebase.database().ref('trator2022/');
+        var databaseRef = firebase.database().ref('trator2022/');
        
        
-//         var cpf = document.getElementById("cpf").value
+        var cpf = document.getElementById("cpf").value
     
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
             
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
                
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                      document.getElementById("telefone").value = childData.telefone;
-//                    rowIndex ++;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("telefone").value = childData.telefone;
+                   rowIndex ++;
               
-//                 }
+                }
              
                 
                
               
               
-//             });
+            });
     
-//         });
-//     } 
-//     if(rowIndex==0){
+        });
+    } 
+    if(rowIndex==0){
 
-//         var databaseRef = firebase.database().ref('anuencia2022/');
+        var databaseRef = firebase.database().ref('anuencia2022/');
        
        
-//         var cpf = document.getElementById("cpf").value
+        var cpf = document.getElementById("cpf").value
     
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
             
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
                
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                      document.getElementById("telefone").value = childData.telefone;
-//                    rowIndex ++;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                     document.getElementById("telefone").value = childData.telefone;
+                   rowIndex ++;
               
-//                 }
+                }
              
                 
                
               
               
-//             });
+            });
     
-//         });
-//     } 
-//     if(rowIndex==0){
+        });
+    } 
+    if(rowIndex==0){
        
-//         var databaseRef = firebase.database().ref('anuencia/');
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        var databaseRef = firebase.database().ref('anuencia/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
         
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
-//                 console.log(`${cpf} == ${childData.cpf}`);
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                    rowIndex ++;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                   rowIndex ++;
               
-//                 }
+                }
 
-//             });
+            });
     
-//         });
-//     }
-//     if(rowIndex==0){
+        });
+    }
+    if(rowIndex==0){
        
-//         var databaseRef = firebase.database().ref('produtor/');
-//         databaseRef.orderByChild("date").once('value', function (snapshot) {
+        var databaseRef = firebase.database().ref('produtor/');
+        databaseRef.orderByChild("date").once('value', function (snapshot) {
         
-//             snapshot.forEach(function (childSnapshot) {
-//                 var childKey = childSnapshot.key;
-//                 var childData = childSnapshot.val();
-//                 console.log(`${cpf} == ${childData.cpf}`);
-//                 if((childData.cpf == cpf)&& rowIndex==0){
+            snapshot.forEach(function (childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(`${cpf} == ${childData.cpf}`);
+                if((childData.cpf == cpf)&& rowIndex==0){
     
-//                     document.getElementById("responsavel").value =childData.nomeProdutor;
-//                     document.getElementById ("localidade").value =childData.localidade;
-//                     document.getElementById("telefone").value = childData.telefone;
+                    document.getElementById("nome").value =childData.nomeProdutor;
+                    document.getElementById ("localidade").value =childData.localidade;
+                    document.getElementById("telefone").value = childData.telefone;
 
-//                    rowIndex ++;
+                   rowIndex ++;
               
-//                 }
+                }
 
-//             });
+            });
     
-//         });
-//     }
+        });
+    }
     
-    
-
-
-
     
 
-// }
+
+
+    
+
+}
 
 
 
-// function dataAtualFormatada() {
-//     var data = new Date(),
-//         dia = data.getDate().toString(),
-//         diaF = (dia.length == 1) ? '0' + dia : dia,
-//         mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-//         mesF = (mes.length == 1) ? '0' + mes : mes,
-//         anoF = data.getFullYear();
-//     return diaF + "/" + mesF + "/" + anoF;
-// }
-// function formatarData(dt){
+function dataAtualFormatada() {
+    var data = new Date(),
+        dia = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0' + mes : mes,
+        anoF = data.getFullYear();
+    return diaF + "/" + mesF + "/" + anoF;
+}
+function formatarData(dt){
 
-//     var ano = String(dt).slice(0,4);
-//     var mes =String(dt).slice(5,7);
-//     var dia =String(dt).slice(-2);
+    var ano = String(dt).slice(0,4);
+    var mes =String(dt).slice(5,7);
+    var dia =String(dt).slice(-2);
 
-//     return dia+"/"+mes+"/"+ano;
-// }
+    return dia+"/"+mes+"/"+ano;
+}
 
 // function imprimir(dt){
 
