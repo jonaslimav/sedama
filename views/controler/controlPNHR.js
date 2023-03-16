@@ -20,6 +20,10 @@ function InserirProtocolo() {
 
 
    let residencia_id = false;
+
+
+
+
    
 // receber atributos do formulario
 
@@ -72,7 +76,22 @@ nomeConj = "";
  rendaConj = "";
 
 }
-
+var i=0;
+var databaseRef = firebase.database().ref('trator2023/');
+    
+   databaseRef.orderByChild("date").once('value', function (snapshot) {
+       snapshot.forEach(function (childSnapshot) {
+           var childData = childSnapshot.val();
+               
+           if(childData.cpf==cpf||childData.cpfConj==cpf){
+               
+            i++;
+          
+           }
+       });
+       if(i>0){
+           alert("Residencia ja cadastrada!")
+       }else{
         const residencia = {
     
             
@@ -126,7 +145,7 @@ nomeConj = "";
         alert("Cadastrado");
 
         window.location.reload();
-    
+       }});
     
     }
     
@@ -457,3 +476,8 @@ function formatarData(dt){
 //       //  printDiv();
     
 //     }
+
+
+
+
+
