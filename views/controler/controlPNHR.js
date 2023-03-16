@@ -1,66 +1,145 @@
-// var firebaseConfig = {
-//     apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
-//     authDomain: "sedama-4dd5c.firebaseapp.com",
-//     databaseURL: "https://sedama-4dd5c-default-rtdb.firebaseio.com",
-//     projectId: "sedama-4dd5c",
-//     storageBucket: "sedama-4dd5c.appspot.com",
-//     messagingSenderId: "492670080550",
-//     appId: "1:492670080550:web:42ad24f36c7f5cd578b8e7"
-//   };
+var firebaseConfig = {
+    apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
+    authDomain: "sedama-4dd5c.firebaseapp.com",
+    databaseURL: "https://sedama-4dd5c-default-rtdb.firebaseio.com",
+    projectId: "sedama-4dd5c",
+    storageBucket: "sedama-4dd5c.appspot.com",
+    messagingSenderId: "492670080550",
+    appId: "1:492670080550:web:42ad24f36c7f5cd578b8e7"
+  };
 
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 // window.onload = listar;
 
 
 
 
-// function InserirProtocolo() {
+function InserirProtocolo() {
 
 
 
-//    let cadastro_id = false;
+   let residencia_id = false;
    
-   
+// receber atributos do formulario
 
-        
-// var  dtnasc = document.getElementById("dtnasc").value;
+var nome= document.getElementById("nome").value;
+var cpf = document.getElementById("cpf").value;
+var escolaridade= document.getElementById("escolaridade").value;
+var rg = document.getElementById("rg").value;
+var profissao = document.getElementById("profissao").value;
+var localidade = document.getElementById("localidade").value;
+var filiacao  = document.getElementById("filiacao").value;
+var dtnasc = document.getElementById("dtnasc").value;
+var telefone = document.getElementById("telefone").value;
+var renda = document.getElementById("renda").value;
+var nomeConj = document.getElementById("nomeConj").value;
+var cpfConj = document.getElementById("cpfConj").value;
+var rgConj = document.getElementById("rgConj").value;
+var profissaoConj = document.getElementById("profissaoConj").value;
+var filiacaoConj = document.getElementById("filiacaoConj").value;
+var escolaridadeConj = document.getElementById("escolaridadeConj").value;
+var dtnascConj = document.getElementById("dtnascConj").value;
+var rendaConj = document.getElementById("rendaConj").value;
+var banheiros = document.getElementById("banheiros").value;
+var material = document.getElementById("material").value;
+var qualificacao = document.getElementById("qualificacao").value;
+var aluguel = document.getElementById("aluguel").value;
+var prestacao = document.getElementById("prestacao").value;
+var terreno = document.getElementById("terreno").value;
+var npessoas =  document.getElementById("npessoas").value;
+var tempo = document.getElementById("tempo").value;
+var moradia = document.getElementById("moradia").value;
+var obs =  document.getElementById("obs").value;
+var especiais = document.getElementById("especiais").value;
+var orgSocial = document.getElementById("orgSocial").value;
+var cor = document.getElementById("cor").value;
+var estCivil = document.getElementById("estCivil").value;
 
-//         const cadastro = {
+if(moradia=="1"){
+    aluguel=0,
+    prestacao=0;
+}
+
+if(estCivil=="1"||estCivil=="4"){
+nomeConj = "";
+ cpfConj = "";
+ rgConj = "";
+ profissaoConj = "";
+ filiacaoConj = "";
+ escolaridadeConj = "";
+ dtnascConj = "";
+ rendaConj = "";
+
+}
+
+        const residencia = {
     
             
-//             nome: nome = document.getElementById("nome").value.toUpperCase(),
-//             cpf: cpf = document.getElementById("cpf").value,
-//             endereco: localidade = document.getElementById ("localidade").value.toUpperCase(),
-//             rg: rg = document.getElementById("rg").value,
-//             nis:nis = Number(document.getElementById("nis").value),
-//             dtnasc: formatarData(dtnasc),
-//             date:new Date()*-1,
-//             data: dataAtualFormatada(),
-//             profissao: profissao =document.getElementById("profissao").value,
-//             contato:telefone=document.getElementById("telefone").value,
-//             npessoas:atv=document.getElementById("npessoas").value,
-//             email:email =document.getElementById("email").value,
-//             obs:obs =document.getElementById("obs").value,
-//             user:localStorage.getItem("user")
+            nome: nome= nome.toUpperCase(),
+            cpf: cpf = cpf,
+            escolaridade: escolaridade= escolaridade,
+            rg: rg=rg,
+            estCivil:estCivil=estCivil,
+            cor:cor=cor,
+            profissao: profissao =profissao.toUpperCase(),
+            localidade: localidade.toUpperCase(),
+            filiacao:filiacao=filiacao.toUpperCase(),
+            dtnasc: formatarData(dtnasc),
+            date:new Date()*-1,
+            data: dataAtualFormatada(),
+            telefone:telefone= telefone,
+            renda:renda= renda,
+            nomeConj:nomeConj=nomeConj.toUpperCase(),
+            cpfConj: cpfConj= cpfConj,
+            rgConj:rgConj=rgConj,
+            profissaoConj: profissaoConj =profissaoConj.toUpperCase(),
+            filiacaoConj: filiacaoConj= filiacaoConj.toUpperCase(),
+            escolaridadeConj:escolaridadeConj= escolaridadeConj,
+            dtnascConj: formatarData(dtnascConj),
+            rendaConj: rendaConj= rendaConj,
+            banheiros: banheiros= banheiros,
+            qualificacao:qualificacao= qualificacao,
+            aluguel:aluguel=aluguel,
+            prestacao: prestacao=prestacao,
+            terreno: terreno= terreno.toUpperCase(),
+            npessoas:npessoas=npessoas,
+            tempo:tempo= tempo,
+            moradia:moradia= moradia,
+            especiais:especiais=especiais.toUpperCase(),
+            obs:obs =document.getElementById("obs").value,
+            orgSocial: orgSocial=orgSocial.toUpperCase(),
+            user:localStorage.getItem("user")
 
         
             
             
-//         };
+        };
     
-//         if (!cadastro_id) {
-//             cadastro_id = firebase.database().ref().child('cadastro').push().key;
-//         }
-//         let updates = {}
-//         updates["/cadastro/" + cadastro_id] = cadastro;
-//         let cadastro_ref = firebase.database().ref();
-//         firebase.database().ref().update(updates);
-//         window.location.reload();
-//     }
+        if (!residencia_id) {
+            residencia_id = firebase.database().ref().child('cadastro').push().key;
+        }
+        let updates = {}
+        updates["/residencia/" + residencia_id] = residencia;
+        let residencia_ref = firebase.database().ref();
+        firebase.database().ref().update(updates);
+        alert("Cadastrado");
+
+        window.location.reload();
+    
+    
+    }
     
    
   
+
+
+
+
+
+
+
+
 
 // function listar() {
 	
