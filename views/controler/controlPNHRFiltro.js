@@ -10,7 +10,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// window.onload = listar;
+window.onload = listar;
 
 
 
@@ -160,58 +160,45 @@ var databaseRef = firebase.database().ref('residencia/');
 
 
 
-// function listar() {
+function listar() {
 	
-//     if(!localStorage.getItem("auth")){
-//         alert("Necessario fazer login");
-//       window.location.href = "loguin.html";
+    if(!localStorage.getItem("auth")){
+        alert("Necessario fazer login");
+      window.location.href = "loguin.html";
 
-//     }
+    }
 
-//     var tblUsers = document.getElementById('tbl_users_list');
-//     var databaseRef = firebase.database().ref('cadastro/');
-//     var rowIndex=1;
-   
-//     databaseRef.orderByChild("date").once('value', function (snapshot) {
+    var databaseRef = firebase.database().ref('residencia/');
+    var rowIndex=0;
+    var resultados=document.getElementById("resultado");
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
         
-//         snapshot.forEach(function (childSnapshot) {
-//             var childKey = childSnapshot.key;
-//             var childData = childSnapshot.val();
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
 
-//             var row = tblUsers.insertRow(rowIndex);
-//             var cellNome = row.insertCell(0);
-//             var cellCPF = row.insertCell(1);
-//             var cellLocalidade = row.insertCell(2);
-//             var cellData = row.insertCell(3);            
-//             var cellRg= row.insertCell(4);
-//             var cellNis = row.insertCell(5);
-//             var cellEmail = row.insertCell(6);
-//             var cellTel=row.insertCell(7);
-//             var cellNpessoas = row.insertCell(8)
-            
-//            var cellProfissao = row.insertCell(9);
-//            var cellImprimir = row.insertCell(10);
-          
-//             cellNome.appendChild(document.createTextNode(childData.nome));
-//             cellCPF.appendChild(document.createTextNode(childData.cpf));
-//             cellLocalidade.appendChild(document.createTextNode(childData.endereco));
-//             cellData.appendChild(document.createTextNode(childData.dtnasc));
-//             cellRg.appendChild(document.createTextNode(childData.rg));
-//             cellNis.appendChild(document.createTextNode(childData.nis));
-//             cellEmail.appendChild(document.createTextNode(childData.email));
-//             cellTel.appendChild(document.createTextNode(childData.contato));
-//             cellNpessoas.appendChild(document.createTextNode(childData.npessoas));
-//             cellProfissao.appendChild(document.createTextNode(childData.profissao))
 
-//             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir('${childKey}')"}/>`;
-//           //  cellDelete.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`;
-// rowIndex++;
-          
-//         });
+            resultados.insertAdjacentHTML('beforeend',`
+            <br><div style="background-color: rgb(28, 240, 212); padding-top: 50px;">
+                <h3>
+                <strong>NOME:</strong> ${childData.nome} <strong> CPF:</strong> ${childData.cpf}<br>
+             <strong>   Nº PESSOAS NA RESIDENCIA: </strong>${childData.npessoas}
 
-//     });
+<br>
+
+                </h3>
+
+
+            </div><br>`);
+          rowIndex++;
+
+        });
+        
+
+    });
     
-// }
+}
 
 
 
