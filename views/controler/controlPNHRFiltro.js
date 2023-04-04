@@ -171,18 +171,20 @@ function listar() {
     var databaseRef = firebase.database().ref('residencia/');
     var rowIndex=0;
     var resultados=document.getElementById("resultado");
-
+    resultados.innerHTML="";
+var filtro= document.getElementById("filtro").value;
     databaseRef.orderByChild("date").once('value', function (snapshot) {
         
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
-
-
-            resultados.insertAdjacentHTML('beforeend',`
-            <br><div style="background-color: rgb(28, 240, 212); padding-top: 50px;">
+var item=filtro;
+            if((String(childData.cpf).includes(String(item).toUpperCase())||String(childData.nome).includes(String(item).toUpperCase())||String(childData.cpfConj).includes(String(item).toUpperCase())||String(childData.localidade).includes(String(item).toUpperCase())||String(childData.nomeConj).includes(String(item).toUpperCase()))){
+                resultados.insertAdjacentHTML('beforeend',`
+           <br><div style="background-color: rgb(28, 240, 212); padding-top: 20px;">
                 <h3>
                 <strong>NOME:</strong> ${childData.nome} <strong> CPF:</strong> ${childData.cpf}<br>
+                <strong>NOME CONJUGE:</strong> ${childData.nomeConj} <strong> CPF CONJUGE:</strong> ${childData.cpfConj}<br>
              <strong>   Nº PESSOAS NA RESIDENCIA: </strong>${childData.npessoas}
 
 <br>
@@ -190,10 +192,12 @@ function listar() {
                 </h3>
 
 
-            </div><br>`);
+            </div>`);
           rowIndex++;
-
+            }
         });
+        document.getElementById("inf").innerHTML=`<h6>CADASTRADOS:&nbsp ${rowIndex} </h6>`;
+
         
 
     });
