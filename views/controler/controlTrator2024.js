@@ -23,7 +23,7 @@ function InserirProtocolo() {
 var horasT = 0;
 var horasTotais = 0;
     var i=0;
-   var databaseRef = firebase.database().ref('trator2023/');
+   var databaseRef = firebase.database().ref('trator2024/');
     
    databaseRef.orderByChild("date").once('value', function (snapshot) {
        snapshot.forEach(function (childSnapshot) {
@@ -71,10 +71,10 @@ var horasTotais = 0;
         };
     
         if (!protocolo_id) {
-            protocolo_id = firebase.database().ref().child('trator2023').push().key;
+            protocolo_id = firebase.database().ref().child('trator2024').push().key;
         }
         let updates = {}
-        updates["/trator2023/" + protocolo_id] = protocolo;
+        updates["/trator2024/" + protocolo_id] = protocolo;
         let protocolo_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
@@ -99,7 +99,7 @@ function listar() {
          var y = document.getElementById("menu2")
          x.innerHTML=` <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="PROTRATOR2023.html">PROTRATOR <span class="sr-only">(current)</span></a>
+           <a class="nav-link" href="PROTRATOR2024.html">PROTRATOR <span class="sr-only">(current)</span></a>
          </li>       
          <li class="nav-item">
              <a class="nav-link" onclick="sair()">   SAIR  </a>   
@@ -117,7 +117,7 @@ function listar() {
 
     
     var tblUsers = document.getElementById('tbl_users_list');
-    var databaseRef = firebase.database().ref('trator2023/');
+    var databaseRef = firebase.database().ref('trator2024/');
     var rowIndex = 1;
     var horasTr=0;
     var dias=0;
@@ -457,7 +457,7 @@ function deletar(key){
     
     var x = window.confirm("Deseja realmente Excluir esta solicitacao?");
     if (x) {
-        firebase.database().ref('trator2023').child(key).remove();
+        firebase.database().ref('trator2024').child(key).remove();
         window.location.reload();
     }
 }
@@ -484,7 +484,7 @@ function listarfiltro() {
    
     
 </tr> `;
-    var databaseRef = firebase.database().ref('trator2023/');
+    var databaseRef = firebase.database().ref('trator2024/');
     var rowIndex=1;
     var horasTr=0;
     var dias=0;
@@ -544,7 +544,7 @@ function listarfiltro() {
     
 }
 function execultar(key){
-    var databaseRef = firebase.database().ref('trator2023/');
+    var databaseRef = firebase.database().ref('trator2024/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
              
@@ -558,7 +558,7 @@ function execultar(key){
         
                        childData.status= "execultado";
                        let updates = {}
-                       updates["/trator2023/" + childKey] = childData;
+                       updates["/trator2024/" + childKey] = childData;
                        let produtor_ref = firebase.database().ref();
                        firebase.database().ref().update(updates);
                       
@@ -578,7 +578,7 @@ function execultar(key){
 
 
 function editStatus(key){
-    var databaseRef = firebase.database().ref('trator2023/');
+    var databaseRef = firebase.database().ref('trator2024/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
              
@@ -598,7 +598,7 @@ function editStatus(key){
                        childData.user= localStorage.getItem("user");
 
                        let updates = {}
-                       updates["/trator2023/" + childKey] = childData;
+                       updates["/trator2024/" + childKey] = childData;
                        let produtor_ref = firebase.database().ref();
                        firebase.database().ref().update(updates);
                       
