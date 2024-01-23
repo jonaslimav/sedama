@@ -93,7 +93,7 @@ function listar() {
 
 
         console.log(localStorage.getItem("user"));
- if(localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+ if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
 
          var x = document.getElementById("navbarNavDropdown");
          var y = document.getElementById("menu2")
