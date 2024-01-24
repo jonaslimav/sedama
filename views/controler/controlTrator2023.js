@@ -95,7 +95,7 @@ function listar() {
         console.log(localStorage.getItem("user"));
  if(localStorage.getItem("user")=="wandeilsonviana@hotmail.com"||localStorage.getItem("user")=="kalitianne1@gmail.com" ){
 
-         window.location.href = "views/PROTRATOR2024.html";
+         window.location.href = "PROTRATOR2024.html";
       
 
     }
