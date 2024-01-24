@@ -99,7 +99,7 @@ function listar() {
          var y = document.getElementById("menu2")
          x.innerHTML=` <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="PROTRATOR2023.html">PROTRATOR <span class="sr-only">(current)</span></a>
+           <a class="nav-link" href="PROTRATOR2024.html">PROTRATOR <span class="sr-only">(current)</span></a>
          </li>       
          <li class="nav-item">
              <a class="nav-link" onclick="sair()">   SAIR  </a>   
