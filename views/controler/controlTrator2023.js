@@ -73,10 +73,7 @@ var horasTotais = 0;
         if (!protocolo_id) {
             protocolo_id = firebase.database().ref().child('trator2023').push().key;
         }
-        let updates = {}
-        updates["/trator2023/" + protocolo_id] = protocolo;
-        let protocolo_ref = firebase.database().ref();
-        firebase.database().ref().update(updates);
+
         window.location.reload();
        }
     
