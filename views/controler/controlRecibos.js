@@ -180,7 +180,7 @@ function imprimir(key){
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
                 <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,27)}/${getRandomInt(1,2)}/2024 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2023 </strong><br><br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2024 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
                 <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
