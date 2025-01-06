@@ -74,7 +74,7 @@ var horasTotais = 0;
             protocolo_id = firebase.database().ref().child('trator2025').push().key;
         }
         let updates = {}
-        updates["/trator2024/" + protocolo_id] = protocolo;
+        updates["/trator2025/" + protocolo_id] = protocolo;
         let protocolo_ref = firebase.database().ref();
         firebase.database().ref().update(updates);
         window.location.reload();
@@ -99,7 +99,7 @@ function listar() {
          var y = document.getElementById("menu2")
          x.innerHTML=` <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="PROTRATOR2024.html">PROTRATOR <span class="sr-only">(current)</span></a>
+           <a class="nav-link" href="PROTRATOR2025.html">PROTRATOR <span class="sr-only">(current)</span></a>
          </li>       
          <li class="nav-item">
              <a class="nav-link" onclick="sair()">   SAIR  </a>   
