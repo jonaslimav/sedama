@@ -91,50 +91,206 @@ function deletar(cpf){
 }
 function listar() {
 	
-	
-    if(!localStorage.getItem("auth")){
-        alert("Necessario fazer login");
-      window.location.href = "loguin.html";
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
 
-    }
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
 
-    var tblUsers = document.getElementById('tbl_users_list');
-    var databaseRef = firebase.database().ref('protocolo/');
-    var rowIndex = 1;
-    var horasTr=0;
-    var dias=0;
-    var dataAnt;
-    databaseRef.orderByChild("date").once('value', function (snapshot) {
-        
-        snapshot.forEach(function (childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
+    const ctx4 = document.getElementById('myChart4').getContext('2d');
 
-            var row = tblUsers.insertRow(rowIndex);
-            var cellNome = row.insertCell(0);
-            var cellCPF = row.insertCell(1);
-            var cellLocalidade = row.insertCell(2);
-            var cellRG = row.insertCell(3);            
-            var cellImprimir = row.insertCell(4);
-            var cellUser =row.insertCell(5);
-
-            
-            
-            cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
-            cellCPF.innerHTML=`<input type="button" class="btn btn" value="${childData.cpf}" onclick="deletar('${childData.cpf}')"}/>`;
-            cellLocalidade.appendChild(document.createTextNode(childData.localidade));
-            cellRG.appendChild(document.createTextNode(childData.rg));
-            cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir('${childKey}')"}/>`;
-            cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
-
-           
-
-            rowIndex = rowIndex + 1;
-        });
-
-        document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp </h6>`;
-    });
     
+    
+    // Dados iniciais do gráfico
+    const data = {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            
+                label: 'Produtores',
+                data: [359,1047,455,399,0],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Horas',
+                data: [996,2865,1382,1121,0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            
+            
+        }]
+    };
+    const data1 = {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai','Jun', 'Jul','Ago','Set', 'Out', 'Nov','Dez'],
+        datasets: [{
+            
+                label: 'Produtores',
+                data: [359,1047,455,399,0],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Horas',
+                data: [996,2865,1382,1121,0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            
+            
+        }]
+    };
+
+    const data2 = {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            
+                label: 'Produtores',
+                data: [359,1047,455,399,0],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Horas',
+                data: [996,2865,1382,1121,0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            
+            
+        }]
+    };
+
+    const data3 = {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            
+                label: 'Produtores',
+                data: [359,1047,455,399,0],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Horas',
+                data: [996,2865,1382,1121,0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            
+            
+        }]
+    };
+
+    const data4 = {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            
+                label: 'Produtores',
+                data: [359,1047,455,399,0],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Horas',
+                data: [996,2865,1382,1121,0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            
+            
+        }]
+    };
+
+
+    const myChart = new Chart(ctx, {
+        type: 'bar', // Alterar para 'line' ou outro tipo de gráfico, se necessário
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Gráfico de Horas de trator'
+                }
+            }
+        }
+    });
+
+    const myChart2 = new Chart(ctx2, {
+        type: 'bar', // Alterar para 'line' ou outro tipo de gráfico, se necessário
+        data: data1,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Gráfico de Horas de trator'
+                }
+            }
+        }
+    });
+
+    const myChart3 = new Chart(ctx3, {
+        type: 'bar', // Alterar para 'line' ou outro tipo de gráfico, se necessário
+        data: data2,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Gráfico de Horas de trator'
+                }
+            }
+        }
+    });
+    const myChart4 = new Chart(ctx4, {
+        type: 'pie', // Alterar para 'line' ou outro tipo de gráfico, se necessário
+        data: data3,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Gráfico de Horas de trator'
+                }
+            }
+        }
+    });
+
+    
+    // Lógica para filtrar os dados com base no intervalo de datas
+    document.getElementById('filterButton').addEventListener('click', () => {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        if (!startDate || !endDate) {
+            alert('Por favor, selecione ambas as datas!');
+            return;
+        }
+
+        // Simular novo filtro de dados (aqui você pode implementar lógica real)
+        alert(`Filtrando dados de ${startDate} a ${endDate}`);
+        
+        // Atualizar o gráfico (exemplo: alterar valores)
+        myChart.data.datasets[0].data = [200, 150, 400, 450, 250, 500, 300];
+        myChart.update();
+    });
 }
 
 
@@ -178,23 +334,6 @@ function imprimir(key){
                 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
-                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,27)}/${getRandomInt(1,2)}/2025 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
-                <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
-                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2025 </strong><br><br>
-                <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
-                
-                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
-                
-                    </h3>
-                    <h1>______________________________________________________________________________________________________________________
-                <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                <h3 style="
-                line-height: 1.75;
-                align-content: center;
-                text-align: justify;">
-                
-                <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
-                <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
                 <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,27)}/${getRandomInt(1,2)}/2024 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2024 </strong><br><br>
@@ -203,7 +342,6 @@ function imprimir(key){
                 <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
                 
                     </h3>
-                    
                     
                     <h1>______________________________________________________________________________________________________________________
                 <img src="../logPrefeitura.png" height=220 width=95%><h1> 

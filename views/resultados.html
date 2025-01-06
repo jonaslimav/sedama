@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pro Trator</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylleee.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="date"] {
+            padding: 8px;
+            width: 100%;
+            max-width: 200px;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #F2f2f2;">
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
+    <script src="controler/controlResultados.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="../semeando.png" height="100px" width="130px"> <br><h6 style="color: green;"><strong> Sedama Quixelo</strong></h6></a>
+       
+        <div class="navbar-brand" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="PROTRATOR2024.html">PROTRATOR <span class="sr-only">(current)</span></a>
+            </li>
+          
+            <li class="nav-item">
+                <a class="nav-link" href="ater.html">   ATER   </a> 
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="recibos.html">   REC.TRATOR   </a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
+            </li> 
+              <li class="nav-item ">
+                <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
+            </li></li>   <li class="nav-item ">
+                <a class="nav-link " href="PNHR.html">   PNHR  </a> 
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="Inseminar.html">   INSEMINAÇÃO </a> 
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link active" href="resultados.html">   RESULTADOS </a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="sair()">   SAIR  </a>   
+            </li>
+          </ul>
+        </div>
+      </nav>
+   
+
+
+    <div id= "geral" style="margin-top: 20px;">
+        
+        <div class="container">
+            <h1>Resultados com Gráficos</h1>
+            <div class="form-group">
+                <label for="startDate">Data Inicial:</label>
+                <input type="date" id="startDate">
+            </div>
+            <div class="form-group">
+                <label for="endDate">Data Final:</label>
+                <input type="date" id="endDate">
+            </div>
+            <button id="filterButton">Filtrar</button>
+            
+            <canvas id="myChart"></canvas>
+            <canvas id="myChart2"></canvas>
+            <canvas id="myChart3"></canvas>
+            <canvas id="myChart4"></canvas>
+        </div>
+    
+        <script>
+        </script>
+	
+    
+	
+    
+
+</body>
+
+</html>
