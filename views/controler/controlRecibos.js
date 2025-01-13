@@ -170,8 +170,8 @@ function imprimir(key){
                 var x = document.getElementById("geral");
                 
                 x.innerHTML = `<h1>______________________________________________________________________________________________________________________
-                <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                <h3 style="
+                <img src="../logPrefeitura.png" height=150 width=95%><h1> 
+                <h5 style="
                 line-height: 1.75;
                 align-content: center;
                 text-align: justify;">
@@ -183,14 +183,14 @@ function imprimir(key){
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2025 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
-                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
                 
-                    </h3>
+                    </h5>
                     <h1>_____________________________________________________________________________________________________________________<br>
 
                     <h1>______________________________________________________________________________________________________________________
-                <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                <h3 style="
+                <img src="../logPrefeitura.png" height=150 width=95%><h1> 
+                <h5 style="
                 line-height: 1.75;
                 align-content: center;
                 text-align: justify;">
@@ -202,15 +202,14 @@ function imprimir(key){
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2024 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
-                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
                 
-                    </h3>
+                    </h5>
                     
-                    <h1>_____________________________________________________________________________________________________________________<br>
 
-                    <h1>______________________________________________________________________________________________________________________
-                <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                <h3 style="
+                    <h3>______________________________________________________________________________________________________________________
+                <img src="../logPrefeitura.png" height=150 width=95%><h1> 
+                <h5 style="
                 line-height: 1.75;
                 align-content: center;
                 text-align: justify;">
@@ -222,16 +221,16 @@ function imprimir(key){
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2023 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
-                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
                 
-                    </h3>
+                    </h5>
                 
                 
                 
-                    <h1>_____________________________________________________________________________________________________________________<br>
-                <h1>______________________________________________________________________________________________________________________
-                <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                <h3 style="
+                    <h3>_____________________________________________________________________________________________________________________<br>
+                <h3>______________________________________________________________________________________________________________________
+                <img src="../logPrefeitura.png" height=150 width=95%><h3> 
+                <h5 style="
                 line-height: 1.75;
                 align-content: center;
                 text-align: justify;">
@@ -243,17 +242,16 @@ function imprimir(key){
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2022 </strong><br><br>
                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
-                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
                 
-                    </h3>
+                    </h5>
                 
                 
                 
-                    <h1>_____________________________________________________________________________________________________________________<br>
                     
-                            ________________________________________________________________________________________________________________________________
-                             <img src="../logPrefeitura.png" height=220 width=95%><h1> 
-                                <h3 style="
+                            
+                             <img src="../logPrefeitura.png" height=150 width=95%><h3> 
+                                <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -265,17 +263,17 @@ function imprimir(key){
                                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2021 </strong><br><br>
                                 <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
                 
-                                <br>	<img src="../logotrator.png" alt="some text" height=200 width=90%>
+                                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
                 
-                                    </h3>
+                                    </h5>
                 
                 
                 
-                                    <h1>_____________________________________________________________________________________________________________________<br>
+                                    <h3>_____________________________________________________________________________________________________________________<br>
                                     _____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2020.png" height=300 width=100%><h1> 
+                                    <img src="../pref2020.png" height=300 width=100%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2020</strong><br></h1>
-                                   <h3 style="
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -289,17 +287,15 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br>
                     
                                     
                                     
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                        
-                                    <img src="../pref2020.png" height=300 width=100%><h1> 
+                                 
+                                    <img src="../pref2020.png" height=300 width=100%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp 
-                                    &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2019</strong><br></h1>
-                                   <h3 style="
+                                    &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2019</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -313,17 +309,17 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br><br>
                     
                                     
                                     
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2020.png" height=300 width=100%><h1> 
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <img src="../pref2020.png" height=300 width=100%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                      &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp
-                                      &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2018</strong><br></h1>
-                                   <h3 style="
+                                      &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2018</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -337,20 +333,17 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br><br>
                     
                                     
-                                    
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h3 style="
+                                   <h5 style="
                                     line-height: 1.75;
                                     align-content: center;
-                                    text-align: justify;"> <img src="../pref2017.png" height=350 width=100%></h3><h1> 
+                                    text-align: justify;"> <img src="../pref2017.png" height=300 width=100%></h5><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
                                     &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp
-                                    &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2017</strong><br></h1>
-                                   <h3 style="
+                                    &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2017</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -364,17 +357,17 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br>
                     
                                     
                                     
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2017.png" height=350 width=100%><h1> 
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <img src="../pref2017.png" height=300 width=100%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                      &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp 
-                                     &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2016</strong><br></h1>
-                                   <h3 style="
+                                     &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2016</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -388,17 +381,15 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br>
                     
                                     
                                     
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2017.png" height=350 width=100%><h1> 
+                                  <img src="../pref2017.png" height=350 width=100%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                      &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp 
-                                     &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2015</strong><br></h1>
-                                   <h3 style="
+                                     &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2015</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -412,17 +403,17 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br><br>
                     
                                     
                                     
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2013.png" height=300 width=90%><h1> 
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <h3>_____________________________________________________________________________________________________________________<br>
+                                    <img src="../pref2013.png" height=300 width=90%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                      &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp
-                                      &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2014</strong><br></h1>
-                                   <h3 style="
+                                      &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2014</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -436,17 +427,14 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3><br><br><br>
+                                    </h5><br><br>
                     
                                     
-                                    
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <h1>_____________________________________________________________________________________________________________________<br>
-                                    <img src="../pref2013.png" height=300 width=90%><h1> 
+                                  <img src="../pref2013.png" height=300 width=90%><h3> 
                                     &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                      &nbsp &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp
-                                      &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2013</strong><br></h1>
-                                   <h3 style="
+                                      &nbsp &nbsp&nbsp &nbsp &nbsp <strong> HORA DE PRODUZIR - 2013</strong><br></h3>
+                                   <h5 style="
                                 line-height: 1.75;
                                 align-content: center;
                                 text-align: justify;">
@@ -460,7 +448,7 @@ function imprimir(key){
                 
                                 
                 
-                                    </h3>
+                                    </h5>
                                     
                                     <br>br>
                                     
