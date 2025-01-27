@@ -87,6 +87,13 @@ function listar() {
       window.location.href = "views/loguin.html";
 
     }
+    console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
+
+
+
+           }
     
     var item = document.getElementById("filtrostatus").value;
 

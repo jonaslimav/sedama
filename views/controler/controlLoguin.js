@@ -23,6 +23,22 @@ function cadastrar() {
     });
 }
 
+function deletar() {
+   
+        var user = firebase.auth().currentUser;
+    
+        if (user) {
+            user.delete().then(function () {
+                alert("Usuário deletado com sucesso.");
+            }).catch(function (error) {
+                alert("Erro ao deletar o usuário: " + error.message);
+            });
+        } else {
+            alert("Nenhum usuário está autenticado.");
+        }
+    }
+    
+
 
 function login() {
 
@@ -33,9 +49,10 @@ function login() {
         .then(function (user) {
             alert("Logado com sucesso");
             auth = user;
+          
             localStorage.setItem("auth",true);
             localStorage.setItem("user",document.getElementById("email").value);
-            window.location.href = "PROTRATOR2024.html";
+            window.location.href = "PROTRATOR2025.html";
         }).catch(function (error) {
             alert("Falha ao logar");
 

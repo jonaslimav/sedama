@@ -67,6 +67,13 @@ function listar() {
       window.location.href = "loguin.html";
 
     }
+    console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
+
+
+
+           }
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('tecnico/');
     var rowIndex = 1;

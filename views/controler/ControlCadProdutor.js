@@ -91,13 +91,21 @@ if(i==0){
 
 function listar() {
 	
+
 	
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
 
     }
+ console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
+        window.location.reload();
 
+
+
+           }
     var tblUsers = document.getElementById('tbl_users_list');
     var databaseRef = firebase.database().ref('produtor/');
     var rowIndex = 1;

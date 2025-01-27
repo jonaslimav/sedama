@@ -89,7 +89,13 @@ var horasTotais = 0;
 
 function listar() {
 
+    console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
 
+
+
+           }
 
 
         console.log(localStorage.getItem("user"));

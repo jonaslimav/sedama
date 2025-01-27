@@ -91,6 +91,14 @@ function deletar(cpf){
 }
 function listar() {
 	
+
+    console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
+
+
+
+           }
     const ctx = document.getElementById('myChart').getContext('2d');
     const ctx2 = document.getElementById('myChart2').getContext('2d');
 

@@ -166,6 +166,14 @@ function listar() {
         alert("Necessario fazer login");
       window.location.href = "loguin.html";
 
+      console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        window.location.href="PROTRATOR2025.html";
+        window.location.reload();
+
+
+
+           }
     }
 
     var databaseRef = firebase.database().ref('residencia/');
