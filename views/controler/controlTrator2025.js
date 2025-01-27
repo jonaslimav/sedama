@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 window.onload = listar;
 
-var valor= 107.50;
+var valor= 111.0;
 
 function InserirProtocolo() {
     var data= dataAtualFormatada();
