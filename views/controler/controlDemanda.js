@@ -79,8 +79,6 @@ function listar() {
     if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
         window.location.href="PROTRATOR2025.html";
 
-
-
            }
 
     var tblUsers = document.getElementById('tbl_users_list');

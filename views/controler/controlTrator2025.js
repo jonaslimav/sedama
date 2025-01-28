@@ -93,6 +93,9 @@ function listar() {
    
 
         console.log(localStorage.getItem("user"));
+    if(localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+        sair();
+    }
  if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
 
          var x = document.getElementById("navbarNavDropdown");

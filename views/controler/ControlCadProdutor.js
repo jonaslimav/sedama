@@ -99,9 +99,8 @@ function listar() {
 
     }
  console.log(localStorage.getItem("user"));
-    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com" ){
         window.location.href="PROTRATOR2025.html";
-        window.location.reload();
 
 
 
