@@ -20,6 +20,7 @@ function InserirProtocolo() {
 
 
    var cpf = document.getElementById("cpf").value
+   
 var horasT = 0;
 var horasTotais = 0;
     var i=0;
@@ -41,7 +42,12 @@ var horasTotais = 0;
        console.log(horasT);
        
        var horasLimite= 1100;
-       if(horasTotais>horasLimite && localStorage.getItem("user")=="wandeilsonviana@hotmail.com"){
+       if(cpf.length<11){
+        alert(`FORMATO CPF INCORRETO!!! `);
+
+
+       }else
+       if(horasTotais>horasLimite && localStorage.getItem("user")=="kalitianne1@gmail.com"){
         alert(` Horas ultrapassam o Limite do periodo (${horasLimite}hrs): ${horasFormat(horasTotais)}!!! `);
 
        }else if(horasT>5){
