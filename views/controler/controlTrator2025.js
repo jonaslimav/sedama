@@ -41,7 +41,7 @@ var horasTotais = 0;
        horasTotais = horasTotais+Number(document.getElementById("horas").value);
        console.log(horasT);
        
-       var horasLimite= 1300;
+       var horasLimite= 1310;
        if(cpf.length<11){
         alert(`FORMATO CPF INCORRETO!!! `);
 
