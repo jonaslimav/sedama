@@ -465,6 +465,9 @@ function completaDados(){
 function deletar(key){
     
     var x = window.confirm("Deseja realmente Excluir esta solicitacao?");
+    if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+        x=false;
+    }
     if (x) {
         firebase.database().ref('trator2025').child(key).remove();
         window.location.reload();
