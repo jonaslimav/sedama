@@ -15,7 +15,7 @@
 <body style="background-color: #F2f2f2;">
     <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
-    <script src="controler/controlSust.js"></script>
+    <script src="controler/controlQueijeiras.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     
@@ -39,14 +39,13 @@
                 <a class="nav-link" href="DemandaHP.html">   DEMANDA HP  </a> 
             </li>
             
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="Sust.html">   SUSTENTABILIDADE  </a> 
+            </li>   <li class="nav-item ">
+                <a class="nav-link" href="PNHR.html">   PNHR  </a> 
+            </li> <li class="nav-item active">
+                <a class="nav-link " href="QUEIJEIRAS.html">   QUEIJEIRAS  </a> 
             </li>
-        </li>   <li class="nav-item ">
-            <a class="nav-link " href="PNHR.html">   PNHR  </a> 
-        </li> <li class="nav-item">
-            <a class="nav-link " href="QUEIJEIRAS.html">   QUEIJEIRAS  </a> 
-        </li>
             <li class="nav-item ">
                 <a class="nav-link" href="Inseminar.html">   INSEMINAÇÃO </a> 
             </li>
@@ -56,95 +55,91 @@
           </ul>
         </div>
       </nav>
-
+      
+          </nav>
+       </div>
         <div id="alterar"></div>
 
       <div id= "geral" style="margin-top: 20px;">
         <div id="form">
         <form  class="container col-12" action="javascript:InserirProtocolo();">
             <form class="form-row">
-                <div class="row">
-                    <div class="col">
-                        <input class="form-control" placeholder="NOME" type="text" id="nome" required><br>
-                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
+                <strong>INFORMAÇÕES PRODUTOR</strong>
 
+                <div class="row" style="background-color: coral; padding-top: 20px;">
+                    <div class="col">
+                        <input class="form-control" placeholder="CPF" type="text" maxlength="11" id="cpf" onblur="completaDados()" required><br>
+                        <input class="form-control" placeholder="NOME" type="text" id="nome" required><br>
+
+                        <div class="col">
+                            <div class="col">
+                               
+                            </div>
+                          </div>
                     </div>
                     <div class="col">
-                        <input class="form-control" placeholder="RG" type="text" id="rg" ><br>
-                        <input class="form-control" placeholder="EMAIL" type="text"  id="email" ><br>
-                    </div>
-                    
-                    <div class="col">
-                        <input class="form-control" placeholder="PROFISSAO" type="text "id="profissao" required><br>
+                        <input class="form-control" placeholder="CONTATO" type="text"  id="telefone" ><br>
 
                         <input class="form-control" placeholder="ENDEREÇO" type="text" id="localidade" required><br>
 
-                    </div>
-                </div>
-                <div class="row">
-                   <div class= "col">
-                    <input class="form-control" placeholder="CONTATO" type="text"  id="telefone" ><br>
-
-
-                   </div>
                     
-                    <div class="col">
-                        <input class="form-control" placeholder="NIS" type="text"  id="nis" required ><br>
-
-                    </div>
-             
-                    <div class="col">
-                        <input class="form-control" placeholder="N° PESSOAS NA CASA" type="number" id="npessoas" required><br>
-
-
+                       
                     </div>
                     
                     <div class="col">
-                        <input  class="form-control" placeholder="DATA NASCIMENTO " type="date" id="dtnasc" required><br>
+                       
+                        <input class="form-control" placeholder="Quant. Leite/dia" type="number" id="producao" ><br>
+                        <input class="form-control" placeholder="FUNCIONARIOS" type="number "id="funcionarios" ><br>
+
+                                          
+                    </div>
+                    <div class="col">
+
+                        <textarea class="form-control" placeholder="DERIVADOS" type="text"  id="derivados" ></textarea>
+
 
 
                     </div>
-                
-                </div>
-                    <div class="row">
-                        <div class="col">
-                            <textarea class="form-control" placeholder="OBSERVACOES" type="text"  id="obs" ></textarea>
-<br>
-                        </div>
-                        
-                    </div>
-                </div>
 
-                
+                </div><br><br>
+   
                 <input type="submit" class="btn btn-primary">
         </form >
-   
-        <div id="inf"></div>
-     
-        <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
-            <tr>
-                <td scope="col">NOME</td>
-                <td scope="col">CPF</td>
-                <td scope="col">ENDERECO</td>
-                <td scope="col">DT. NASC.</td>
-                <td scope="col">RG</td>
-                <td scope="col">NIS</td>
-                <td scope="col">EMAIL</td>
-                <td scope="col">TELEFONE</td>
-                <td scope="col">N PESSOAS</td>
-                <td scope="col">PROFISSAO</td>
-                
-              
-               
-                
-            </tr>
-        </table>
+
+                <div class="col" style="background-color:  rgb(160, 188, 229);">
+                    <input class="form-control" placeholder="Buscar" type="text" id="atvfiltro" onchange="listarfiltro()" ><br>></div>
+                <div id="inf"style="background-color:  rgb(160, 188, 229);"></div>
+        
+                <table class="table table-striped" style="margin-top: 20px;" id="tbl_users_list" ,border="3">
+                    <tr>
+                        <td scope="col"><strong>PRODUTOR</strong></td>
+                        <td scope="col"><stong>CPF</strong></td>
+                        <td scope="col"><strong>LOCALIDADE</strong></td>
+                        <td scope="col"><strong>DATA</strong></td>
+                        <td scope="col"><strong>FUNCIONARIOS</strong></td>
+                        <td scope="col"><strong>PRODUCAO</strong></td>
+                        <td scope="col"><strong>DERIVADOS</strong></td>
+                        <td scope="col"> <strong>TELEFONE</strong></td>
+                        <td scope="col"> <strong>ADD. PRODUCAO.</strong></td>
+                        <td scope="col"><strong>IMPRIMIR</strong></td>
+                        
+        
+                        
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+                   
+             
+   <br>
+   <br> <br> <br> <br> <br> <br> <br> <br>
     </div>
 </div>
-    <div id="divImp">
-	
-	<div id="impressao"></div>
-	
+
     
     
 </body>
