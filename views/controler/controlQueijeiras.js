@@ -157,7 +157,7 @@ var databaseRef = firebase.database().ref('queijeiras/');
            var cellImprimir = row.insertCell(9);
           
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
-            cellCPF.appendChild(document.createTextNode(childData.cpf));
+            cellCPF.innerHTML=`<input type="button" class="btn btn" value="${childData.cpf}" onclick="deletar('${childKey}')"}/>`;
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
              cellProducao.appendChild(document.createTextNode(childData.producao));
@@ -558,4 +558,15 @@ function ultimaProducao(key){
 
     }
 
+    function deletar(key){
+    
+        var x = window.confirm("Deseja realmente Excluir esta solicitacao?");
+        if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
+            x=false;
+        }
+        if (x) {
+            firebase.database().ref('queijeiras').child(key).remove();
+            window.location.reload();
+        }
+    }
 
