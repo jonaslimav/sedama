@@ -30,7 +30,7 @@ var derivados =  document.getElementById("derivados").value;
 
 var i=0;
 var databaseRef = firebase.database().ref('queijeiras/');
-    
+
    databaseRef.orderByChild("date").once('value', function (snapshot) {
        snapshot.forEach(function (childSnapshot) {
            var childData = childSnapshot.val();
@@ -66,6 +66,7 @@ var databaseRef = firebase.database().ref('queijeiras/');
                  derivados: derivados= document.getElementById("derivados").value,
                  dataAtual:data,
                  producao: producao ,
+                 producaoInicial: producao,
                  funcionarios: funcionarios,
                  date:new Date()*-1,
                  telefone:telefone ,
@@ -79,6 +80,7 @@ var databaseRef = firebase.database().ref('queijeiras/');
              }
              let updates = {}
              updates["/queijeiras/" + protocolo_id] = queijeira;
+            
              let protocolo_ref = firebase.database().ref();
              firebase.database().ref().update(updates);
              window.location.reload();
@@ -166,7 +168,7 @@ var databaseRef = firebase.database().ref('queijeiras/');
             cellTel.appendChild(document.createTextNode(childData.telefone));
 
 
-            cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir('${childKey}')"}/>`;
+            cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="listarfiltro('${childKey}')"}/>`;
             cellAddProducao.innerHTML=`<input type="button" class="btn btn-danger" value="ADD PRODUCAO." onclick="addProducao('${childKey}')"}/>`;
  rowIndex++;
           
@@ -382,62 +384,153 @@ function formatarData(dt){
     return dia+"/"+mes+"/"+ano;
 }
 
-// function imprimir(dt){
+
+
+
+function listarfiltro(key) {
+
+    var rowIndex=1;
+
+    var nomeProdutor ;
+    var cpf;
+    var localidade;
+    var producaoInicial;
+    var dataCadastro;
+    var derivados;
+    var funcionarios;
+    var telefone;
+    var user;
+    var databaseRef2 = firebase.database().ref('queijeiras/');
+
+    databaseRef2.orderByChild("date").once('value', function (snapshot) {
+
+    snapshot.forEach(function (childSnapshot) {
+    
+        var childData = childSnapshot.val();
+        var childKey = childSnapshot.key;
+
+        if(key == childKey){
+
+
+
+                nomeProdutor = childData.nomeProdutor;
+                 cpf = childData.cpf 
+                 localidade = childData.localidade;
+                 derivados = childData.derivados;
+                 dataCadastro = childData.dataAtual;
+                 producaoInicial = childData.producaoInicial;
+                 funcionarios = childData.funcionarios;
+                 telefone = childData.telefone;
+                user= childData.user;
+          
+                   
+        }
+        });
+});
+
+var form = document.getElementById('form');
+form.innerHTML=`<br><h2 style='
+text-align: center;'> <strong>CADASTRO DE PRODUCOES</strong>`;
+
+   
+    var databaseRef = firebase.database().ref('producoes/');
+   
+   
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+        var rowIndex=1;
+
+        var tblUsers = document.getElementById('tbl_users_list');
+        tblUsers.innerHTML = `<tr>
+        <td scope="col">DATA</td>
+        <td scope="col">VALOR TOTAL</td>
+        <td scope="col">USUARIO</td>
+       
+        
+       
+        
+    </tr> `;
+        
+        snapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+           
+            if(key==childData.key){
+            var row = tblUsers.insertRow(rowIndex);
+            var cellData = row.insertCell(0);
+            var cellValor = row.insertCell(1);
+            var cellUsuario = row.insertCell(2);
+        
+
+            
+            cellValor.appendChild(document.createTextNode(childData.producaoAtual));
+            cellData.appendChild(document.createTextNode(childData.data));
+            cellUsuario.appendChild(document.createTextNode(childData.user));
+
+
+            rowIndex = rowIndex + 1;
+          
+            }
+            
+            });
+           
+
+            
+        document.getElementById("inf").innerHTML=`<h6><br><strong>PRODUTOR:</strong>&nbsp ${nomeProdutor} &nbsp &nbsp &nbsp <strong>CPF:</strong>&nbsp ${cpf} <br><strong>LOCALIDADE:</strong>&nbsp${localidade}<br> <strong>DERIVADOS&nbsp:</strong>${(derivados)}<br>
+        <strong>PRODUCAO INICIAL:</strong> &nbsp ${producaoInicial} &nbsp &nbsp &nbsp <strong>DATA CADASTRO:</strong>&nbsp ${dataCadastro}</h6>`;
+    });
+    
+}
+ function imprimir(dt){
 
     
-//     var databaseRef = firebase.database().ref('cadastro/');
-//     databaseRef.orderByChild("date").once('value', function (snapshot) {
+    var databaseRef = firebase.database().ref('queijeiras/');
+    var databaseRef2 = firebase.database().ref('producoes/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
             
-//         snapshot.forEach(function (childSnapshot) {
+        snapshot.forEach(function (childSnapshot) {
     
-//             var childData = childSnapshot.val();
-//             if(childSnapshot.key == dt ){
+            var childData = childSnapshot.val();
+            if(childSnapshot.key == dt ){
                 
             
     
     
-//     var x = document.getElementById("geral");
+     var x = document.getElementById("geral");
     
-//     x.innerHTML = `
-//                     <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
-//                     text-align: center;"> 
-//                    <strong> FICHA DE INSCRIÇÃO <br></strong>
-//                                 </h2><h4 style="
-//                                 text-align: justify; margin-left:35px; margin-right:35px;"> 
+     x.innerHTML = `
+                     <img src="../PARTECIMA.png" height=300 width=100%><h2 style="
+                     text-align: center;"> 
+                   <strong> FICHA DE INSCRIÇÃO <br></strong>
+                                </h2><h4 style="text-align: justify; margin-left:35px; margin-right:35px;"> 
                                
                                             
-//                     <br>
-//                     <br>
-//                     <strong> NOME :</strong>${childData.nome}<br>
-//                     <strong> CPF :</strong>${childData.cpf}<br>
-//                     <strong> DATA NASCIMENTO:</strong>${childData.dtnasc}<br>
-//                     <strong> LOCALIDADE:</strong>${childData.endereco}
-//                         <br>
-//                         <strong> PROFISSAO :</strong>${childData.profissao}<br>
-//                     <strong> RG :</strong>${childData.rg}<br>
-//                     <strong> NIS:</strong>${childData.nis}
-//                     <strong> CONTATO:</strong>${childData.contato}
-//                         <br>
+                    <br>
+                    <br>
+                    <strong> NOME :</strong>${childData.nome}<br>
+                    <strong> CPF :</strong>${childData.cpf}<br>
+                    <strong> LOCALIDADE:</strong>${childData.dtnasc}<br>
+                        <br>
+                    <strong> CONTATO:</strong>${childData.contato}
+                        <br>
     
-//                     <strong>OBSERVAÇÕES: </strong><br><br>
+                   <strong>DERIVADOS: </strong><br><br>
                     
-//                         ${childData.obs}
-//     </h4>
-//                   <h5 style= "text-align:center; line-height:1.75;">
+                        ${childData.obs}
+    </h4>
+                  <h5 style= "text-align:center; line-height:1.75;">
                      
-//                      <div class="footer" style="position:absolute;
-//                      bottom:0;
-//                      width:100%;">
-//                      <img src="../logPref.png" alt="some text"  width=100% ></div>
+                     <div class="footer" style="position:absolute;
+                     bottom:0;
+                     width:100%;">
+                     <img src="../logPref.png" alt="some text"  width=100% ></div>
                         
-//                            `;
-                        
-//                         } 
-//                     });
-//                 }); 
-//       //  printDiv();
+                           `;                     
+                         } 
+                   });
+               }); 
     
-//     }
+   }
 
 
 
@@ -497,6 +590,44 @@ function addProducao(key){
 
 
 function listarProducao(key){
+
+
+    var nomeProdutor ;
+    var cpf;
+    var localidade;
+    var producaoInicial;
+    var dataCadastro;
+    var derivados;
+    var funcionarios;
+    var telefone;
+    var databaseRef2 = firebase.database().ref('queijeiras/');
+
+    databaseRef2.orderByChild("date").once('value', function (snapshot) {
+
+    snapshot.forEach(function (childSnapshot) {
+    
+        var childData = childSnapshot.val();
+        var childKey = childSnapshot.key;
+
+        if(key == childKey){
+
+
+
+                nomeProdutor = childData.nomeProdutor;
+                 cpf = childData.cpf 
+                 localidade = childData.localidade;
+                 derivados = childData.derivados;
+                 dataCadastro = childData.dataAtual;
+                 producaoInicial = childData.producao;
+                 funcionarios = childData.funcionarios;
+                 telefone = childData.telefone;
+
+          
+                   
+        }
+        });
+});
+
     var databaseRef = firebase.database().ref('producoes/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
@@ -506,10 +637,7 @@ function listarProducao(key){
             var childData = childSnapshot.val();
             var childKey = childSnapshot.key;
 
-            if(key == childData.key){
-
-              console.log(childData.producaoAtual)
-              
+            if(key == childData.key){              
                   
         
 
