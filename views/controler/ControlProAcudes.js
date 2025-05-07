@@ -1,14 +1,13 @@
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCalbx4hqCxrVt500RKGIb-ENwIHs9stAU",
-    authDomain: "sedama-4dd5c.firebaseapp.com",
-    databaseURL: "https://sedama-4dd5c-default-rtdb.firebaseio.com",
-    projectId: "sedama-4dd5c",
-    storageBucket: "sedama-4dd5c.appspot.com",
-    messagingSenderId: "492670080550",
-    appId: "1:492670080550:web:42ad24f36c7f5cd578b8e7"
+    apiKey: "AIzaSyDoxvGgx4Q9r6wNIFX1bBKAK59xVkQifyc",
+    authDomain: "sedama-quixelo.firebaseapp.com",
+    databaseURL: "https://sedama-quixelo-default-rtdb.firebaseio.com",
+    projectId: "sedama-quixelo",
+    storageBucket: "sedama-quixelo.firebasestorage.app",
+    messagingSenderId: "390225225988",
+    appId: "1:390225225988:web:3ddb0a6af191729af40851",
   };
-
 firebase.initializeApp(firebaseConfig);
 
 window.onload = listar;
