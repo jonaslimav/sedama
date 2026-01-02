@@ -185,6 +185,24 @@ function imprimir(key){
                 
                 <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
                 <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
+                <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,27)}/${getRandomInt(1,2)}/2026 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
+                <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
+                <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2025 </strong><br><br>
+                <strong> ASS.AGRICULTOR:_________________________________________SERVIDOR:______________________</strong><br>
+                
+                <br>	<img src="../logotrator.png" alt="some text" height=150 width=90%>
+                
+                    </h5>
+                    <h1>_____________________________________________________________________________________________________________________<br>
+<h1>______________________________________________________________________________________________________________________
+                <img src="../logPrefeitura.png" height=150 width=95%><h1> 
+                <h5 style="
+                line-height: 1.75;
+                align-content: center;
+                text-align: justify;">
+                
+                <br> <strong> AGRICULTOR:</strong>&nbsp ${nomePr} <br>
+                <strong>CPF:</strong> &nbsp  ${cpfPr}&nbsp &nbsp &nbsp &nbsp <strong>RG Nº:</strong>&nbsp   ${rgPr} <br>
                 <strong> DATA PAGAMENTO:</strong> ${getRandomInt(1,27)}/${getRandomInt(1,2)}/2025 &nbsp&nbsp <strong> QUANT. HORAS:  </strong>  2 HORAS &nbsp&nbsp <br>
                 <strong>LOCALIDADE:</strong>  &nbsp ${localPr} &nbsp&nbsp&nbsp&nbsp <strong> VALOR TOTAL:  </strong>  R$ 134,40<br>
                 <br><strong> TRATORISTA:____________________________ DATA SERVIÇO: ___/___/2025 </strong><br><br>
