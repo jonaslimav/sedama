@@ -499,7 +499,7 @@ function deletar(key){
         x=false;
     }
     if (x) {
-        firebase.database().ref('trator2025').child(key).remove();
+        firebase.database().ref('trator2026').child(key).remove();
         window.location.reload();
     }
 }
@@ -620,7 +620,7 @@ function execultar(key){
 
 
 function editStatus(key){
-    var databaseRef = firebase.database().ref('trator2025/');
+    var databaseRef = firebase.database().ref('trator2026/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
              
