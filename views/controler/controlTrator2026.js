@@ -24,7 +24,7 @@ function InserirProtocolo() {
 var horasT = 0;
 var horasTotais = 0;
     var i=0;
-   var databaseRef = firebase.database().ref('trator2025/');
+   var databaseRef = firebase.database().ref('trator2026/');
     
    databaseRef.orderByChild("date").once('value', function (snapshot) {
        snapshot.forEach(function (childSnapshot) {
