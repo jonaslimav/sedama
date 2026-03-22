@@ -177,7 +177,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this,'${childData.cpf}')"}/>`;
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
           
             cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
@@ -567,9 +567,9 @@ function listarfiltro() {
             localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
 
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
-            (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
+            (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
 
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"?cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE." onclick="deletar('${childKey}')"}/>`:"";
 
            if(dataAnt!=childData.dataAtual){
                dias++;
@@ -586,7 +586,7 @@ function listarfiltro() {
     
 }
 function execultar(key){
-    var databaseRef = firebase.database().ref('trator2025/');
+    var databaseRef = firebase.database().ref('trator2026/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
              
@@ -640,7 +640,7 @@ function editStatus(key){
                        childData.user= localStorage.getItem("user");
 
                        let updates = {}
-                       updates["/trator2025/" + childKey] = childData;
+                       updates["/trator2026/" + childKey] = childData;
                        let produtor_ref = firebase.database().ref();
                        firebase.database().ref().update(updates);
                       
