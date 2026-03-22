@@ -526,7 +526,7 @@ function listarfiltro() {
    
     
 </tr> `;
-    var databaseRef = firebase.database().ref('trator2025/');
+    var databaseRef = firebase.database().ref('trator2026/');
     var rowIndex=1;
     var horasTr=0;
     var dias=0;
@@ -564,7 +564,7 @@ function listarfiltro() {
             cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
 
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
             (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
