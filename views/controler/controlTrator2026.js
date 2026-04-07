@@ -516,6 +516,8 @@ function deletar(key){
     if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
         x=false;
     }
+    if(localStorage.getItem("user")=="etc.atendimento@gmail.com")
+
     if (x) {
         firebase.database().ref('trator2026').child(key).remove();
         window.location.reload();
