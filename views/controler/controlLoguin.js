@@ -52,7 +52,7 @@ function login() {
           
             localStorage.setItem("auth",true);
             localStorage.setItem("user",document.getElementById("email").value);
-            window.location.href = "PROTRATOR2025.html";
+            window.location.href = "PROTRATOR2026.html";
         }).catch(function (error) {
             alert("Falha ao logar");
 
