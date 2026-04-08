@@ -195,7 +195,7 @@ function listar() {
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this,'${childData.cpf}')"}/>`;
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="etc.atendimento@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
           
             cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
@@ -516,7 +516,9 @@ function deletar(key){
     if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
         x=false;
     }
-    if(localStorage.getItem("user")=="etc.atendimento@gmail.com")
+    if(localStorage.getItem("user")=="etc.atendimento@gmail.com"){
+        x=false;
+    }
 
     if (x) {
         firebase.database().ref('trator2026').child(key).remove();
@@ -584,7 +586,7 @@ function listarfiltro() {
             cellValor.appendChild(document.createTextNode(childData.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})));
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="etc.atendimento@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"?cellStatus.innerHTML=`<input type="button" class="btn btn" value="${childData.status}." onclick="editStatus('${childKey}')"}/>`:"";
 
             cellImprimir.innerHTML='<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir(this)"}/>';
             (localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com")&&childData.status==""? cellExec.innerHTML=`<input type="button" class="btn btn-danger" value="EXEC." onclick="execultar('${childKey}')"}/>`:"";
@@ -640,6 +642,12 @@ function execultar(key){
 
 
 function editStatus(key){
+
+    if(localStorage.getItem("user")=="etc.atendimento@gmail.com"){
+        window.location.reload();
+
+    }
+    
     var databaseRef = firebase.database().ref('trator2026/');
 
     databaseRef.orderByChild("date").once('value', function (snapshot) {
