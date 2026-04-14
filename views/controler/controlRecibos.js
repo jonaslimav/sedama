@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyDAsi3ULLpIlf7b5KdJ3up3PjKnvasrSJQ",
     authDomain: "sedama-fc903.firebaseapp.com",
@@ -91,6 +92,9 @@ function deletar(cpf){
 }
 function listar() {
 	
+    
+    
+
 	
     if(!localStorage.getItem("auth")){
         alert("Necessario fazer login");
@@ -99,7 +103,7 @@ function listar() {
     }
     console.log(localStorage.getItem("user"));
     if(localStorage.getItem("user")=="kalitianne1@gmail.com"){
-        window.location.href="PROTRATOR2025.html";
+        window.location.href="PROTRATOR2026.html";
 
 
 
@@ -116,27 +120,39 @@ function listar() {
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
+            var ano = document.getElementById("ano").value
+
+            let data = new Date( childData.date * -1);
+            var datacad = data.toLocaleDateString('pt-BR')
+            
+    var anoN = String(datacad).slice(-4);
+    console.log(anoN)
+    if(ano==anoN){
+
+         
 
             var row = tblUsers.insertRow(rowIndex);
             var cellNome = row.insertCell(0);
             var cellCPF = row.insertCell(1);
             var cellLocalidade = row.insertCell(2);
-            var cellRG = row.insertCell(3);            
-            var cellImprimir = row.insertCell(4);
-            var cellUser =row.insertCell(5);
+            var cellRG = row.insertCell(3); 
+           var cellData =row.insertCell(4);           
+            var cellImprimir = row.insertCell(5);
+            var cellUser =row.insertCell(6);
 
-            
-            
+       
             cellNome.appendChild(document.createTextNode(childData.nomeProdutor));
             cellCPF.innerHTML=`<input type="button" class="btn btn" value="${childData.cpf}" onclick="deletar('${childData.cpf}')"}/>`;
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             cellRG.appendChild(document.createTextNode(childData.rg));
+           cellData.appendChild(document.createTextNode(datacad));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimir('${childKey}')"}/>`;
             cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
+          
            
-
             rowIndex = rowIndex + 1;
+             }
         });
 
         document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp </h6>`;
