@@ -191,7 +191,8 @@ if(String(childData.localidade).toUpperCase() == String(item).toUpperCase()||Str
             localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellValor.innerHTML=`<input type="button" class="btn btn" value="${childData.valorTotal}" onclick="editValor('${childKey}')"}/>`:"";
             localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellRG.innerHTML=`<input type="button" class="btn btn" value="${childData.rg}" onclick="editObs('${childKey}')"}/>`:"";
 
-            cellData.appendChild(document.createTextNode(childData.dataAtual));
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellData.innerHTML=`<input type="button" class="btn btn" value="${childData.dataAtual}" onclick="editData('${childKey}')"}/>`:"";
+
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimirProj('${childKey}')"}/>`;
           localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
@@ -629,6 +630,47 @@ function editValor(key){
           
             }); 
             window.location.reload();
+      });
+  
+}
+
+function editData(key){
+    var databaseRef = firebase.database().ref('proacudes2022/');
+
+    databaseRef.orderByChild("date").once('value', function (snapshot) {
+             
+        snapshot.forEach(function (childSnapshot) {
+    
+            var childData = childSnapshot.val();
+            var childKey = childSnapshot.key;
+
+            if(key == childKey){
+
+              
+                let dataInput = prompt("Digite uma data (formato DD/MM/AAAA)");
+
+              
+              
+                  
+        
+                       childData.dataAtual= String(atv2);
+                       childData.user= localStorage.getItem("user");
+
+                       let updates = {}
+                       updates["/proacudes2022/" + childKey] = childData;
+                       let produtor_ref = firebase.database().ref();
+                       firebase.database().ref().update(updates);
+                      
+                         
+                       
+                
+             
+            }
+                 
+              
+          
+            }); 
+          window.location.reload();
       });
   
 }
