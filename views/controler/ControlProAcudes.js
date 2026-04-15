@@ -652,7 +652,7 @@ function editData(key){
               
               const [dia,mes,ano] = dataInput.split('/');
               const datatime = new Date(ano,mes-1,dia);
-              const decimal = data.getTime();
+              const decimal = datatime.getTime();
 
                   
         
