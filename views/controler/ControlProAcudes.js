@@ -653,7 +653,7 @@ function editData(key){
               
                   
         
-                       childData.dataAtual= String(atv2);
+                       childData.dataAtual= String(dataInput);
                        childData.user= localStorage.getItem("user");
 
                        let updates = {}
