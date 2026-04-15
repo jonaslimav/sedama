@@ -650,10 +650,14 @@ function editData(key){
                 let dataInput = prompt("Digite uma data (formato DD/MM/AAAA)");
 
               
-              
+              const [dia,mes,ano] = dataInput.split('/');
+              const datatime = new Date(ano,mes-1,dia);
+              const decimal = data.getTime();
+
                   
         
                        childData.dataAtual= String(dataInput);
+                       childData.date = decimal*-1;
                        childData.user= localStorage.getItem("user");
 
                        let updates = {}
