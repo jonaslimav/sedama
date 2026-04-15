@@ -132,6 +132,15 @@ function listar() {
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
+
+            var ano = document.getElementById("ano").value
+
+            let data = new Date( childData.date * -1);
+            var datacad = data.toLocaleDateString('pt-BR')
+            
+    var anoN = String(datacad).slice(-4);
+    console.log(anoN)
+    if(ano==anoN){
             if(childData.status ==""){
                 childData.status = "SOLICITADO";
                 let updates = {}
@@ -178,14 +187,14 @@ if(String(childData.localidade).toUpperCase() == String(item).toUpperCase()||Str
             cellCPF.appendChild(document.createTextNode(childData.cpf));
             cellLocalidade.appendChild(document.createTextNode(childData.localidade));
             localStorage.getItem("user")=="jlvieira248@gmail.com"? cellRG.appendChild(document.createTextNode(childData.rg)):"";
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellHoras.innerHTML=`<input type="button" class="btn btn" value="${childData.horas}" onclick="editHoras('${childKey}')"}/>`:"";
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellValor.innerHTML=`<input type="button" class="btn btn" value="${childData.valorTotal}" onclick="editValor('${childKey}')"}/>`:"";
-            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellRG.innerHTML=`<input type="button" class="btn btn" value="${childData.rg}" onclick="editObs('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellHoras.innerHTML=`<input type="button" class="btn btn" value="${childData.horas}" onclick="editHoras('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellValor.innerHTML=`<input type="button" class="btn btn" value="${childData.valorTotal}" onclick="editValor('${childKey}')"}/>`:"";
+            localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellRG.innerHTML=`<input type="button" class="btn btn" value="${childData.rg}" onclick="editObs('${childKey}')"}/>`:"";
 
             cellData.appendChild(document.createTextNode(childData.dataAtual));
             cellTel.appendChild(document.createTextNode(childData.telefone));
             cellImprimir.innerHTML=`<input type="button" class="btn btn-danger" value="IMPR." onclick="imprimirProj('${childKey}')"}/>`;
-          localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="francisco.limaigt@hotmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
+          localStorage.getItem("user")=="jlvieira248@gmail.com"||localStorage.getItem("user")=="agriculturaquixelo@gmail.com"? cellDel.innerHTML=`<input type="button" class="btn btn-danger" value="DELETE" onclick="deletar('${childKey}')"}/>`:"";
             cellExec.innerHTML= `<input type="button" class="btn btn" value="${childData.status}" onclick="altStatus('${childKey}')"}/>`
             cellUser.appendChild(document.createTextNode(childData.user?childData.user:""));
 
@@ -196,7 +205,7 @@ if(String(childData.localidade).toUpperCase() == String(item).toUpperCase()||Str
        
            val = val +childData.valorTotal;
             rowIndex = rowIndex + 1;
-            horasTr = horasTr+Number(childData.horas);}
+horasTr = horasTr+Number(childData.horas);}  }
         });
 
         document.getElementById("inf").innerHTML=`<h6>PRODUTORES:&nbsp ${rowIndex-1} &nbsp &nbsp &nbsp QUANT. HORAS A EXECULTAR:&nbsp ${horasTr.toFixed(2)} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp VALOR TOTAL&nbsp:${(val).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </h6>`;
