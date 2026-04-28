@@ -139,8 +139,12 @@ function listar() {
             var datacad = data.toLocaleDateString('pt-BR')
             
     var anoN = String(datacad).slice(-4);
+    if(  anoN!=2021 && anoN!=2022 && anoN!=2023 && anoN!=2024 && anoN!=2025 && anoN!=2026){
+        anoN=0;
+    }
     console.log(anoN)
     if(ano==anoN){
+
             if(childData.status ==""){
                 childData.status = "SOLICITADO";
                 let updates = {}
